@@ -79,7 +79,7 @@
             <footer class="footer">
                 <div class="footer__item">
                     © <?= $footerYear; ?> Краски. Все права защищены.<br>
-                    Сайт сделан: <a href="http://more-use.com/">More Use</a>
+                    Сайт сделан: <a href="http://more-use.com/" rel="nofollow" target="_blank">More Use</a>
                 </div>
                 <div class="footer__item">
                     <? $APPLICATION->IncludeComponent('bitrix:menu', 'contacts', array(
