@@ -1,4 +1,5 @@
 .link {
+  $height: $fontSizeNormal * $lineHeight;
   $color: $colorBlack;
   text-decoration: none;
   display: inline-block;
@@ -16,6 +17,32 @@
       width: 100%;
       border-top: 1px solid $color;
       content: '';
+    }
+  }
+
+  &--icon {
+    width: 16px;
+    height: $height;
+    background-position: center center;
+    font-size: 0;
+
+    &:before {
+      display: none !important;
+    }
+
+    &-facebook {
+      background-image: url('img/soc-facebook.png');
+      background-size: 6px 12px;
+    }
+
+    &-vk {
+      background-image: url('img/soc-vk.png');
+      background-size: 16px 9px;
+    }
+
+    &-instagramm {
+      background-image: url('img/soc-instagramm.png');
+      background-size: 12px 12px;
     }
   }
 }

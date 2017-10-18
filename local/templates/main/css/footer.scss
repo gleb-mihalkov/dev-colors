@@ -1,8 +1,13 @@
 .footer {
   $height: $footerHeight;
+  border-top: 1px solid #dadada;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: $height + 1px;
-  border-top: 1px solid #dadada;
+  padding: 0 58px;
+
+  a {
+    @extend .link--underline;
+  }
 }
