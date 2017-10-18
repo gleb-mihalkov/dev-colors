@@ -1,0 +1,14 @@
+.global {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+
+  &__item {
+    display: block;
+    width: 100%;
+
+    &--stretched {
+      flex: auto;
+    }
+  }
+}
