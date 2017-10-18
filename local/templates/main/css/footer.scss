@@ -1,3 +1,8 @@
 .footer {
-  
+  $height: $footerHeight;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: $height + 1px;
+  border-top: 1px solid #dadada;
 }
