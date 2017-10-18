@@ -1,5 +1,5 @@
 .header {
-  $height: 70px;
+  $height: $headerHeight;
   display: flex;
   align-items: center;
   height: $height + 1px;
