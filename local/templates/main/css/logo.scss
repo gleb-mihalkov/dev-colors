@@ -1,0 +1,10 @@
+.logo {
+  $width: 91px;
+  $height: 29px;
+  background-image: url('img/logo.png');
+  background-position: center center;
+  background-size: $width $height;
+  display: block;
+  width: $width;
+  height: 100%;
+}

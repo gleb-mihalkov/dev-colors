@@ -50,7 +50,9 @@
     <div class="global">
         <div class="global__item">
             <header class="header">
-                <div class="header__item"></div>
+                <div class="header__item">
+                    <a href="/" title="Перейти на главную страницу" class="logo"></a>
+                </div>
                 <div class="header__item header__item--pulled"></div>
             </header>
         </div>
