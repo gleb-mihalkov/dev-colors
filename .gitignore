@@ -1,0 +1,7 @@
+/local/bower_components/
+/local/node_modules/
+/local/vendor/
+/bitrix/
+/upload/
+*.sublime-project
+*.sublime-workspace
