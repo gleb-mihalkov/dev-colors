@@ -4,6 +4,8 @@
     global $APPLICATION;
     global $USER;
 
+    $isPanel = true;
+
     $site = CSite::GetById(SITE_ID)->GetNext();
     $page = $APPLICATION->GetCurPage();
 
@@ -36,7 +38,7 @@
     ?>
 </head>
 <body>
-    <? if ($isAdmin) : ?>
+    <? if ($isPanel && $isAdmin) : ?>
         <div id="panel"><? $APPLICATION->ShowPanel(); ?></div>
     <? endif; ?>
     <div class="global">

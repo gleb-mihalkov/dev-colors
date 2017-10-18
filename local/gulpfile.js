@@ -94,7 +94,7 @@ gulp.task('build', [
 ]);
 
 gulp.task('watch', () => {
-  let css = Path.resolve(config.src, '**/*.styl');
+  let css = Path.resolve(config.src, '**/*.scss');
   let js = Path.resolve(config.src, '**/*.js');
   let php = Path.resolve(config.src, 'index.php');
   watch(php, () => gulp.start('build:php'));
