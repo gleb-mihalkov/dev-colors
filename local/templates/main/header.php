@@ -39,3 +39,7 @@
     <? if ($isAdmin) : ?>
         <div id="panel"><? $APPLICATION->ShowPanel(); ?></div>
     <? endif; ?>
+    <div class="global">
+        <div class="global__item"></div>
+        <div class="global__item global__item--stretched">
+            
