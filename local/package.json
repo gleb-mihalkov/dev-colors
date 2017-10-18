@@ -16,7 +16,8 @@
     "gulp-include": "^2.3.1",
     "gulp-plumber-notifier": "^0.0.3",
     "gulp-rename": "^1.2.2",
-    "gulp-stylus": "^2.6.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.1",
     "gulp-uglify": "^3.0.0",
     "gulp-watch": "^4.3.11",
     "pretty-error": "^2.1.1"

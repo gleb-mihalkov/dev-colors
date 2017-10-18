@@ -12,7 +12,7 @@ const plumber = require('gulp-plumber-notifier');
 const rename = require('gulp-rename');
 const watch = require('gulp-watch');
 const PrettyError = require('pretty-error');
-const stylus = require('gulp-stylus');
+const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const beautifyCss = require('gulp-cssbeautify');
 const minCss = require('gulp-cssnano');
@@ -20,6 +20,7 @@ const base64 = require('gulp-css-base64');
 const cssimport = require('gulp-cssimport');
 const include = require('gulp-include');
 const minJs = require('gulp-uglify');
+const sourcemaps = require('gulp-sourcemaps');
 
 const errors = new PrettyError();
 errors.skipNodeFiles();
@@ -35,13 +36,14 @@ function dst(folder) {
 }
 
 gulp.task('build:css', () => {
-  return fileSrc('index.styl')
+  return fileSrc('index.scss')
     .pipe(plumber())
-    .pipe(stylus())
+    .pipe(sourcemaps.init())
+    .pipe(sass())
     .pipe(cssimport())
     .pipe(base64())
     .pipe(autoprefixer({browsers: ['last 2 versions', 'ie >= 11'], cascade: false}))
-    .pipe(beautifyCss({indent: '  ', openbrace: 'separate-line'}))
+    .pipe(sourcemaps.write())
     .pipe(rename('style.css'))
     .pipe(dst())
     .pipe(minCss({discardComments: {removeAll: true}}))
@@ -52,7 +54,9 @@ gulp.task('build:css', () => {
 gulp.task('build:js', () => {
   return fileSrc('index.js')
     .pipe(plumber())
+    .pipe(sourcemaps.init())
     .pipe(include())
+    .pipe(sourcemaps.write())
     .pipe(rename('script.js'))
     .pipe(dst())
     .pipe(minJs())
