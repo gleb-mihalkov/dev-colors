@@ -1,10 +1,14 @@
 .logo {
+  $outerHeight: 70px;
   $width: 91px;
   $height: 29px;
+  $innerHeight: 13px;
+  $offset: ($outerHeight - $height) / 2 - ($height - $innerHeight) / 2;
   background-image: url('img/logo.png');
-  background-position: center center;
+  background-position: center $offset;
   background-size: $width $height;
+  position: relative;
   display: block;
   width: $width;
-  height: 100%;
+  height: $outerHeight;
 }

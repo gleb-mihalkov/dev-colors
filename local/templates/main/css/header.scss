@@ -16,5 +16,9 @@
     &--pulled {
       margin-left: auto;
     }
+
+    &--fullsized {
+      align-self: stretch;
+    }
   }
 }
