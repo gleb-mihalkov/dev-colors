@@ -4,7 +4,7 @@
     global $APPLICATION;
     global $USER;
 
-    $isPanel = true;
+    $isPanel = false;
 
     $site = CSite::GetById(SITE_ID)->GetNext();
     $page = $APPLICATION->GetCurPage();
@@ -23,6 +23,8 @@
     if ($is404) $pageClasses[] = 'not-found';
 
     $pageClassName = implode(' ', $pageClasses);
+
+    $footerYear = date('Y');
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -37,7 +39,8 @@
 
         $APPLICATION->ShowCSS(true, false);
 
-        if ($isAdmin) {
+        if ($isAdmin)
+        {
             $APPLICATION->ShowHeadStrings();
             $APPLICATION->ShowHeadScripts();
         }
