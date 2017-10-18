@@ -17,6 +17,12 @@
 
     $APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH.'/style.css');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/script.js');
+
+    $pageClasses = [];
+    if ($isMain) $pageClasses[] = 'main';
+    if ($is404) $pageClasses[] = 'not-found';
+
+    $pageClassName = implode(' ', $pageClasses);
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -37,11 +43,16 @@
         }
     ?>
 </head>
-<body>
+<body class="<?= $pageClassName; ?>">
     <? if ($isPanel && $isAdmin) : ?>
         <div id="panel"><? $APPLICATION->ShowPanel(); ?></div>
     <? endif; ?>
     <div class="global">
-        <div class="global__item"></div>
+        <div class="global__item">
+            <header class="header">
+                <div class="header__item"></div>
+                <div class="header__item header__item--pulled"></div>
+            </header>
+        </div>
         <div class="global__item global__item--stretched">
             

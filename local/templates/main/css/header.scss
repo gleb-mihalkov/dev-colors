@@ -1,0 +1,20 @@
+.header {
+  $height: 70px;
+  display: flex;
+  align-items: center;
+  height: $height + 1px;
+  padding: 0 25px;
+  border-bottom: 1px solid #dadada;
+
+  .main & {
+    height: $height;
+    border-bottom: none;
+  }
+
+  &__item {
+    
+    &--pulled {
+      margin-left: auto;
+    }
+  }
+}
