@@ -1,0 +1,25 @@
+.link {
+  $color: $colorBlack;
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: baseline;
+  position: relative;
+  color: inherit;
+
+  &--underline {
+
+    &:before {
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      display: block;
+      width: 100%;
+      border-top: 1px solid $color;
+      content: '';
+    }
+  }
+}
+
+a {
+  @extend .link;
+}
