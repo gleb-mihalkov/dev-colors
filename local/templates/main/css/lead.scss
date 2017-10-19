@@ -1,6 +1,25 @@
 .lead {
   background-color: $bgLead;
-  max-height: 100vh;
-  height: 100%;
+  position: relative;
+  height: 100vh;
   min-height: 320px;
+
+  &__main {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__aside {
+    position: absolute;
+    bottom: 58px;
+
+    &--left {
+      left: 55px;
+    }
+
+    &--right {
+      right: 55px;
+    }
+  }
 }
