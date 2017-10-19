@@ -1,0 +1,10 @@
+.slider-dots {
+  display: flex;
+  flex-direction: column;
+
+  &__item {
+    display: block;
+    width: $textHeight;
+    height: $textHeight;
+  }
+}

@@ -1,5 +1,4 @@
 .link {
-  $height: $fontSizeNormal * $lineHeight;
   $color: $colorBlack;
   text-decoration: none;
   display: inline-block;
@@ -21,8 +20,8 @@
   }
 
   &--icon {
-    width: $height;
-    height: $height;
+    width: $textHeight;
+    height: $textHeight;
     background-position: center center;
     font-size: 0; 
 

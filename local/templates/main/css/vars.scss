@@ -1,9 +1,6 @@
 $fontFamilyNormal: "Lato", sans-serif;
 $fontFamilyHeading: "Comfortaa", sans-serif;
 
-$headerHeight: 70px;
-$footerHeight: 124px;
-
 $fontSizeExtraSmall: 11px;
 $fontSizeSmall: 14px;
 $fontSizeNormal: 16px;
@@ -13,3 +10,7 @@ $lineHeight: 1.5;
 $colorBlack: #343434;
 
 $bgLead: #fbf1ef;
+
+$textHeight: $fontSizeNormal * $lineHeight;
+$headerHeight: 70px;
+$footerHeight: 124px;

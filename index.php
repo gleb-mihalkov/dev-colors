@@ -5,26 +5,36 @@
     $APPLICATION->SetTitle("Главная страница");
 ?>
 <main class="page">
-    <section class="page__item  lead">
-        <div class="lead__main"></div>
-        <div class="lead__aside lead__aside--left">
-            <? $APPLICATION->IncludeComponent('bitrix:menu', 'contacts', array(
-                'ROOT_MENU_TYPE' => 'contacts',
-                'MAX_LEVEL' => '1',
-                'CHILD_MENU_TYPE' => 'contacts',
-                'USE_EXT' => 'Y',
-                'DELAY' => 'N',
-                'ALLOW_MULTI_SELECT' => 'Y',
-                'MENU_CACHE_TYPE' => 'N', 
-                'MENU_CACHE_TIME' => '3600', 
-                'MENU_CACHE_USE_GROUPS' => 'Y', 
-                'MENU_CACHE_GET_VARS' => '',
+    <section class="page__item">
+        <div class="lead">
+            <div class="lead__main"></div>
+            <div class="lead__aside lead__aside--left">
+                <? $APPLICATION->IncludeComponent('bitrix:menu', 'contacts', array(
+                    'ROOT_MENU_TYPE' => 'contacts',
+                    'MAX_LEVEL' => '1',
+                    'CHILD_MENU_TYPE' => 'contacts',
+                    'USE_EXT' => 'Y',
+                    'DELAY' => 'N',
+                    'ALLOW_MULTI_SELECT' => 'Y',
+                    'MENU_CACHE_TYPE' => 'N', 
+                    'MENU_CACHE_TIME' => '3600', 
+                    'MENU_CACHE_USE_GROUPS' => 'Y', 
+                    'MENU_CACHE_GET_VARS' => '',
 
-                'CONTACTS' => array('instagram', 'vk', 'facebook'),
-                'IS_VERTICAL' => 'Y'
-            )); ?>
+                    'CONTACTS' => array('instagram', 'vk', 'facebook'),
+                    'IS_VERTICAL' => 'Y'
+                )); ?>
+            </div>
+            <div class="lead__aside lead__aside--right">
+                <div class="slider-dots">
+                    <button type="button" class="slider-dots__item  active"></button>
+                    <button type="button" class="slider-dots__item"></button>
+                    <button type="button" class="slider-dots__item"></button>
+                    <button type="button" class="slider-dots__item"></button>
+                    <button type="button" class="slider-dots__item"></button>
+                </div>
+            </div>
         </div>
-        <div class="lead__aside lead__aside--right"></div>
     </section>
 </main>
 <? require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php"); ?>
