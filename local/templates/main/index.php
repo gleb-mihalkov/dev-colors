@@ -4,7 +4,7 @@
     global $APPLICATION;
     global $USER;
 
-    $isPanel = true;
+    $isPanel = false;
 
     $site = CSite::GetById(SITE_ID)->GetNext();
     $page = $APPLICATION->GetCurPage();
@@ -79,7 +79,12 @@
             <footer class="footer">
                 <div class="footer__item">
                     © <?= $footerYear; ?> Краски. Все права защищены.<br>
-                    Сайт сделан: <a href="http://more-use.com/" rel="nofollow" target="_blank">More Use</a>
+                    Сайт сделан: <a
+                        title="Евгений Расчетов"
+                        href="http://more-use.com/"
+                        rel="nofollow"
+                        target="_blank"
+                        >More Use</a>
                 </div>
                 <div class="footer__item">
                     <? $APPLICATION->IncludeComponent('bitrix:menu', 'contacts', array(

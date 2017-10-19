@@ -4,7 +4,7 @@
     global $APPLICATION;
     global $USER;
 
-    $isPanel = true;
+    $isPanel = false;
 
     $site = CSite::GetById(SITE_ID)->GetNext();
     $page = $APPLICATION->GetCurPage();
