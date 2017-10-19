@@ -7,6 +7,7 @@
         <?
             $itemLink = $item['LINK'];
             $itemLink = preg_replace('/^\//', '', $itemLink);
+            $itemTitle = '';
 
             $isPhone = preg_match('/^\+7/', $itemLink);
             $isFacebook = preg_match('/facebook\./', $itemLink);
@@ -20,6 +21,7 @@
                 $itemText = $itemLink;
                 $itemLink = preg_replace('/\s+/', '', $itemLink);
                 $itemLink = 'tel:'.$itemLink;
+                $itemTitle = 'Позвонить нам';
             }
             else
             {
@@ -31,16 +33,19 @@
             if ($isFacebook)
             {
                 $itemClasses[] = 'link--icon-facebook';
+                $itemTitle = 'Мы в Facebook';
             }
 
             if ($isVk)
             {
                 $itemClasses[] = 'link--icon-vk';
+                $itemTitle = 'Мы во Вконтакте';
             }
 
             if ($isInstagram)
             {
                 $itemClasses[] = 'link--icon-instagram';
+                $itemTitle = 'Мы в Instagram';
             }
 
             $itemClassName = implode(' ', $itemClasses);
@@ -48,6 +53,7 @@
         <a
             class="footer-menu__item <?= $itemClassName; ?>"
             href="<?= $itemLink; ?>"
+            title="<?= $itemTitle; ?>"
             target="_blank"
             rel="nofollow"
             ><?= $itemText; ?></a>
