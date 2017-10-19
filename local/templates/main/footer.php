@@ -5,7 +5,7 @@
                 <div class="footer__item">
                     © <?= $footerYear; ?> Краски. Все права защищены.<br>
                     Сайт сделан: <a
-                        title="Евгений Расчетов"
+                        title="Перейти на сайт разработчика"
                         href="http://more-use.com/"
                         rel="nofollow"
                         target="_blank"
