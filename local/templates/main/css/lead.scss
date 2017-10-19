@@ -1,3 +1,6 @@
 .lead {
   background-color: $bgLead;
+  max-height: 100vh;
+  height: 100%;
+  min-height: 320px;
 }
