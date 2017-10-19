@@ -1,5 +1,10 @@
 {
-    "name": "gm/kosmetik",
+    "name": "gm/colors",
     "type": "project",
-    "require": {}
+    "require": {},
+    "autoload": {
+      "psr-4": {
+        "App\\": "app/"
+      }
+    }
 }
