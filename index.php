@@ -6,7 +6,9 @@
 ?>
 <main class="page">
     <section class="page__item  lead">
-        
+        <div class="lead__main"></div>
+        <div class="lead__aside lead__aside--left"></div>
+        <div class="lead__aside lead__aside--right"></div>
     </section>
 </main>
 <? require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php"); ?>
