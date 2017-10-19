@@ -1,0 +1,26 @@
+.contacts {
+  $offset: 33px;
+  display: flex;
+  align-items: center;
+
+  &--vertical {
+    flex-direction: column;
+
+    .contacts__item {
+      margin-left: 0;
+      margin-top: $offset;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
+  &__item {
+    margin-left: $offset;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}

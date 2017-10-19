@@ -21,10 +21,10 @@
   }
 
   &--icon {
-    width: 16px;
+    width: $height;
     height: $height;
     background-position: center center;
-    font-size: 0;
+    font-size: 0; 
 
     &:before {
       display: none !important;

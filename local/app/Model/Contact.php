@@ -116,4 +116,28 @@ class Contact
             yield new static($data);
         }
     }
+
+    /**
+     * Получает перечисление моделей из выдачи компонента по списку их типов.
+     *
+     * @param  array     $list  Список пунктов меню из компонента.
+     * @param  array     $types Список типов контактов.
+     * @return Generator        Перечисление моделей.
+     */
+    public function getCustom(array $list, array $types)
+    {
+        $items = self::getAll($list);
+        $index = [];
+
+        foreach ($items as $item)
+        {
+            $index[$item->type] = $item;
+        }
+
+        foreach ($types as $type)
+        {
+            $item = $index[$type];
+            yield $item;
+        }
+    }
 }
