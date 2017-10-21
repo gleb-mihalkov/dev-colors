@@ -1,0 +1,11 @@
+#panel {
+  transition: all .25s ease-in-out;
+  transform: translateY(calc(-100% + 10px));
+  position: fixed;
+  width: 100%;
+  z-index: 900;
+
+  &:hover {
+    transform: translateY(0);
+  }
+}
