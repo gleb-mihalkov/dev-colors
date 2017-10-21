@@ -13,5 +13,23 @@
     &.active {
       z-index: 2;
     }
+
+    &:before, &:after {
+      transform: translateX(-50%);
+      position: absolute;
+      left: 50%;
+      top: 0;
+      display: block;
+      width: 100%;
+      max-width: 1300px;
+      height: 100%;
+      content: '';
+    }
+
+    &:before {
+      background-image: url('img/lead-bg.svg');
+      background-position: center top;
+      background-size: cover;
+    }
   }
 }
