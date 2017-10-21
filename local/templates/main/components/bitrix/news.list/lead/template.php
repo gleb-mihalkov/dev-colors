@@ -37,12 +37,12 @@
         )); ?>
     </div>
     <div class="lead__aside lead__aside--right">
-        <div class="slider-dots">
+        <div class="lead-slider-dots">
             <? for ($i = 0; $i < $listCount; $i++) : ?>
                 <?
                     $itemClass = $i == 0 ? 'active' : '';
                 ?>
-                <button type="button" class="slider-dots__item  <?= $itemClass; ?>"></button>
+                <button type="button" class="lead-slider-dots__item  <?= $itemClass; ?>"></button>
             <? endfor; ?>
         </div>
     </div>
