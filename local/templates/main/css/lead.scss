@@ -12,6 +12,7 @@
 
   &__aside {
     position: absolute;
+    z-index: 3;
     bottom: 55px;
 
     &--left {
