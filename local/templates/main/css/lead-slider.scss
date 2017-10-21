@@ -16,6 +16,8 @@
 
     &:before, &:after {
       transform: translateX(-50%);
+      background-position: center top;
+      background-size: cover;
       position: absolute;
       left: 50%;
       top: 0;
@@ -28,8 +30,50 @@
 
     &:before {
       background-image: url('img/lead-bg.svg');
-      background-position: center top;
-      background-size: cover;
+    }
+  }
+
+  @at-root @keyframes lead-slider-changing {
+
+    0% {
+      transform: scaleY(0);
+      transform-origin: center bottom;
+    }
+
+    50% {
+      transform: scaleY(1);
+    }
+
+    100% {
+      transform: scale(0);
+      transform-origin: center top;
+    }
+  }
+
+  &:before, &:after {
+    transform: scaleY(0);
+    transform-origin: center bottom;
+    transition: all 2s ease-in-out;
+    position: absolute;
+    z-index: 4;
+    display: block;
+    width: 100%;
+    height: 100%;
+    content: '';
+  }
+
+  &:before {
+    background-color: $colorBlack;
+  }
+
+  &:after {
+    background-color: $bgLead;
+  }
+
+  &.changing {
+
+    &:before {
+      animation: lead-slider-changing 10s ease-in-out forwards;
     }
   }
 }
