@@ -1,0 +1,43 @@
+.button {
+  transition: all .25s ease-in-out;
+  background-color: transparent;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 1px;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 10px;
+  text-decoration: none;
+  text-align: center;
+  font-size: 12px;
+
+  &--type {
+
+    &-default {
+      background-color: $colorWhite;
+      border-color: $colorGrayLight;
+      letter-spacing: 1.2px;
+      color: $colorBlack;
+
+      &:hover {
+        background-color: $colorBlack;
+        border-color: $colorBlack;
+        color: $colorWhite;
+      }
+
+      &:active {
+        background-color: $colorWhite;
+        border-color: $colorGrayLight;
+        color: $colorBlack;
+      }
+    }
+  }
+
+  &--width {
+    
+    &-large {
+      width: 260px;
+    }
+  }
+}

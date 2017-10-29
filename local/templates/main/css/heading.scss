@@ -1,0 +1,15 @@
+.heading {
+  font-family: Comfortaa, sans;
+  font-size: 26px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1.56px;
+  margin: $textHeight 0;
+
+  &--align {
+
+    &-center {
+      text-align: center;
+    }
+  }
+}
