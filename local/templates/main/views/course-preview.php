@@ -14,7 +14,7 @@
 ?>
 <article
     <? if ($itemEditId) : ?> id="<?= $itemEditId; ?>" <? endif; ?>
-    class="course-preview <?= $itemClass; ?>"
+    class="course-preview <?= $itemClass; ?>  not-viewed"
     >
     <div class="course-preview__main">
         <h3 class="course-preview__subtitle"><?= $item->subtitle; ?></h3>

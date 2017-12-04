@@ -14,7 +14,7 @@
   }
 
   &__title {
-    @extend %container, %container--width-small;
+    @extend %container, %container--width-smaller;
     display: block;
     margin-bottom: 17.50px;
     font-family: $fontFamilyHeading;

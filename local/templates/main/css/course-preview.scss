@@ -1,4 +1,5 @@
 .course-preview {
+  $block: nth(&, 1);
   $height: $coursePreviewHeight;
   $mainHeight: 498px;
   position: relative;
@@ -14,11 +15,10 @@
     display: block;
     width: 928px;
     height: $height;
+    overflow: hidden;
 
-    &:before {
-      background-color: $colorPink;
+    &:before, &:after {
       position: absolute;
-      z-index: 1;
       left: 0;
       top: 0;
       display: block;
@@ -26,9 +26,20 @@
       height: 100%;
       content: '';
     }
+
+    &:before {
+      background-color: $colorGrayLight;
+      z-index: 1;
+    }
+
+    &:after {
+      background-color: $colorPink;
+      z-index: 3;
+    }
   }
 
   &__image {
+    background-color: $colorPink;
     background-position: right bottom;
     background-size: contain;
     position: absolute;
@@ -81,15 +92,88 @@
     @extend %button, %button--type-default, %button--width-normal;
   }
 
-  &--inverted &__aside {
-    right: auto;
-    left: 0;
+  &--inverted {
+
+    #{$block}__aside {
+      right: auto;
+      left: 0;
+    }
+
+    #{$block}__image {
+      background-position: center left;
+    }
+
+    #{$block}__main {
+      left: auto;
+      right: 0;
+    }
   }
-  &--inverted &__image {
-    background-position: center left;
+
+  &.not-viewed {
+
+    #{$block}__aside:after {
+      transform: translate(calc(100% - 20px), -100%);
+    }
+
+    #{$block}__image {
+      visibility: hidden;
+    }
   }
-  &--inverted &__main {
-    left: auto;
-    right: 0;
+
+  &.viewed {
+
+    #{$block}__aside:after {
+      animation: course-preview-aside-after 2s ease-in-out forwards;
+    }
+
+    &#{$block}--inverted #{$block}__aside:after {
+      animation-name: course-preview-aside-after-inverted;
+    }
+
+    #{$block}__image {
+      animation: course-preview-image 2s ease-in-out forwards;
+    }
+  }
+
+  @keyframes course-preview-aside-after {
+    0% {
+      transform: translate(calc(100% - 20px), -100%);
+    }
+    25% {
+      transform: translate(calc(100% - 20px), 0);
+    }
+    50% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(-100%, 0);
+    }
+  }
+
+  @keyframes course-preview-aside-after-inverted {
+    0% {
+      transform: translate(calc(-100% + 20px), -100%);
+    }
+    25% {
+      transform: translate(calc(-100% + 20px), 0);
+    }
+    50% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(100%, 0);
+    }
+  }
+
+  @keyframes course-preview-image {
+    0% {
+      visibility: hidden;
+    }
+    50% {
+      visibility: hidden;
+    }
+    100% {
+      visibility: visible;
+    }
   }
 }

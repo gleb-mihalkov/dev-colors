@@ -15,6 +15,7 @@
     "tests"
   ],
   "dependencies": {
-    "slick-carousel": "https://github.com/kenwheeler/slick.git#^1.8.1"
+    "slick-carousel": "https://github.com/kenwheeler/slick.git#^1.8.1",
+    "waypoints": "^4.0.1"
   }
 }

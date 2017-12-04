@@ -19,7 +19,7 @@
             ?>
             <div class="blog-list__item">
                 <a 
-                    class="blog-preview <?= $itemClass; ?>"
+                    class="blog-preview <?= $itemClass; ?>  not-viewed"
                     href="<?= $item->link; ?>"
                     id="<?= $item->getEditId($this); ?>"
                     >

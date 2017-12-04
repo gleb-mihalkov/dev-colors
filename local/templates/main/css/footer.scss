@@ -9,7 +9,7 @@
   font-weight: 400;
 
   a {
-    @extend %link--underline;
+    @extend %link;
   }
 
   @include mediaCustom(750px) {

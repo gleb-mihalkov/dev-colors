@@ -10,8 +10,8 @@
   &__items {
     display: flex;
     align-items: flex-start;
-    margin-left: $padding;
-    margin-right: $padding;
+    margin-left: -$padding;
+    margin-right: -$padding;
     margin-bottom: 65px;
   }
 

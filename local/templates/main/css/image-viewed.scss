@@ -1,0 +1,81 @@
+%image-viewed {
+  background-position: 50%;
+  background-size: cover;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  overflow: hidden;
+
+  &:before, &:after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    content: '';
+  }
+  
+  &:before {
+    background-color: $colorGrayLight;
+    z-index: 1;
+  }
+
+  &:after {
+    background-color: $colorPink;
+    z-index: 2;
+  }
+
+  &.not-viewed {
+    visibility: hidden;
+
+    &:before, &:after {
+      visibility: visible;
+    }
+  }
+
+  @keyframes image-viewed-after {
+    0% {
+      transform: translate(calc(100% - 20px), -100%);
+    }
+    25% {
+      transform: translate(calc(100% - 20px), 0);
+    }
+    50% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(-100%, 0);
+    }
+  }
+
+  @keyframes image-viewed-after-inverted {
+    0% {
+      transform: translate(calc(-100% + 20px), -100%);
+    }
+    25% {
+      transform: translate(calc(-100% + 20px), 0);
+    }
+    50% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(100%, 0);
+    }
+  }
+
+  @keyframes image-viewed {
+    0% {
+      visibility: hidden;
+    }
+    50% {
+      visibility: hidden;
+    }
+    100% {
+      visibility: visible;
+    }
+  }
+}
