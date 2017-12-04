@@ -23,6 +23,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  min-width: 320px;
 }
 
 html {
@@ -34,6 +35,11 @@ body {
   font-size: $fontSizeNormal;
   line-height: $lineHeight;
   color: $colorBlack;
+  font-weight: 300;
+
+  &.fixed {
+    overflow: hidden;
+  }
 }
 
 button {

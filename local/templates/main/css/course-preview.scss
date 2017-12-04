@@ -1,0 +1,95 @@
+.course-preview {
+  $height: $coursePreviewHeight;
+  $mainHeight: 498px;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: $height;
+
+  &__aside {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    top: 0;
+    display: block;
+    width: 928px;
+    height: $height;
+
+    &:before {
+      background-color: $colorPink;
+      position: absolute;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      content: '';
+    }
+  }
+
+  &__image {
+    background-position: right bottom;
+    background-size: contain;
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__main {
+    background-color: $colorWhite;
+    position: absolute;
+    z-index: 3;
+    left: 0;
+    top: 50%;
+    display: block;
+    width: 620px;
+    height: $mainHeight;
+    margin-top: -1/2 * $mainHeight !important;
+    padding: 79px 70px;
+  }
+
+  &__subtitle {
+    display: block;
+    margin-top: 0;
+    margin-bottom: 24px;
+    font-size: 16px;
+    font-weight: 300;
+  }
+
+  &__title {
+    display: block;
+    margin-top: 0;
+    margin-bottom: 24px;
+    font-family: $fontFamilyHeading;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 31px;
+  }
+
+  &__text {
+    display: block;
+    margin-top: 0;
+    margin-bottom: 56px;
+  }
+
+  &__link {
+    @extend %button, %button--type-default, %button--width-normal;
+  }
+
+  &--inverted &__aside {
+    right: auto;
+    left: 0;
+  }
+  &--inverted &__image {
+    background-position: center left;
+  }
+  &--inverted &__main {
+    left: auto;
+    right: 0;
+  }
+}

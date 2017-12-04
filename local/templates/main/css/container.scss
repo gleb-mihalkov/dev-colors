@@ -1,0 +1,35 @@
+%container {
+  display: block;
+  width: 100%;
+  max-width: $containerWidth;
+  padding-left: $containerPadding;
+  padding-right: $containerPadding;
+  margin-left: auto;
+  margin-right: auto;
+
+  &--width {
+
+    &-extra-small {
+      max-width: $containerWidthExtraSmall;
+      padding-left: $containerPaddingExtraSmall;
+      padding-right: $containerPaddingExtraSmall;
+    }
+
+    &-small {
+      max-width: $containerWidthSmall;
+      padding-left: $containerPaddingSmall;
+      padding-right: $containerPaddingSmall;
+    }
+
+    &-medium {
+      max-width: $containerWidthMedium;
+      padding-left: $containerPaddingMedium;
+      padding-right: $containerPaddingMedium;
+    }
+  }
+
+  @include mediaExtraSmall {
+    padding-left: $containerPaddingExtraSmall;
+    padding-right: $containerPaddingExtraSmall;
+  }
+}

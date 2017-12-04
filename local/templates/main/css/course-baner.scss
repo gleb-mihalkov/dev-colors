@@ -1,0 +1,54 @@
+.course-baner {
+  background-color: $colorPink;
+  color: $colorBlackRich;
+  height: 395px;
+
+  &__container {
+    @extend %container;
+    
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__image {
+    background-position: center center;
+    background-size: contain;
+    display: block;
+    flex: auto;
+    height: 100%;
+  }
+
+  &__main {
+    display: block;
+    width: 100%;
+    max-width: 784px;
+  }
+
+  &__subtitle {
+    display: block;
+    margin: 0 0 20px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  &__title {
+    display: block;
+    margin: 0 0 24px;
+    font-family: $fontFamilyHeading;
+    font-size: 29px;
+    font-weight: 700;
+    line-height: 28px;
+  }
+
+  &__text {
+    display: block;
+    margin: 0 0 27px;
+  }
+
+  &__button {
+    @extend %button, %button--type-default, %button--width-large;
+    background-color: transparent;
+  }  
+}

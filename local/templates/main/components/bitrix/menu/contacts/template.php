@@ -5,6 +5,7 @@
     $isVertical = isset($arParams['IS_VERTICAL'])
         ? $arParams['IS_VERTICAL'] == 'Y'
         : false;
+        
     $types = isset($arParams['CONTACTS'])
         ? $arParams['CONTACTS']
         : null;
@@ -18,7 +19,7 @@
 <nav role="navigation" class="contacts <?= $listClass; ?>">
     <? foreach ($list as $item) : ?>
         <a
-            class="contacts__item <?= $item->className; ?>"
+            class="contacts__item  <?= $item->className; ?>"
             href="<?= $item->link; ?>"
             title="<?= $item->title; ?>"
             target="_blank"

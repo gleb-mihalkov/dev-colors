@@ -1,0 +1,50 @@
+%title {
+  font-family: $fontFamilyHeading;
+  display: block;
+  font-weight: 400;
+  line-height: 1.11;
+
+  &--large {
+    text-transform: uppercase;
+    letter-spacing: 1.56px;
+    font-size: 26px;
+  }
+
+  &--medium {
+    font-size: 28px;
+  }
+
+  &--extra-small {
+    font-family: $fontFamilyNormal;
+    font-size: $fontSizeNormal;
+    font-weight: 300;
+  }
+
+  &--underline {
+    position: relative;
+    padding-bottom: 56px;
+
+    &:before {
+      background-color: $colorBlack;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      display: block;
+      width: 85px;
+      height: 2px;
+      content: '';
+    }
+  }
+
+  &--align {
+
+    &-center {
+      text-align: center;
+
+      &:before {
+        transform: translateX(-50%);
+        left: 50%;
+      }
+    }
+  }
+}

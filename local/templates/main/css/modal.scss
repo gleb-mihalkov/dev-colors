@@ -1,0 +1,131 @@
+.modal {
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: none;
+  font-size: 0;
+  text-align: center;
+
+  &:after {
+    background-color: $colorWhite;
+    position: absolute;
+    z-index: 101;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    content: '';
+    opacity: 0.77;
+  }
+
+  &:before, &__content {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &:before {
+    width: 1px;
+    height: 100%;
+    font-size: 0;
+    content: '';
+  }
+
+  &__content {
+    border: 10px solid  $colorPink;
+    background-color: $colorWhite;
+    position: relative;
+    z-index: 110;
+    padding: 97px 138px 121px;
+    font-size: 16px;
+  }
+
+  &__close {
+    background-image: url('img/close.png');
+    background-position: center center;
+    background-color: transparent;
+    border: 0;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    display: block;
+    width: 35px;
+    height: 32px;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  &__title {
+    @extend %title, %title--medium, %title--underline, %title--align-center;
+    margin-bottom: 59px;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 14px;
+  }
+
+  &__vk, &__fb {
+    @extend %button, %button--type-default;
+    width: 223px;
+    
+    &:before {
+      background-position: center center;
+      background-size: contain;
+      display: inline-block;
+      vertical-align: middle;
+      width: 16px;
+      height: 12px;
+      margin-right: 11px;
+      content: '';
+    }
+  }
+
+  &__vk:before {
+    background-image: url('img/soc-vk.png');
+  }
+
+  &__fb:before {
+    background-image: url('img/soc-facebook.png');
+  }
+
+  &__dots {
+    margin: 40px 0 24px;
+  }
+
+  &.active {
+    display: block;
+  }
+
+  @include mediaSmall {
+
+    &__content {
+      width: calc(100% - 40px);
+    }
+  }
+
+  @include mediaCustom(780px) {
+
+    &__content {
+      padding-left: 20px;
+      padding-right: 20px
+    }
+
+    &__buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__fb {
+      margin-top: 14px;
+    }
+  }
+}
+
+body.fixed {
+  overflow-y: hidden;
+}

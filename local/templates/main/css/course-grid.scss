@@ -1,0 +1,101 @@
+.course-grid {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: space-between;
+
+  @at-root %course-grid-item {
+    display: block;
+    width: 100%;
+    max-width: 516px;
+    flex-shrink: 0;
+    flex-grow: 0;
+
+    &--width-large {
+      max-width: 650px;
+    }
+
+    &--bordered {
+      border: 10px solid $colorPink
+    }
+  }
+
+  @at-root %course-grid-text {
+    font-size: 16px;
+    line-height: 24px;
+
+    h3 {
+      display: block;
+      margin: 24px 0 0;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 24px;
+
+      & + p {
+        margin-top: 10px;
+      }
+    }
+
+    hr {
+      position: relative;
+      border: none;
+      display: block;
+      width: 100%;
+      height: 1px;
+      margin: 24px 0;
+
+      &:before {
+        background-color: $colorBlack;
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: block;
+        width: 14px;
+        height: 1px;
+        content: '';
+      }
+    }
+  }
+
+  & [data-breaker] + * {
+    margin-top: 0;
+  }
+
+  &__about {
+    @extend %course-grid-item, %course-grid-item--width-large;
+    @extend %course-grid-text;
+    margin: 62px 0 0;
+  }
+
+  &__results {
+    @extend %course-grid-item, %course-grid-item--width-large, %course-grid-item--bordered;
+    margin: 62px 0 0;
+  }
+
+  &__program {
+    @extend %course-grid-item, %course-grid-item--width-large;
+    @extend %course-grid-text;
+    margin: 62px 0 0;
+
+    h3 {
+      font-size: 18px;
+      line-height: 24px;
+      font-weight: 700;
+    }
+  }
+
+  &__lessons {
+    @extend %course-grid-item;
+  }
+
+  &__lessons-item {
+    margin: 70px 0 0;
+  }
+
+  &__sale {
+    @extend %course-grid-item, %course-grid-item--bordered;
+    margin: 107px 0 0;
+  }
+}

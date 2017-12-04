@@ -15,7 +15,7 @@ class Lead
      */
     public function __construct(array $desktop, array $tablet, array $mobile)
     {
-
+        
     }
 
 

@@ -1,0 +1,53 @@
+.course-lead {
+  background-color: $colorPink;
+  display: block;
+  height: 580px;
+  color: $colorBlackRich;
+
+  &__container {
+    @extend %container;
+    background-position: right $containerPadding center;
+    background-size: contain;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+
+  &__title {
+    display: block;
+    width: 100%;
+    max-width: 784px;
+    margin: 0 0 24px;
+    font-family: $fontFamilyHeading;
+    font-size: 46px;
+    font-weight: 400;
+    line-height: 54px;
+    letter-spacing: -.92px;
+  }
+
+  &__text {
+    display: block;
+    width: 100%;
+    max-width: 516px;
+    margin: 0 0 40px;
+    line-height: 32px;
+  }
+
+  &__actions {
+    display: flex;
+    width: 100%;
+    max-width: 516px;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  &__button {
+    @extend %button, %button--type-default, %button--width-normal;
+    background-color: transparent;
+  }
+
+  &__share {
+    margin-left: 48px;
+  }
+}

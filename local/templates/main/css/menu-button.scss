@@ -1,0 +1,13 @@
+.menu-button {
+  background-image: url('img/menu-button.png');
+  background-position: center center;
+  background-color: transparent;
+  border: none;
+  display: none;
+  width: 40px;
+  height: $headerHeight;
+
+  @include mediaMedium {
+    display: block;
+  }
+}

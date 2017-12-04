@@ -1,0 +1,16 @@
+%icon {
+  background-position: center center;
+  background-color: transparent;
+  border: none;
+  display: inline-block;
+  vertical-align: middle;
+  width: $iconHeight;
+  height: $iconHeight;
+  padding: 0;
+  text-decoration: none;
+  font-size: 0;
+
+  &:before {
+    display: none !important;
+  }
+}

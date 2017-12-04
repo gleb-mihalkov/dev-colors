@@ -1,0 +1,16 @@
+.courses-slider {
+  $margin: 173px;
+  $marginHalf: $margin / 2;
+
+  &__items {
+    @extend %container;
+    display: block;
+    height: $coursePreviewHeight;
+    overflow-y: hidden;
+  }
+
+  &__item {
+    display: block;
+    width: 100%;
+  }
+}

@@ -1,0 +1,21 @@
+%arrow {
+  $width: $arrowWidth;
+  $height: $arrowHeight;
+  background-color: transparent;
+  background-position: 50%;
+  background-size: $width $height;
+  border: none;
+  display: inline-block;
+  vertical-align: middle;
+  width: $width;
+  height: $height;
+  cursor: pointer;
+
+  &--next {
+    background-image: url('img/arrow-next.png');
+  }
+
+  &--prev {
+    background-image: url('img/arrow-back.png');
+  }
+}

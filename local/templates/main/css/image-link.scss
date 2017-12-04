@@ -1,0 +1,27 @@
+%image-link {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  span {
+    transition: $transSlow;
+    transform: scale(1, 1) translate(0, 0);
+    background-position: 50%;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  &--hovered {
+
+    span {
+      transform: scale(1, 1) translate(-5%, 0);
+    }
+  }
+}

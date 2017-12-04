@@ -1,0 +1,37 @@
+.responses-slider {
+  position: relative;
+
+  &__title {
+    @extend %title, %title--large, %title--underline, %title--align-center;
+    margin-bottom: 66px;
+  }
+
+  &__items {
+    @extend %container;
+    display: block;
+    // height: $responsePreviewHeight;
+    overflow-y: hidden;
+  }
+
+  &__item {
+    display: block;
+    width: 100%;
+  }
+
+  &__prev, &__next {
+    @extend %arrow;
+    position: absolute;
+    top: 50%;
+    margin-top: $arrowHeight / -2;
+  }
+
+  &__prev {
+    @extend %arrow--prev;
+    right: calc(50%);
+  }
+
+  &__next {
+    @extend %arrow--next;
+    left: calc(50%);
+  }
+}

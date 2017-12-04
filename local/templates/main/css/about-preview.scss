@@ -1,4 +1,19 @@
 .about-preview {
-  padding: 166px 0 138px;
   text-align: center;
+
+  &__title {
+    @extend %title, %title--large;
+    margin: 0;
+  }
+
+  &__text {
+    @extend %text, %text--align-center;
+    $margin: $fontSizeNormal * $lineHeight;
+    margin-top: $margin;
+  }
+
+  &__link {
+    @extend %button, %button--type-default, %button--width-large;
+    margin-top: 37px;
+  }
 }

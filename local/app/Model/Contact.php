@@ -7,7 +7,8 @@ namespace App\Model;
 class Contact
 {
     /**
-     * Тип контакта. Возможные значения: 'phone', 'facebook', 'vk', 'instagram'.
+     * Тип контакта. Возможные значения:
+     * 'phone', 'address', 'email', 'facebook', 'vk', 'instagram', 'id-vk', 'id-facebook'
      *
      * @var string
      */
@@ -49,6 +50,34 @@ class Contact
     public $className;
 
     /**
+     * Широта.
+     *
+     * @var string
+     */
+    public $latitude;
+
+    /**
+     * Долгота.
+     *
+     * @var string
+     */
+    public $longitude;
+
+    /**
+     * Подпись на маркере.
+     *
+     * @var string
+     */
+    public $marker;
+
+    /**
+     * Имя пользователя Вконтакте или Facebook.
+     *
+     * @var string
+     */
+    public $user;
+
+    /**
      * Создает экземпляр класса.
      *
      * @param array $data Данные компонента меню.
@@ -68,6 +97,21 @@ class Contact
         $isFacebook = preg_match('/facebook\./', $this->link);
         $isVk = preg_match('/vk\./', $this->link);
         $isInstagram = preg_match('/instagram\./', $this->link);
+        $isEmail = preg_match('/.+@.+/', $this->link);
+
+        $isIdFacebook = ($data['PARAMS']['MESSAGE'] ?? '') === 'FACEBOOK';
+        $isIdVk = ($data['PARAMS']['MESSAGE'] ?? '') === 'VK';
+
+        $isAny = [$isPhone, $isEmail, $isFacebook, $isInstagram, $isVk, $isIdVk, $isIdFacebook];
+        $isAddress = true;
+
+        foreach ($isAny as $value)
+        {
+            if (!$value) continue;
+
+            $isAddress = false;
+            break;
+        }
 
         if ($isPhone)
         {
@@ -75,28 +119,49 @@ class Contact
             $this->link = 'tel:'.$this->link;
             $this->type = 'phone';
         }
+        else if ($isEmail)
+        {
+            $this->link = 'mailto:'.$this->link;
+            $this->type = 'email';
+        }
+        else if ($isAddress)
+        {
+            $this->type = 'address';
+            $this->marker = $data['PARAMS']['MARKER'] ?? 'Мы здесь!';
+            $this->latitude = $data['PARAMS']['LATITUDE'] ?? 0;
+            $this->longitude = $data['PARAMS']['LONGITUDE'] ?? 0;
+            $this->link = $data['PARAMS']['LINK'] ?? '#';
+        }
+        else if ($isIdVk || $isIdFacebook)
+        {
+            $this->type = $isIdVk ? 'id-vk' : 'id-facebook';
+            $this->user = $this->link;
+
+            $this->link = $isIdFacebook
+                ? 'https://www.messenger.com/t/'.$this->user 
+                : 'https://vk.me/'.$this->user;
+        }
         else
         {
-            $this->classes[] = 'link';
-            $this->classes[] = 'link--icon';
+            $this->classes[] = 'soc';
             $this->text = '';
         }
 
         if ($isFacebook)
         {
-            $this->classes[] = 'link--icon-facebook';
+            $this->classes[] = 'soc--facebook';
             $this->type = 'facebook';
         }
 
         if ($isVk)
         {
-            $this->classes[] = 'link--icon-vk';
+            $this->classes[] = 'soc--vk';
             $this->type = 'vk';
         }
 
         if ($isInstagram)
         {
-            $this->classes[] = 'link--icon-instagram';
+            $this->classes[] = 'soc--instagram';
             $this->type = 'instagram';
         }
 

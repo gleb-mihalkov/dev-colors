@@ -1,0 +1,6 @@
+<?
+$sSectionName = "Курсы";
+$arDirProperties = Array(
+
+);
+?>

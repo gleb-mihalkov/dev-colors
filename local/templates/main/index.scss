@@ -1,21 +1,77 @@
+// Fonts.
+@import "css/font-comfortaa";
 @import "css/font-lato";
+
+// Packages.
+@import "../../bower_components/slick-carousel/slick/slick.scss";
+
+// Settings.
 @import "css/vars";
 @import "css/reset";
 @import "css/panel";
+
+// Abstract elements.
+@import "css/title";
 @import "css/link";
-@import "css/global";
-@import "css/header";
+@import "css/text";
+@import "css/arrow";
+@import "css/image";
+@import "css/image-link";
+@import "css/icon";
+@import "css/button";
+
+// Abstract layouts.
+@import "css/container";
+
+// Common blocks.
+@import "css/soc";
 @import "css/logo";
 @import "css/menu";
+@import "css/menu-modal";
+@import "css/menu-button";
+@import "css/paging";
+@import "css/share";
+
+// Global layouts.
+@import "css/global";
+@import "css/header";
 @import "css/footer";
-@import "css/contacts";
-@import "css/page";
-@import "css/lead";
-@import "css/lead-slider";
-@import "css/lead-slider-dots";
-@import "css/offset";
-@import "css/box";
-@import "css/heading";
-@import "css/text";
-@import "css/button";
+@import "css/modal";
+
+// About instance.
+@import "css/about-page";
 @import "css/about-preview";
+
+// Blog instance.
+@import "css/blog-page";
+@import "css/blog-list";
+@import "css/blog-grid";
+@import "css/blog-small-preview";
+@import "css/blog-preview";
+@import "css/blog";
+
+// Contact instance.
+@import "css/contacts-page";
+@import "css/contacts-grid";
+@import "css/contacts";
+
+// Home instanse.
+@import "css/home-page";
+@import "css/home-lead";
+@import "css/home-slider";
+
+// Course instance.
+@import "css/courses-list";
+@import "css/courses-slider";
+@import "css/course-preview";
+@import "css/course";
+@import "css/course-lead";
+@import "css/course-baner";
+@import "css/course-grid";
+@import "css/course-results";
+@import "css/course-sale";
+@import "css/course-lesson";
+
+// Response instance.
+@import "css/responses-slider";
+@import "css/response-preview";

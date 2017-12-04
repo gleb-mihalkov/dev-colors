@@ -1,0 +1,72 @@
+.course {
+  
+  &__content {
+    @extend %container;
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+
+  @include media {
+
+    .course-grid {
+      flex-direction: column;
+      height: auto !important;
+      width: 100%;
+      max-width: 514px;
+      margin-left: auto;
+      margin-right: auto;
+
+      *[data-breaker] {
+        display: none;
+      }
+
+      &__about {
+        order: 1;
+      }
+
+      &__lessons {
+        order: 2;
+        margin-top: 62px !important;
+      }
+
+      &__sale {
+        order: 3;
+      }
+
+      &__results {
+        order: 4;
+      }
+
+      &__program {
+        order: 5;
+      }
+    }
+
+    .course-baner {
+      height: auto;
+      padding-top: 113px;
+      padding-bottom: 120px;
+      text-align: center;
+
+      &__container {
+        flex-direction: column;
+        justify-content: center;
+        max-width: 544px;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      &__image {
+        background-size: cover;
+        border-radius: 100%;
+        flex: 0 0 auto;
+        width: 230px;
+        height: 230px;
+      }
+
+      &__main {
+        margin-top: 43px;
+      }
+    }
+  }
+}

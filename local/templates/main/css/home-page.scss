@@ -1,0 +1,21 @@
+.home-page {
+  padding-bottom: 120px;
+
+  &__about {
+    @extend %container, %container--width-small;
+    margin-top: 116px;
+  }
+
+  &__courses {
+    margin-top: 140px;
+  }
+
+  &__responses {
+    margin-top: 190px;
+  }
+
+  &__news {
+    @extend %container;
+    margin-top: 190px;
+  }
+}

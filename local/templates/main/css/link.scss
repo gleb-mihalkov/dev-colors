@@ -1,4 +1,4 @@
-.link {
+%link {
   $color: $colorBlack;
   text-decoration: none;
   display: inline-block;
@@ -18,34 +18,8 @@
       content: '';
     }
   }
-
-  &--icon {
-    width: $textHeight;
-    height: $textHeight;
-    background-position: center center;
-    font-size: 0; 
-
-    &:before {
-      display: none !important;
-    }
-
-    &-facebook {
-      background-image: url('img/soc-facebook.png');
-      background-size: 6px 12px;
-    }
-
-    &-vk {
-      background-image: url('img/soc-vk.png');
-      background-size: 16px 9px;
-    }
-
-    &-instagram {
-      background-image: url('img/soc-instagram.png');
-      background-size: 12px 12px;
-    }
-  }
 }
 
 a {
-  @extend .link;
+  @extend %link;
 }

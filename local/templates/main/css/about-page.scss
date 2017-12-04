@@ -1,0 +1,374 @@
+.about-page {
+  @extend %container;
+  padding-top: 97px;
+  padding-bottom: 160px;
+
+  &__title {
+    @extend %title, %title--large, %title--underline, %title--align-center;
+    margin-bottom: 109px;
+  }
+
+  &__group-01 {
+    position: relative;
+    display: block;
+    height: 1277px;
+
+    &:after {
+      background-image: url('img/about-asset-01.png');
+      background-position: center center;
+      background-size: cover;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      display: block;
+      width: 382px;
+      height: 508px;
+      content: '';
+    }
+  }
+  &__image-group-01 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 733px;
+    height: 1103px;
+
+    &:before {
+      background-color: $colorPink;
+      position: absolute;
+      z-index: 1;
+      right: 0;
+      bottom: 0;
+      display: block;
+      width: 465px;
+      height: 730px;
+      content: '';
+    }
+  }
+  &__image-01 {
+    background-position: center center;
+    background-size: cover;
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 650px;
+    height: 960px;
+  }
+  &__text-01 {
+    background-image: url('img/about-01.png');
+    background-position: left center;
+    position: absolute;
+    right: 0;
+    top: 100px;
+    display: block;
+    width: 567px;
+    height: 203px;
+    padding-left: 52px;
+    padding-top: 49px;
+    font-family: $fontFamilyHeading;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 31px;
+  }
+
+  &__group-02 {
+    position: relative;
+    height: 227px;
+  }
+  &__text-02 {
+    background-image: url('img/about-02.png');
+    background-position: left center;
+    position: absolute;
+    left: 52px;
+    top: 0;
+    display: block;
+    width: 790px;
+    height: 227px;
+    padding-left: 82px;
+    padding-top: 77px;
+    font-style: italic;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 26px;
+  }
+
+  &__group-03 {
+    position: relative;
+    height: 644px;
+  }
+  &__text-03 {
+    border: 10px solid $colorPink;
+    position: absolute;
+    left: 0;
+    top: 166px;
+    display: block;
+    width: 100%;
+    padding: 75px 248px;
+    text-align: center;
+    font-family: $fontFamilyHeading;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 40px;
+  }
+
+  &__group-04 {
+    position: relative;
+    height: 1021px;
+  }
+  &__image-04 {
+    background-position: center center;
+    background-size: cover;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 784px;
+    height: 1021px;
+  }
+  &__text-04 {
+    background-image: url('img/about-04.png');
+    background-color: $colorWhite;
+    background-position: 63px 160px;
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    top: 197px;
+    display: block;
+    width: 784px;
+    height: 653px;
+    padding-left: 132px;
+    padding-top: 247px;
+    font-family: $fontFamilyHeading;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 40px;
+  }
+
+  &__group-05 {
+    position: relative;
+    height: 986px;
+
+    &:before {
+      background-color: $colorPink;
+      position: absolute;
+      right: 0;
+      top: 0;
+      display: block;
+      width: 27px;
+      height: 713px;
+      content: '';
+    }
+
+    &:after {
+      background-image: url('img/about-asset-05.png');
+      background-position: center center;
+      background-size: contain;
+      position: absolute;
+      left: 59px;
+      bottom: 0;
+      display: block;
+      width: 661px;
+      height: 537px;
+      content: '';
+    }
+  }
+
+  &__group-06 {
+    position: relative;
+    height: 1143px;
+  }
+  &__image-group-06 {
+    position: absolute;
+    z-index: 1;
+    top: 219px;
+    left: 0;
+    display: block;
+    width: 1052px;
+    height: 778px;
+
+    &:before {
+      background-color: $colorPink;
+      position: absolute;
+      z-index: 0;
+      right: 134px;
+      bottom: 87px;
+      display: block;
+      width: 918px;
+      height: 578px;
+      content: '';
+    }
+  }
+  &__image-06 {
+    background-position: center center;
+    background-size: cover;
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    top: 0;
+    display: block;
+    width: 516px;
+    height: 778px;
+  }
+  &__text-06 {
+    background-image: url('img/about-06.png');
+    background-color: $colorWhite;
+    background-position: 53px 95px;
+    position: absolute;
+    z-index: 2;
+    left: 315px;
+    bottom: 0;
+    display: block;
+    width: 543px;
+    height: 470px;
+    padding-left: 152px;
+    padding-right: 74px;
+    padding-top: 133px;
+    font-style: italic;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 31px;
+  }
+
+  @include media {
+
+    &__group-01,
+    &__group-02,
+    &__group-03,
+    &__group-04,
+    &__group-05,
+    &__group-06 {
+      width: 100%;
+      height: auto;
+      max-width: 516px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 33px;
+      
+      &:after {
+        display: none;
+      }
+    }
+
+    &__text-01,
+    &__text-03,
+    &__text-04 {
+      font-size: 18px;
+    }
+
+    &__image-group-01 {
+      position: relative;
+      display: block;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+
+      &:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100vh;
+      }
+    }
+    &__image-01 {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    &__text-01 {
+      background-image: none;
+      position: relative;
+      top: 0;
+      left: 0;
+      display: block;
+      width: auto;
+      height: auto;
+      margin-top: 33px;
+      padding: 0;
+      text-align: center;
+    }
+
+    &__text-02 {
+      background-image: none;
+      position: relative;
+      left: 0;
+      top: 0;
+      display: block;
+      width: 100%;
+      height: auto;
+      padding: 0;
+      text-align: center;
+    }
+
+    &__text-03 {
+      position: relative;
+      left: 0;
+      top: 0;
+      display: block;
+      width: 100%;
+      height: auto;
+      padding: 33px;
+      text-align: center;
+    }
+
+    &__image-04 {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+    }
+    &__text-04 {
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      padding: 0;
+      margin-top: 33px;
+      text-align: center;
+    }
+
+    &__group-05 {
+      display: none;
+    }
+
+    &__image-group-06 {
+      position: relative;
+      top: 0;
+      width: 100%;
+      height: 100vh;
+
+      &:before {
+        top: 0;
+        left: 0;
+        right: auto;
+        bottom: auto;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    &__image-06 {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    &__text-06 {
+      position: relative;
+      top: auto;
+      left: auto;
+      bottom: auto;
+      width: 100%;
+      height: auto;
+      padding: 0;
+      margin-top: 33px;
+      text-align: center;
+    }
+  }
+}

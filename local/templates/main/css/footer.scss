@@ -6,8 +6,53 @@
   align-items: center;
   height: $height + 1px;
   padding: 0 55px;
+  font-weight: 400;
 
   a {
-    @extend .link--underline;
+    @extend %link--underline;
+  }
+
+  @include mediaCustom(750px) {
+    justify-content: flex-start;
+    flex-direction: column;
+    height: auto;
+    padding: 16.5px 16.5px;
+    text-align: center;
+
+    & > * {
+      margin-top: 16.5px;
+    }
+  }
+
+  @include mediaExtraSmall {
+
+    .contacts {
+      justify-content: space-around;
+      align-content: space-around;
+      flex-wrap: wrap;
+
+      &:after {
+        flex-basis: 100%;
+        width: 0;
+        height: 0;
+        content: '';
+        order: 2;
+      }
+
+      & > :first-child {
+        width: 50%;
+        margin-top: 16.5px !important;
+        margin-bottom: 16.5px;
+        order: 1;
+      }
+
+      & > :nth-child(2) {
+        margin-left: 0;
+      }
+
+      & > :nth-child(n + 2) {
+        order: 3;
+      }
+    }
   }
 }

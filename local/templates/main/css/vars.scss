@@ -7,12 +7,77 @@ $fontSizeNormal: 16px;
 
 $lineHeight: 1.5;
 
+$textHeight: $fontSizeNormal * $lineHeight;
+$iconHeight: $fontSizeNormal * $lineHeight;
+
+$arrowWidth: 48px;
+$arrowHeight: 8px;
+
 $colorBlack: #343434;
+$colorBlackRich: #373737;
+$colorBlackExtraRich: #404040;
 $colorWhite: #fff;
 $colorGrayLight: #dadada;
+$colorGray: #8f8f8f;
+$colorPink: #f8f1f2;
 
 $bgLead: #fbf1ef;
 
-$textHeight: $fontSizeNormal * $lineHeight;
+$containerPadding: 80px;
+$containerWidth: 1290px + $containerPadding * 2;
+// 1450
+
+$containerPaddingSmall: 23px;
+$containerWidthSmall: 1052px + $containerPaddingSmall * 2;
+// 1098px
+
+$containerPaddingExtraSmall: 20px;
+$containerWidthExtraSmall: 516px + $containerPaddingExtraSmall * 2;
+// 556px
+
+$containerPaddingMedium: 20px;
+$containerWidthMedium: 1052px + $containerPaddingMedium * 2;
+// 1092px
+
 $headerHeight: 70px;
 $footerHeight: 124px;
+
+$leadPadding: 55px;
+
+$blogSmallPreviewImageHeight: 240px;
+$homeSlideHeight: 100vh;
+$coursePreviewHeight: 703px;
+$responsePreviewHeight: 500px;
+
+$transNormal: all .25s ease-in-out;
+$transSlow: all 2s cubic-bezier(0.23, 1, 0.38, 1);
+
+@mixin media {
+  @media screen and (max-width: $containerWidth) {
+    @content;
+  }
+}
+
+@mixin mediaMedium {
+  @media screen and (max-width: $containerWidthMedium) {
+    @content;
+  }
+}
+
+@mixin mediaSmall {
+  @media screen and (max-width: $containerWidthSmall) {
+    @content;
+  }
+}
+
+@mixin mediaExtraSmall {
+  @media screen and (max-width: $containerWidthExtraSmall) {
+    @content;
+  }
+}
+
+@mixin mediaCustom($width) {
+  @media screen and (max-width: $width) {
+    @content;
+  }
+}

@@ -1,0 +1,98 @@
+.share {
+  display: block;
+
+  &__title {
+    display: block;
+    margin-bottom: 16px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1;
+    color: $colorBlackRich;
+  }
+
+  &__icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @at-root %share-icon {
+    border: 1px solid transparent;
+    background-position: center center;
+    display: block;
+    margin-left: 25px;
+    width: 88px;
+    height: 38px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  &--type {
+
+    &-buttons %share-icon {
+      border-color: $colorGrayLight;
+    }
+
+    &-default {
+      position: relative;
+
+      &:before {
+        background-color: $colorGrayLight;
+        position: absolute;
+        z-index: 0;
+        left: 0;
+        top: 6px;
+        display: block;
+        width: 100%;
+        height: 1px;
+        content: '';
+      }
+
+      .share__title {
+        background-color: #fff;
+        position: relative;
+        z-index: 1;
+        display: block;
+        width: 108px;
+        margin-bottom: 38px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    &-inline {
+      display: flex;
+      align-items: center;
+
+      .share__title {
+        margin-bottom: 0;
+        color: $colorBlackRich;
+        font-weight: 300;
+      }
+
+      %share-icon {
+        margin-left: 10px;
+        width: $iconHeight;
+        height: $iconHeight;
+      }
+    }
+  }
+
+  &__tw {
+    @extend %share-icon;
+    background-image: url('img/soc-twitter.png');
+  }
+
+  &__vk {
+    @extend %share-icon;
+    background-image: url('img/soc-vk.png');
+  }
+
+  &__fb {
+    @extend %share-icon;
+    background-image: url('img/soc-facebook.png');
+  }
+}

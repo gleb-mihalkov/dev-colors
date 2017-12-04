@@ -16,6 +16,10 @@
     }
   }
 
+  &__breaker {
+    display: none;
+  }
+
   &__item {
     margin-left: $offset;
 

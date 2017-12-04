@@ -14,14 +14,11 @@
     border-bottom: none;
   }
 
-  &__item {
-    
-    &--pulled {
-      margin-left: auto;
-    }
+  &__logo {
+    align-self: stretch;
+  }
 
-    &--fullsized {
-      align-self: stretch;
-    }
+  &__menu {
+    margin-left: auto;
   }
 }

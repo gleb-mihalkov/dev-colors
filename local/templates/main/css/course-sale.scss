@@ -1,0 +1,55 @@
+.course-sale {
+  position: relative;
+  padding: 27px 37px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 300;
+  text-align: center;
+
+  @at-root %course-sale-image {
+    background-image: url('img/percent.png');
+    position: absolute;
+    display: block;
+    width: 6px;
+    height: 6px;
+    content: '';
+  }
+
+  &:before {
+    @extend %course-sale-image;
+    left: 10px;
+    top: 10px;
+  }
+
+  &:after {
+    @extend %course-sale-image;
+    right: 10px;
+    top: 10px;
+  }
+
+  &__title {
+    display: block;
+    margin: 0;
+    font-size: 18px;
+    line-height: 32px;
+    font-weight: 800;
+
+    &:before {
+      @extend %course-sale-image;
+      left: 10px;
+      bottom: 10px;
+    }
+
+    &:after {
+      @extend %course-sale-image;
+      right: 10px;
+      bottom: 10px;
+    }
+  }
+
+  &__text {
+    display: block;
+    margin: 0;
+    font-style: italic;
+  }
+}

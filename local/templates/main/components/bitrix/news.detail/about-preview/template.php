@@ -1,19 +1,14 @@
 <?
     if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
+    
+    use App\Model\About;
 
-    $heading = $arResult['NAME'];
-    $previewText = $arResult['PREVIEW_TEXT'];
+    $item = new About($arResult);
 ?>
-<div class="box box--offset-px-116">
-    <div class="offset offset--text-normal">
-        <h2 class="heading heading--align-center"><?= $heading; ?></h2>
-    </div>
-    <div class="offset offset--text-medium  text--align-center">
-        <?= $previewText; ?>
-    </div>
-    <div class="offset offset--text-medium  text text--align-center">
-        <a href="#" class="button button--type-default button--width-large">
-            Читать полностью
-        </a>
-    </div>
-</div>
+<article class="about-preview">
+    <h2 class="about-preview__title"><?= $item->title; ?></h2>
+    <div class="about-preview__text"><?= $item->desc; ?></div>
+    <a href="<?= $item->link; ?>" class="about-preview__link">
+        <span>Читать полностью</span>
+    </a>
+</article>

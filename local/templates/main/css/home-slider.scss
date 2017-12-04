@@ -1,0 +1,120 @@
+.home-slider {
+  $height: $homeSlideHeight;
+  $padding: $leadPadding;
+  position: relative;
+  width: 100%;
+  height: $height;
+
+  &__slides-wrapper {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__slides-container {
+    @extend %container;
+    position: relative;
+    height: 100%;
+  }
+
+  &__slides {
+    position: absolute;
+    left: $containerPadding;
+    bottom: 0;
+    display: block;
+    width: calc(100% - #{$containerPadding * 2});
+    max-height: 100%;
+    overflow: hidden;
+
+    &:before {
+      $overSize: 0.30;
+      background-image: url('img/lead-bg.svg');
+      background-position: center bottom;
+      background-size: contain;
+      position: absolute;
+      z-index: 1;
+      left: 0;
+      bottom: -$overSize * 100%;
+      display: block;
+      width: 100%;
+      height: (1 + $overSize) * 100%;
+      content: '';
+    }
+  }
+
+  &__slide {
+    background-position: center bottom;
+    background-size: contain;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    display: block;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+
+    &.active {
+      visibility: visible;
+    }
+  }
+
+  &__dots {
+    position: absolute;
+    z-index: 3;
+    right: $padding;
+    bottom: $padding;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__dot {
+    $sizeSmall: 3px;
+    $sizeMedium: 7px;
+    $size: 11px;
+    $scaleSmall: $sizeSmall / $size;
+    $scaleMedium: $sizeMedium / $size;
+    background-color: transparent;
+    border: none;
+    position: relative;
+    display: block;
+    width: $textHeight;
+    height: $textHeight;
+    padding: 0;
+    margin-top: 16px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:before {
+      transition: all .25s ease-in-out;
+      transform: scale($scaleSmall, $scaleSmall);
+      background-color: $colorBlack;
+      border-radius: 100%;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      display: block;
+      width: $size;
+      height: $size;
+      margin-left: -$size / 2;
+      margin-top: -$size / 2;
+      content: '';
+    }
+    &:hover:before {
+      transform: scale($scaleMedium, $scaleMedium);
+    }
+    &.active:before {
+      transform: scale(1, 1);
+    }
+  }
+
+  @include media {
+    &__slides {
+      left: 0;
+      width: 100%;
+    }
+  }
+}

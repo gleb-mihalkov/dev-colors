@@ -1,5 +1,6 @@
-.button {
+%button {
   transition: all .25s ease-in-out;
+  position: relative;
   background-color: transparent;
   border-color: transparent;
   border-style: solid;
@@ -18,18 +19,49 @@
       background-color: $colorWhite;
       border-color: $colorGrayLight;
       letter-spacing: 1.2px;
-      color: $colorBlack;
+
+      span {
+        transition: all .25s ease-in-out;
+        position: relative;
+        z-index: 2;
+        color: $colorBlack;
+      }
+
+      &:after {
+        transition: all .25s ease-in-out;
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        transform-origin: left center;
+        transform: scaleX(0);
+        background-color: $colorBlack;
+        display: block;
+        content: '';
+      }
 
       &:hover {
-        background-color: $colorBlack;
-        border-color: $colorBlack;
-        color: $colorWhite;
+
+        span {
+          color: $colorWhite;
+        }
+
+        &:after {
+          transform: scaleX(1);
+        }
       }
 
       &:active {
-        background-color: $colorWhite;
-        border-color: $colorGrayLight;
-        color: $colorBlack;
+
+        span {
+          color: $colorBlack;
+        }
+
+        &:after {
+          background-color: transparent;
+        }
       }
     }
   }
@@ -38,6 +70,10 @@
     
     &-large {
       width: 260px;
+    }
+
+    &-normal {
+      width: 170px;
     }
   }
 }

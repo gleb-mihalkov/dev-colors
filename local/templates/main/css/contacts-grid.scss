@@ -1,0 +1,41 @@
+.contacts-grid {
+  display: flex;
+  color: $colorBlackRich;
+
+  a {
+    color: inherit;
+  }
+
+  &__item {
+    display: block;
+    width: 1/4 * 100%;
+    text-align: center;
+  }
+
+  &__title {
+    display: block;
+    color: $colorBlackRich;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1;
+  }
+
+  &__value {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  &__soc-value {
+    display: flex;
+    justify-content: center;
+
+    & > * {
+      margin-left: 60px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+.paging {
+  $itemSize: 40px;
+  display: flex;
+  justify-content: center;
+
+  &__item {
+    border: 1px solid transparent;
+    border-radius: 1px;
+    display: block;
+    width: $itemSize;
+    height: $itemSize;
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+    line-height: $itemSize;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &.active {
+      border-color: $colorGrayLight;
+    }
+  }
+}

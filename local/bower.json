@@ -1,0 +1,20 @@
+{
+  "name": "kosmetik",
+  "description": "",
+  "main": "gulpfile.js",
+  "authors": [
+    "gleb-mihalkov <gleb.mihalkov.work@yandex.ru>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "slick-carousel": "https://github.com/kenwheeler/slick.git#^1.8.1"
+  }
+}

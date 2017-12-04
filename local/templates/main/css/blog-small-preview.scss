@@ -1,0 +1,33 @@
+.blog-small-preview {
+  display: block;
+  text-align: center;
+
+  &__image {
+    background-position: center center;
+    background-size: cover;
+    display: block;
+    width: 100%;
+    height: $blogSmallPreviewImageHeight;
+    margin-bottom: 26px;
+  }
+
+  &__title {
+    display: block;
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 26px;
+
+    a {
+      color: inherit;
+    }
+  }
+
+  &__date {
+    display: block;
+    color: $colorGray;
+    font-size: 12px;
+    line-height: 24px;
+  }
+}

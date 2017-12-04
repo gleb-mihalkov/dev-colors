@@ -1,0 +1,18 @@
+.soc {
+  @extend %icon;
+
+  &--facebook {
+    background-image: url('img/soc-facebook.png');
+    background-size: 6px 12px;
+  }
+
+  &--vk {
+    background-image: url('img/soc-vk.png');
+    background-size: 16px 9px;
+  }
+
+  &--instagram {
+    background-image: url('img/soc-instagram.png');
+    background-size: 12px 12px;
+  }
+}

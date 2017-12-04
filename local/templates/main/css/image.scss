@@ -1,0 +1,39 @@
+%image {
+  background-size: contain;
+
+  &--fullsize {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  &--align {
+
+    &-left {
+      background-position-x: left;
+    }
+
+    &-right {
+      background-position-x: right;
+    }
+
+    &-center {
+      background-position-x: center;
+    }
+  }
+
+  &--v-align {
+
+    &-top {
+      background-position-y: top;
+    }
+
+    &-center {
+      background-position-y: center;
+    }
+
+    &-bottom {
+      background-position-y: bottom;
+    }
+  }
+}
