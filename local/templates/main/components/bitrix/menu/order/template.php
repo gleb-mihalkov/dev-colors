@@ -62,7 +62,7 @@
         <span><?= $facebook->title; ?></span>
     </a>
 </div>
-<div class="modal__dots">***</div>
+<div class="modal__dots">* * *</div>
 <div class="modal__text">
     Лучше если вы нам напишете, но можно и позвонить.<br>
     <strong>

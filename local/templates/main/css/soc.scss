@@ -1,18 +1,40 @@
 .soc {
   @extend %icon;
 
+  @mixin soc-icon($url, $width, $height) {
+    background-image: url($url);
+    background-size: $width $height;
+  }
+
   &--facebook {
-    background-image: url('img/soc-facebook.png');
-    background-size: 6px 12px;
+    @include soc-icon('img/soc-facebook.svg', 6px, 12px);
+
+    &-white {
+      @include soc-icon('img/soc-facebook-white.svg', 6px, 12px);
+    }
   }
 
   &--vk {
-    background-image: url('img/soc-vk.png');
-    background-size: 16px 9px;
+    @include soc-icon('img/soc-vk.svg', 16px, 9px);
+    
+    &-white {
+      @include soc-icon('img/soc-vk-white.svg', 16px, 9px);
+    }
   }
 
   &--instagram {
-    background-image: url('img/soc-instagram.png');
-    background-size: 12px 12px;
+    @include soc-icon('img/soc-instagram.svg', 12px, 12px);
+
+    &-white {
+      @include soc-icon('img/soc-instagram-white.svg', 12px, 12px);
+    }
+  }
+
+  &--twitter {
+    @include soc-icon('img/soc-twitter.svg', 14px, 11px);
+
+    &-white {
+      @include soc-icon('img/soc-twitter-white.svg', 14px, 11px);
+    }
   }
 }

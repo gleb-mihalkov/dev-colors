@@ -82,17 +82,17 @@
   }
 
   &__tw {
+    @extend .soc--twitter;
     @extend %share-icon;
-    background-image: url('img/soc-twitter.png');
   }
 
   &__vk {
     @extend %share-icon;
-    background-image: url('img/soc-vk.png');
+    @extend .soc--vk;
   }
 
   &__fb {
     @extend %share-icon;
-    background-image: url('img/soc-facebook.png');
+    @extend .soc--facebook;
   }
 }

@@ -8,6 +8,7 @@
   display: none;
   font-size: 0;
   text-align: center;
+  overflow-y: auto;
 
   &:after {
     background-color: $colorWhite;
@@ -69,13 +70,16 @@
     margin-top: 14px;
   }
 
-  &__vk, &__fb {
+  &__vk,
+  &__fb {
     @extend %button, %button--type-default;
     width: 223px;
     
     &:before {
       background-position: center center;
       background-size: contain;
+      position: relative;
+      z-index: 2;
       display: inline-block;
       vertical-align: middle;
       width: 16px;
@@ -85,12 +89,26 @@
     }
   }
 
-  &__vk:before {
-    background-image: url('img/soc-vk.png');
+  &__vk {
+
+    &:before {
+      @extend .soc--vk;
+    }
+
+    &:hover:before {
+      @extend .soc--vk-white;
+    }
   }
 
-  &__fb:before {
-    background-image: url('img/soc-facebook.png');
+  &__fb {
+
+    &:before {
+      @extend .soc--facebook;
+    }
+
+    &:hover:before {
+      @extend .soc--facebook-white;
+    }
   }
 
   &__dots {
