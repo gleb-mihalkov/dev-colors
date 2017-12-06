@@ -95,7 +95,11 @@
 		var handler = function() {
 			var args = $carousel.data('carouselArgs');
 			$carousel.data('carouselArgs', null);
-			if (!args) return;
+			
+			if (!args) {
+				$carousel.trigger('changeAfter.carousel');
+				return;
+			}
 
 			var promise = toInner($carousel, args[0], args[1]);
 			$carousel.data('carouselArgs', 0);
