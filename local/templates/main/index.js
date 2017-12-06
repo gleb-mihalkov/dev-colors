@@ -6,6 +6,5 @@
 //=include js/modal.js
 //=include js/course-lesson.js
 //=include js/scroll.js
-//=include js/home-slider.js
 
 $(document).ready(function() { $(document).trigger('start'); });
