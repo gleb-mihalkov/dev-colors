@@ -7,7 +7,7 @@
 <div class="home-slider">
     <div class="home-slider__slides-wrapper">
         <div class="home-slider__slides-container">
-            <div class="home-slider__slides" id="homeSlider" data-autoplay="3000" data-effect="change">
+            <div class="home-slider__slides" id="homeSlider" data-effect="change">
                 <? foreach ($items as $item) : ?>
                     <?
                         $itemClass = $itemsCount === 0 ? 'active' : '';

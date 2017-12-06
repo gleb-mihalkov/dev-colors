@@ -109,6 +109,12 @@
 		promise.then(handler);
 	}
 
+	function toLast($carousel, type) {
+		var count = $carousel.children().length;
+		var last = count - 1;
+		return to($carousel, last, type);
+	}
+
 	function seed($carousel, type) {
 		var $slides = $carousel.children();
 		var index = $slides.filter('.active').index();
@@ -170,17 +176,39 @@
 		return onSeed(e, this, 'back');
 	}
 
+	function onReady() {
+		var $autoplays = $('[data-autoplay]');
+
+		for (var i = 0; i < $autoplays.length; i++) {
+			var $carousel = $autoplays.eq(i);
+			setAutoplay($carousel);
+		}
+	}
+
 	$(document)
 		.on('click', '[data-dots] > *', onDots)
 		.on('click', '[data-back]', onBack)
 		.on('click', '[data-next]', onNext)
+		.on('start', onReady);
 
-		.on('start', function() {
-			var $autoplays = $('[data-autoplay]');
+	window.carouselTo = function(element, index, effect) {
+		var node = wrap(element);
+		return to(node, index, effect);
+	};
 
-			for (var i = 0; i < $autoplays.length; i++) {
-				var $carousel = $autoplays.eq(i);
-				setAutoplay($carousel);
-			}
-		});
+	window.carouselToLast = function(element, effect) {
+		var node = wrap(element);
+		return toLast(node, effect);
+	};
+
+	window.carouselToFirst = function(element, effect) {
+		var node = wrap(element);
+		return to(node, 0, effect);
+	};
+
+	window.carouselCount = function(element) {
+		var node = wrap(element);
+		return node.children().length;
+	};
+
 })(window.jQuery);
