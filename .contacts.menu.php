@@ -2,7 +2,7 @@
 $aMenuLinks = Array(
 	Array(
 		"Позвонить нам", 
-		"+7 920 568 89 86", 
+		"+7 920 349 86 91", 
 		Array(), 
 		Array(), 
 		"" 
@@ -37,9 +37,9 @@ $aMenuLinks = Array(
 	),
 	Array(
 		"Наш адрес", 
-		"г. Иваново, Иваново, Советская, 49", 
+		"г. Иваново, ул. Типографская, д. 6, 2 этаж", 
 		Array(), 
-		Array("LATITUDE"=>"56.995206", "LONGITUDE"=>"40.989684", "MARKER"=>"Мы здесь!", "LINK"=>"https://www.google.ru/maps/place/%D0%A1%D0%BE%D0%B2%D0%B5%D1%82%D1%81%D0%BA%D0%B0%D1%8F+%D1%83%D0%BB.,+49,+%D0%98%D0%B2%D0%B0%D0%BD%D0%BE%D0%B2%D0%BE,+%D0%98%D0%B2%D0%B0%D0%BD%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB.,+153012/@56.995206,40.9874952,17z/data=!3m1!4b1!4m5!3m4!1s0x414d14142c73c1cf:0xef8e72e19f70b015!8m2!3d56.995206!4d40.9896839?hl=ru"), 
+		Array("LATITUDE"=>"56.98641850000001", "LONGITUDE"=>"40.97968519999995", "MARKER"=>"Мы здесь!", "LINK"=>"https://www.google.ru/maps/place/%D0%A2%D0%B8%D0%BF%D0%BE%D0%B3%D1%80%D0%B0%D1%84%D1%81%D0%BA%D0%B0%D1%8F+%D1%83%D0%BB.,+6,+%D0%98%D0%B2%D0%B0%D0%BD%D0%BE%D0%B2%D0%BE,+%D0%98%D0%B2%D0%B0%D0%BD%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB.,+153008/@56.9864185,40.9774965,17z/data=!3m1!4b1!4m5!3m4!1s0x414d1404bc2397bd:0x55c181d6b225de32!8m2!3d56.9864185!4d40.9796852?hl=ru"), 
 		"" 
 	),
 	Array(

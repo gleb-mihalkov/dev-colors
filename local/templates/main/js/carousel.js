@@ -4,7 +4,7 @@
 !(function($) {
 	if ($ == null) return console.warn('jQuery is required.');
 
-	var duration = 1000;
+	var duration = 1500;
 	var autoplay = 2000;
 
 	function setClass($node, name) {
@@ -144,8 +144,10 @@
 		var $carousel = getCarousel($dots, 'data-dots');		
 		if ($carousel == null) return;
 
+		var effect = $dots.attr('data-effect');
+
 		e.preventDefault();
-		to($carousel, this);
+		to($carousel, this, effect);
 	}
 
 	function onSeed(e, node, type) {

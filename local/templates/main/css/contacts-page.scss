@@ -32,8 +32,7 @@
 
   &__button {
     @extend %button, %button--type-default;
-    padding-left: 12px;
-    padding-right: 12px;
+    padding: 13px 16px;
   }
 
   &__map {

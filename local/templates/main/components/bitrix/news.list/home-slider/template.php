@@ -7,7 +7,7 @@
 <div class="home-slider">
     <div class="home-slider__slides-wrapper">
         <div class="home-slider__slides-container">
-            <div class="home-slider__slides" id="homeSlider">
+            <div class="home-slider__slides" id="homeSlider" data-autoplay="3000" data-effect="change">
                 <? foreach ($items as $item) : ?>
                     <?
                         $itemClass = $itemsCount === 0 ? 'active' : '';
@@ -21,6 +21,7 @@
                         ></div>
                 <? endforeach; ?>
             </div>
+            <div class="home-slider__effect"></div>
         </div>
         <script type="text/javascript">
             !(function() {
@@ -36,7 +37,7 @@
             })();
         </script>
     </div>
-    <div class="home-slider__dots" data-dots="homeSlider">
+    <div class="home-slider__dots" data-dots="homeSlider" data-effect="next">
         <? for ($i = 0; $i < $itemsCount; $i++) : ?>
             <?
                 $itemClass = $i === 0 ? 'active' : '';

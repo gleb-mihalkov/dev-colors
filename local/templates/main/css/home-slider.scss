@@ -1,4 +1,5 @@
 .home-slider {
+  $block: nth(&, 1);
   $height: $homeSlideHeight;
   $padding: $leadPadding;
   position: relative;
@@ -41,9 +42,50 @@
       height: (1 + $overSize) * 100%;
       content: '';
     }
+
+    &.next ~ #{$block}__effect,
+    &.prev ~ #{$block}__effect {
+
+      &:before {
+        animation: home-slider-effect 1.25s ease-in-out forwards;
+      }
+
+      &:after {
+        animation: home-slider-effect-over 1.25s ease-in-out forwards;
+      }
+    }
+  }
+
+  &__effect {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    &:before, &:after {
+      transform: translateY(100%);
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 100%;
+      content: '';
+    }
+
+    &:before {
+      background-color: $colorPink;
+    }
+
+    &:after {
+      background-color: $colorWhite;
+    }
   }
 
   &__slide {
+    transition: all 0s .5s ease-in-out;
     background-position: center bottom;
     background-size: contain;
     position: absolute;
@@ -108,6 +150,30 @@
     }
     &.active:before {
       transform: scale(1, 1);
+    }
+  }
+
+  @keyframes home-slider-effect {
+    0% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(-100%);
+    }
+  }
+
+  @keyframes home-slider-effect-over {
+    0% {
+      transform: translateY(100%);
+    }
+    50% {
+      transform: translateY(0);
+    }
+    80% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(-100%);
     }
   }
 
