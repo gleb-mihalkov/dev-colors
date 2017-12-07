@@ -2,6 +2,8 @@
   $block: nth(&, 1);
   $height: $coursePreviewHeight;
   $mainHeight: 498px;
+  $asideWidth: 928px;
+  $asideHeight: $height;
   position: relative;
   display: block;
   width: 100%;
@@ -9,52 +11,35 @@
 
   &__aside {
     position: absolute;
-    z-index: 1;
     right: 0;
     top: 0;
     display: block;
-    width: 928px;
-    height: $height;
-    overflow: hidden;
+    width: $asideWidth;
+    height: $asideHeight;
+  }
 
-    &:before, &:after {
-      position: absolute;
-      left: 0;
-      top: 0;
-      display: block;
-      width: 100%;
-      height: 100%;
-      content: '';
-    }
+  &__image-wrapper {
+    @extend %image-wrapper;
 
-    &:before {
-      background-color: $colorGrayLight;
-      z-index: 1;
-    }
-
-    &:after {
-      background-color: $colorPink;
-      z-index: 3;
+    span {
+      background-position: right bottom;
+      background-size: contain;
+      width: $asideWidth;
+      height: $asideHeight;
     }
   }
 
   &__image {
     background-color: $colorPink;
-    background-position: right bottom;
-    background-size: contain;
     position: absolute;
-    z-index: 2;
-    left: 0;
+    right: 0;
     top: 0;
     display: block;
-    width: 100%;
-    height: 100%;
   }
 
   &__main {
     background-color: $colorWhite;
     position: absolute;
-    z-index: 3;
     left: 0;
     top: 50%;
     display: block;
@@ -92,6 +77,36 @@
     @extend %button, %button--type-default, %button--width-normal;
   }
 
+  &__numbers {
+    background-color: $colorWhite;
+    position: absolute;
+    left: -77px;
+    top: 0;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  &__current,
+  &__count {
+    position: relative;
+    color: $colorPink;
+    font-weight: 900;
+  }
+
+  &__current {
+    top: -158px;
+    font-size: 402px;
+  }
+
+  &__count {
+    top: 9px;
+    font-size: 64px;
+
+    &:before {
+      content: '/ ';
+    }
+  }
+
   &--inverted {
 
     #{$block}__aside {
@@ -111,31 +126,23 @@
 
   &.not-viewed {
 
-    #{$block}__aside:after {
-      transform: translate(calc(100% - 20px), -100%);
-    }
-
-    #{$block}__image {
-      visibility: hidden;
+    #{$block}__image-wrapper {
+      @extend %image-wrapper--not-viewed;
     }
   }
 
   &.viewed {
 
-    #{$block}__aside:after {
-      animation: course-preview-aside-after 2s ease-in-out forwards;
+    #{$block}__image-wrapper {
+      @extend %image-wrapper--viewed;
     }
 
-    &#{$block}--inverted #{$block}__aside:after {
-      animation-name: course-preview-aside-after-inverted;
-    }
-
-    #{$block}__image {
-      animation: course-preview-image 2s ease-in-out forwards;
+    &#{$block}--inverted #{$block}__image-wrapper {
+      @extend %image-wrapper--viewed-inverted;
     }
   }
 
-  @keyframes course-preview-aside-after {
+  @keyframes course-preview-image-after {
     0% {
       transform: translate(calc(100% - 20px), -100%);
     }
@@ -147,33 +154,6 @@
     }
     100% {
       transform: translate(-100%, 0);
-    }
-  }
-
-  @keyframes course-preview-aside-after-inverted {
-    0% {
-      transform: translate(calc(-100% + 20px), -100%);
-    }
-    25% {
-      transform: translate(calc(-100% + 20px), 0);
-    }
-    50% {
-      transform: translate(0, 0);
-    }
-    100% {
-      transform: translate(100%, 0);
-    }
-  }
-
-  @keyframes course-preview-image {
-    0% {
-      visibility: hidden;
-    }
-    50% {
-      visibility: hidden;
-    }
-    100% {
-      visibility: visible;
     }
   }
 }

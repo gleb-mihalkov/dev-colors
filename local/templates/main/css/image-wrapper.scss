@@ -1,0 +1,98 @@
+%image-wrapper {
+  background-color: $colorGrayLight;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  &:after {
+    background-color: $colorPink;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    content: '';
+  }
+
+  span {
+    background-color: $colorPink;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  &--not-viewed {
+
+    &:after {
+      transform: translate(calc(100% - 20px), -100%);
+    }
+  }
+
+  &--viewed {
+    
+    &:after {
+      animation: image-wrapper-after 2s ease-in-out forwards;
+    }
+
+    &-inverted {
+
+      &:after {
+        animation-name: image-wrapper-after-inverted;
+      }
+    }
+
+    span {
+      animation: image-wrapper-span 2s ease-in-out forwards;
+    }
+  }
+
+  @keyframes image-wrapper-after {
+    0% {
+      transform: translate(calc(100% - 20px), -100%);
+    }
+    25% {
+      transform: translate(calc(100% - 20px), 0);
+    }
+    50% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(-100%, 0);
+    }
+  }
+
+  @keyframes image-wrapper-after-inverted {
+    0% {
+      transform: translate(calc(-100% + 20px), -100%);
+    }
+    25% {
+      transform: translate(calc(-100% + 20px), 0);
+    }
+    50% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(100%, 0);
+    }
+  }
+
+  @keyframes image-wrapper-span {
+    0% {
+      visibility: hidden;
+    }
+    50% {
+      visibility: hidden;
+    }
+    100% {
+      visibility: visible;
+    }
+  }
+}

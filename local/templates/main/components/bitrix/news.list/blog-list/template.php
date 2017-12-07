@@ -24,11 +24,13 @@
                     id="<?= $item->getEditId($this); ?>"
                     >
                     <span class="blog-preview__aside">
-                        <span
-                            style="background-image: url(<?= $item->image; ?>)"
-                            class="blog-preview__image"
-                            href="<?= $item->link; ?>"
-                            >
+                        <span class="blog-preview__image-wrapper">
+                            <span
+                                style="background-image: url(<?= $item->image; ?>)"
+                                class="blog-preview__image"
+                                href="<?= $item->link; ?>"
+                                >
+                                </span>
                         </span>
                     </span>
                     <span class="blog-preview__main">

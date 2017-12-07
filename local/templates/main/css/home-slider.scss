@@ -109,6 +109,8 @@
     bottom: $padding;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    height: 138px;
   }
 
   &__dot {
@@ -124,11 +126,6 @@
     width: $textHeight;
     height: $textHeight;
     padding: 0;
-    margin-top: 16px;
-
-    &:first-child {
-      margin-top: 0;
-    }
 
     &:before {
       transition: all .25s ease-in-out;

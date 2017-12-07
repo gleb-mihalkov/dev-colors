@@ -6,6 +6,10 @@
     $isInverted = $arParams['IS_INVERTED'] ?? false;
     $template = $arParams['TEMPLATE'] ?? null;
 
+    $itemsCount = $arParams['SLIDES_COUNT'] ?? 0;
+    $itemNumber = $arParams['SLIDE_NUMBER'] ?? 0;
+    $isSlide = $itemNumber > 0;
+
     $item = $arParams['MODEL'];
     $itemEditId = $template ? $item->getEditId($template) : null;
     
@@ -16,6 +20,20 @@
     <? if ($itemEditId) : ?> id="<?= $itemEditId; ?>" <? endif; ?>
     class="course-preview <?= $itemClass; ?>  not-viewed"
     >
+    <? if ($isSlide) : ?>
+        <div class="course-preview__numbers">
+            <div class="course-preview__current"><?= $itemNumber; ?></div>
+            <div class="course-preview__count"><?= $itemsCount; ?></div>
+        </div>
+    <? endif; ?>
+    <a href="<?= $item->link; ?>" class="course-preview__aside">
+        <span class="course-preview__image-wrapper">
+            <span
+                style="background-image: url(<?= $item->image; ?>)"
+                class="course-preview__image"
+                ></span>
+        </span>
+    </a>
     <div class="course-preview__main">
         <h3 class="course-preview__subtitle"><?= $item->subtitle; ?></h3>
         <h2 class="course-preview__title">
@@ -26,10 +44,4 @@
             <span>Подробнее</span>
         </a>
     </div>
-    <a href="<?= $item->link; ?>" class="course-preview__aside">
-        <span
-            style="background-image: url(<?= $item->image; ?>)"
-            class="course-preview__image"
-            ></span>
-    </a>
 </article>

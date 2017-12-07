@@ -11,6 +11,7 @@
   overflow-y: auto;
 
   &:after {
+    transition: $transSlow;
     background-color: $colorWhite;
     position: absolute;
     z-index: 101;
@@ -19,7 +20,7 @@
     top: 0;
     bottom: 0;
     content: '';
-    opacity: 0.77;
+    opacity: 0;
   }
 
   &:before, &__content {
@@ -49,7 +50,7 @@
     background-color: transparent;
     border: 0;
     position: absolute;
-    right: 0px;
+    right: 0px !important;
     top: 0px;
     display: block;
     width: 35px;
@@ -117,6 +118,10 @@
 
   &.active {
     display: block;
+
+    &:after {
+      opacity: .77;
+    }
   }
 
   @include mediaSmall {

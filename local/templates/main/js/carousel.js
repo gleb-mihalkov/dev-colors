@@ -4,10 +4,18 @@
 !(function($) {
 	if ($ == null) return console.warn('jQuery is required.');
 
-	var duration = 1500;
+	var durationDefault = 1500;
 	var autoplay = 2000;
 
-	function setClass($node, name) {
+	function getDuration($carousel) {
+		var duration = $carousel.attr('data-duration') * 1;
+		
+		return duration && !isNaN(duration)
+			? duration
+			: durationDefault;
+	}
+
+	function setClass($node, name, duration) {
 		var defer = new $.Deferred();
 		$node.addClass(name);
 
@@ -55,10 +63,12 @@
 
 		$carousel.trigger('change.carousel', [$slide.index()]);
 
+		var duration = getDuration($carousel);
+
 		if (effect) {
-			var pA = setClass($carousel, effect);
-			var pB = setClass($active, 'leave');
-			var pC = setClass($slide, 'enter');
+			var pA = setClass($carousel, effect, duration);
+			var pB = setClass($active, 'leave', duration);
+			var pC = setClass($slide, 'enter', duration);
 
 			promise = $.when(pA, pB, pC);
 		}
@@ -135,6 +145,8 @@
 
 		var prev = $carousel.data('carouselAutoplay');
 		if (prev) clearTimeout(prev);
+
+		var duration = getDuration($carousel);
 
 		time *= 1;
 		if (!time || isNaN(time)) time = autoplay;

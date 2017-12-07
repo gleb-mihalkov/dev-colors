@@ -18,4 +18,30 @@
   &--prev {
     background-image: url('img/arrow-back.png');
   }
+
+  @keyframes arrow-prev {
+
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(-25%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes arrow-next {
+
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(25%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
 }

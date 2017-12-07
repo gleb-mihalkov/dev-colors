@@ -31,13 +31,13 @@
     padding-bottom: $asideOffsetVert;
     overflow: hidden;
 
-    &:before, &:after, span {
+    &:before, &:after, & > span {
       transition: $transSlow;
       transform-origin: left center;
       display: block;
     }
 
-    &:before, span {
+    &:before {
       height: 100%;
     }
 
@@ -68,18 +68,19 @@
       opacity: 0;
       visibility: hidden;
     }
+  }
 
-    span {
-      transition-delay: 0s;
-      transform: translateX(0);
-      background-position: 50%;
-      background-size: cover;
-      position: relative;
-      z-index: 2;
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
+  &__image-wrapper {
+    @extend %image-wrapper;
+    transition-delay: 0s;
+    transform: translateX(0);
+    position: relative;
+    z-index: 2;
+  }
+
+  &__image {
+    background-position: 50%;
+    background-size: cover;
   }
 
   &__main {
@@ -130,7 +131,7 @@
         visibility: visible;
       }
 
-      span {
+      & > span {
         transform: translateX(-$imageShift);
       }
     }
@@ -143,7 +144,7 @@
       padding-right: 0;
       order: 2;
 
-      &:before, &:after, span {
+      &:before, &:after, & > span {
         transform-origin: right center;
       }
 
@@ -162,7 +163,7 @@
 
     &:hover {
 
-      #{$block}__aside span {
+      #{$block}__aside > span {
         transform: translateX($imageShift);
       }
     }
@@ -171,6 +172,24 @@
       order: 1;
       margin-right: 134px;
       margin-left: 83px;
+    }
+  }
+
+  &.not-viewed {
+
+    #{$block}__image-wrapper {
+      @extend %image-wrapper--not-viewed;
+    }
+  }
+
+  &.viewed {
+
+    #{$block}__image-wrapper {
+      @extend %image-wrapper--viewed;
+    }
+
+    &#{$block}--inverted #{$block}__image-wrapper {
+      @extend %image-wrapper--viewed-inverted;
     }
   }
 }
