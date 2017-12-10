@@ -16,6 +16,10 @@
 
   &__content {
     flex: auto;
+
+    @include media {
+      overflow-x: hidden;
+    }
   }
 
   .main & {
