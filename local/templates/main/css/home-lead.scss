@@ -13,11 +13,8 @@
 
   &__contacts {
     position: absolute;
-    z-index: 3;
-    bottom: $padding;
-  }
-
-  &__contacts {
+    z-index: 50;
     left: $padding;
+    bottom: $padding;
   }
 }

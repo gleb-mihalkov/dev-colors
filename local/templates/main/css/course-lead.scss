@@ -6,12 +6,25 @@
 
   &__container {
     @extend %container;
-    background-position: right $containerPadding center;
-    background-size: contain;
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 100%;
+  }
+
+  &__aside {
+    background-position: right center;
+    background-size: contain;
+    position: absolute;
+    left: $containerPadding;
+    right: $containerPadding;
+    display: block;
+    height: 100%;
+  }
+
+  &__main {
+    position: relative;
   }
 
   &__title {
@@ -49,5 +62,9 @@
 
   &__share {
     margin-left: 48px;
+  }
+
+  @include media {
+    display: none;
   }
 }

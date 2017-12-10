@@ -386,4 +386,30 @@
   &__next {
     @extend %arrow--next;
   }
+
+  @include media {
+    height: 707px + 102px;
+
+    &__items {
+      height: 707px;
+    }
+
+    &__item {
+      left: $containerPaddingExtraSmall;
+      right: $containerPaddingExtraSmall;
+    }
+
+    &__arrows {
+      bottom: 0;
+    }
+
+    &__arrows-container {
+      justify-content: center;
+      padding-left: $containerPaddingExtraSmall;
+    }
+
+    &__prev {
+      margin-left: 0;
+    }
+  }
 }

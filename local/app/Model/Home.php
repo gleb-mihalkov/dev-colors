@@ -4,42 +4,23 @@ namespace App\Model;
 /**
  * Модель картинки с главной страницы.
  */
-class Home extends News
+class Home extends PicturedNews
 {
     /**
-     * Изображение для экрана монитора.
+     * Показывает, является ли слайд статическим.
      *
-     * @var string
+     * @var bool
      */
-    public $imageDesktop;
-
-    /**
-     * Изображение для экрана планшета.
-     *
-     * @var string
-     */
-    public $imageTablet;
-
-    /**
-     * Изображение для экрана мобильного.
-     *
-     * @var string
-     */
-    public $imageMobile;
+    public $isStatic;
 
     /**
      * Создает экземпляр класса.
      *
-     * @param array $data Данные из компонента новостей.
+     * @param array $data Данные от компонента.
      */
     public function __construct(array $data)
     {
         parent::__construct($data);
-
-        $image = $data['PREVIEW_PICTURE'];
-        
-        $this->imageDesktop = self::getImageResize($image, 1920);
-        $this->imageTable = self::getImageResize($image, 1200);
-        $this->imageMobile = self::getImageResize($image, 640);
+        $this->isStatic = self::getProperty($data, 'IS_STATIC');
     }
 }

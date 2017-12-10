@@ -135,4 +135,26 @@
       visibility: visible;
     }
   }
+
+  @include media {
+
+    &__items-wrapper {
+      text-align: center;
+    }
+
+    &__items {
+      height: 500px;
+    }
+
+    &__prev,
+    &__next {
+      background-position: 50%;
+      position: static;
+      display: inline-block;
+      vertical-align: middle;
+      height: 102px;
+      margin: 0;
+      width: $arrowWidth + 22px;
+    }
+  }
 }

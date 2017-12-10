@@ -18,4 +18,13 @@
     @extend %container;
     margin-top: 190px;
   }
+
+  // @include media() {
+
+  //   &__about {
+  //     max-width: $containerWidthSmall;
+  //     padding-left: $containerPaddingSmall;
+  //     padding-right: $containerPaddingSmall;
+  //   }
+  // }
 }

@@ -208,6 +208,11 @@
 		return to(node, index, effect);
 	};
 
+	window.carouselIndex = function(element) {
+		var index = wrap(element).children().filter('.active').index();
+		return index;
+	};
+
 	window.carouselToLast = function(element, effect) {
 		var node = wrap(element);
 		return toLast(node, effect);

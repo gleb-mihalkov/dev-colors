@@ -1,0 +1,47 @@
+.course-lead-small {
+  padding-top: 50px;
+
+  &__title {
+    @extend %container, %container--width-smaller;
+    display: block;
+    margin-bottom: 17.50px;
+    font-family: $fontFamilyHeading;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 38px;
+  }
+
+  &__share-top {
+    margin-bottom: 52px;
+  }
+
+  &__image-group {
+    background-color: $colorPink;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 68px;
+  }
+
+  &__image {
+    background-position: bottom center;
+    background-size: contain;
+    display: block;
+    width: 100%;
+    height: 409px;
+  }
+
+  &__text {
+    display: block;
+    width: 100%;
+    max-width: 516px;
+    margin: 0 auto 40px;
+    text-align: center;
+    line-height: 32px;
+  }
+
+  @include media {
+    display: block;
+  }
+}

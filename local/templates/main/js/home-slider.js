@@ -1,6 +1,13 @@
 !(function($) {
 
   /**
+   * Максимальная ширина экрана, при которой отображается слайдер.
+   *
+   * @type {Number}
+   */
+  var maxWidth = 1450;
+
+  /**
    * Время задержки прокрутки.
    *
    * @type {Number}
@@ -73,10 +80,10 @@
       return;
     }
 
-    sliderIndex += 1;
+    var index = carouselIndex(slider) + 1;
 
-    if (sliderIndex < sliderCount) {
-      carouselTo(slider, sliderIndex, 'next');
+    if (index < sliderCount) {
+      carouselTo(slider, index, 'next');
       return;
     }
 
@@ -111,6 +118,10 @@
    * @return {void}
    */
   function onReady() {
+    if (document.body.clientWidth < maxWidth) {
+      return;
+    }
+
     container = $('.home-slider');
 
     if (!container.length) {

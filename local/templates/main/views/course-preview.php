@@ -31,6 +31,7 @@
             <span
                 style="background-image: url(<?= $item->image; ?>)"
                 class="course-preview__image"
+                data-fix-height=""
                 ></span>
         </span>
     </a>

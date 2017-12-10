@@ -24,8 +24,6 @@
     span {
       background-position: right bottom;
       background-size: contain;
-      width: $asideWidth;
-      height: $asideHeight;
     }
   }
 
@@ -154,6 +152,51 @@
     }
     100% {
       transform: translate(-100%, 0);
+    }
+  }
+
+  @include media {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+    &__aside {
+      position: relative;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      margin: 0;
+      display: block;
+      width: 100%;
+      height: 409px;
+      order: 1;
+    }
+
+    &__main {
+      position: static;
+      order: 2;
+      width: 100%;
+      height: auto;
+      margin: 0;
+      margin-top: 24px !important;
+      padding: 0;
+    }
+
+    &__image-wrapper span {
+      background-position: center bottom !important;
+    }
+
+    &__numbers {
+      display: none;
+    }
+
+    &__text {
+      margin-bottom: 28px;
     }
   }
 }

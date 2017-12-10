@@ -12,10 +12,11 @@
 <div class="course">
     <div class="course__header">
         <div class="course-lead">
-            <div
-                style="background-image: url(<?= $item->image; ?>)"
-                class="course-lead__container"
-                >
+            <div class="course-lead__container">
+                <div
+                    style="background-image: url(<?= $item->image; ?>)"
+                    class="course-lead__aside"
+                    ></div>
                 <div class="course-lead__main">
                     <h1 class="course-lead__title"><?= $item->title; ?></h1>
                     <p class="course-lead__text"><?= $item->desc; ?></p>
@@ -34,6 +35,24 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="course-lead-small">
+            <h1 class="course-lead-small__title"><?= $item->title; ?></h1>
+            <div class="course-lead-small__share-top">
+                <? Template::show(SITE_TEMPLATE_PATH.'/views/share.php', [
+                    'TYPE' => 'buttons',
+                    'TITLE' => $item->title,
+                    'TEXT' => $item->desc,
+                    'IMAGE' => $item->image
+                ]); ?>
+            </div>
+            <p class="course-lead-small__text"><?= $item->desc; ?></p>
+            <figure class="course-lead-small__image-group">
+                <span
+                    style="background-image: url(<?= $item->image; ?>)"
+                    class="course-lead-small__image"
+                    ></span>
+            </figure>
         </div>
     </div>
     <div class="course__content">

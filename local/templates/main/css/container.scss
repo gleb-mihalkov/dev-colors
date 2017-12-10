@@ -34,8 +34,14 @@
     }
   }
 
-  @include mediaExtraSmall {
+  @include media {
+    max-width: $containerWidthExtraSmall;
     padding-left: $containerPaddingExtraSmall;
     padding-right: $containerPaddingExtraSmall;
   }
+
+  // @include mediaExtraSmall {
+  //   padding-left: $containerPaddingExtraSmall;
+  //   padding-right: $containerPaddingExtraSmall;
+  // }
 }
