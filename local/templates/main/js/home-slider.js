@@ -64,6 +64,29 @@
   var prevScroll = 0;
 
   /**
+   * Время смены слайдов.
+   *
+   * @type {Number}
+   */
+  var duration = 0;
+
+  /**
+   * Показывает, выполняется ли в данный момент смена слайдов.
+   *
+   * @type {Bool}
+   */
+  var isTransition = false;
+
+  /**
+   * Обрабатывает окончание смены слайдов.
+   *
+   * @return {void}
+   */
+  function onTransition() {
+    isTransition = false;
+  }
+
+  /**
    * Обрабатывает прокрутку страницы.
    *
    * @param  {Event} e Событие.
@@ -72,23 +95,31 @@
   function onScroll(e) {
     window.scrollTo(0, 0);
 
-    var time = (new Date()).getTime();
-    var diff = time - prevScroll;
-    prevScroll = time;
+    // var time = (new Date()).getTime();
+    // var diff = time - prevScroll;
+    // prevScroll = time;
     
-    if (diff <= throttleTime) {
+    // if (diff <= throttleTime) {
+    //   return;
+    // }
+    
+    if (isTransition) {
       return;
     }
 
+    isTransition = true;
     var index = carouselIndex(slider) + 1;
 
-    if (index < sliderCount) {
-      carouselTo(slider, index, 'next');
+    if (index >= sliderCount) {
+      $.ajax('/home-slider-scrolled.php');
+      doc.off('scroll', onScroll);
       return;
     }
 
-    doc.off('scroll', onScroll);
-  }
+    isTransition = true;
+    carouselTo(slider, index, 'next');
+    setTimeout(onTransition, duration);
+  } 
 
   /**
    * Инициализирует просмотр сверху главной страницы.
@@ -130,9 +161,10 @@
 
     slider = $('#homeSlider');
     sliderCount = carouselCount(slider);
+    duration = slider.attr('data-duration') * 1 + 10;
 
     var scrollPosition = doc.scrollTop();
-    var isScrollStart = scrollPosition == 0;
+    var isScrollStart = !slider.hasClass('scrolled') && scrollPosition == 0;
 
     if (isScrollStart) {
       initScrollStart();
