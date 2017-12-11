@@ -20,6 +20,12 @@
 
     &:first-child {
       margin-left: 0;
+
+      &:before {
+        // background-image: url('img/menu-splash-short.svg');
+        // margin-left: -1px;
+        // width: calc(100% + 2px);
+      }
     }
 
     &:before, &:after {
