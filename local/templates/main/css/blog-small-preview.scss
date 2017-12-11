@@ -1,14 +1,30 @@
 .blog-small-preview {
+  $imageHeight: 240px;
+  $imageHeightSmall: 332px;
+  $imageHeightExtraSmall: 180px;
   display: block;
   text-align: center;
 
   &__image {
+    @include image-not-viewed();
     background-position: center center;
     background-size: cover;
     display: block;
     width: 100%;
-    height: $blogSmallPreviewImageHeight;
+    height: $imageHeight;
     margin-bottom: 26px;
+
+    .viewed & {
+      @include image-viewed();
+    }
+
+    @include media() {
+      height: $imageHeightSmall;
+    }
+
+    @include mediaExtraSmall() {
+      height: $imageHeightExtraSmall;
+    }
   }
 
   &__title {

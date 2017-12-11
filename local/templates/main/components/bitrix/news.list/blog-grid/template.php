@@ -27,7 +27,7 @@
                 $item = $items[$i];
             ?>
             <article class="blog-grid__item">
-                <div class="blog-small-preview" id="<?= $item->getEditId($this); ?>">
+                <div class="blog-small-preview  not-viewed" id="<?= $item->getEditId($this); ?>">
                     <a
                         style="background-image: url(<?= $item->image; ?>)"
                         class="blog-small-preview__image"

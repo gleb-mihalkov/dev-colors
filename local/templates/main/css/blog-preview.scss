@@ -7,6 +7,8 @@
   $imageWidthSmall: 614px;
   $imageWidthScale: $imageWidth / $imageWidthSmall;
   $imageHeight: 409px;
+  $imageHeightSmall: 325px;
+  $imageHeightExtraSmall: 176px;
   $imageShift: $imageWidth - $imageWidthSmall;
   $asideOffsetVert: ($asideHeight - $imageHeight) / 2;
   $asideOffsetHorz: $asideWidth - $imageWidth;
@@ -18,6 +20,13 @@
   display: flex;
   justify-content: space-between;
   height: $height;
+
+  @include media() {
+    display: block;
+    width: 100%;
+    height: auto;
+    text-align: center;
+  }
 
   &__aside {
     position: relative;
@@ -31,6 +40,19 @@
     padding-bottom: $asideOffsetVert;
     overflow: hidden;
 
+    @include media() {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      width: 100%;
+      height: $imageHeightSmall;
+      padding: 0 !important;
+    }
+
+    @include mediaExtraSmall() {
+      height: $imageHeightExtraSmall;
+    }
+
     &:before, &:after, & > span {
       transition: $transSlow;
       transform-origin: left center;
@@ -39,6 +61,10 @@
 
     &:before {
       height: 100%;
+
+      @include media() {
+        display: none;
+      }
     }
 
     &:before, &:after {
@@ -89,6 +115,13 @@
     flex-direction: column;
     justify-content: center;
     margin-left: 134px;
+
+    @include media() {
+      display: block;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      margin-top: 24px;
+    }
   }
 
   &__title {

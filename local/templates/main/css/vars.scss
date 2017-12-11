@@ -12,6 +12,8 @@ $iconHeight: $fontSizeNormal * $lineHeight;
 
 $arrowWidth: 48px;
 $arrowHeight: 8px;
+$sliderArrowHeight: 102px;
+$sliderArrowWidth: $arrowWidth + 22px;
 
 $colorBlack: #343434;
 $colorBlackRich: #373737;
@@ -47,6 +49,17 @@ $leadPadding: 55px;
 $blogSmallPreviewImageHeight: 240px;
 $homeSlideHeight: 100vh;
 $coursePreviewHeight: 703px;
+$coursePreviewHeightSmall: 484px;
+$coursePreviewHeightExtraSmall: 263px;
+$coursePreviewImageHeight: 703px;
+$coursePreviewImageHeightSmall: 484px;
+$coursePreviewImageHeightExtraSmall: 263px;
+$coursePreviewContentHeightSmall: 298px;
+$coursePreviewContentHeightExtraSmall: 377px;
+$coursePreviewHeight: $coursePreviewImageHeight;
+$coursePreviewHeightSmall: $coursePreviewImageHeightSmall + $coursePreviewContentHeightSmall;
+$coursePreviewHeightExtraSmall: $coursePreviewImageHeightExtraSmall + $coursePreviewContentHeightExtraSmall;
+
 $responsePreviewHeight: 500px;
 
 $transNormal: all .25s ease-in-out;

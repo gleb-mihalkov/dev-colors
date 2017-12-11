@@ -138,6 +138,11 @@
       bottom: 0;
       top: 0;
       display: block;
+
+      &.vertical {
+        top: $headerHeight;
+        background-size: cover;
+      }
     }
   }
 

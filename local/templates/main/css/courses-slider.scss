@@ -2,6 +2,7 @@
   $block: nth(&, 1);
   $margin: 173px;
   $marginHalf: $margin / 2;
+  $arrowsHeight: $sliderArrowHeight;
   position: relative;
 
   &__items {
@@ -9,6 +10,14 @@
     position: relative;
     height: $coursePreviewHeight;
     overflow: hidden;
+
+    @include media() {
+      height: $coursePreviewHeightSmall;
+    }
+
+    @include mediaExtraSmall() {
+      height: $coursePreviewHeightExtraSmall;
+    }
   }
 
   &__item {
@@ -16,6 +25,11 @@
     left: $containerPadding;
     right: $containerPadding;
     top: 0;
+
+    @include media() {
+      left: $containerPaddingExtraSmall;
+      right: $containerPaddingExtraSmall;
+    }
 
     @mixin course-preview-text-visible() {
       transform: translateX(0);
@@ -360,7 +374,11 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 102px;
+    height: $arrowsHeight;
+
+    @include media() {
+      position: static;
+    }
   }
 
   &__arrows-container {
@@ -368,11 +386,16 @@
     display: flex;
     padding-left: 70px;
     height: 100%;
+
+    @include media() {
+      justify-content: center;
+      padding-left: $containerPaddingExtraSmall;
+    }
   }
 
   &__prev, &__next {
     @extend %arrow;
-    width: $arrowWidth + 22px;
+    width: $sliderArrowWidth;
     height: 100%;
     padding-left: 11px;
     padding-right: 11px;
@@ -381,35 +404,39 @@
   &__prev {
     @extend %arrow--prev;
     margin-left: 59px;
+
+    @include media() {
+      margin-left: 0;
+    }
   }
 
   &__next {
     @extend %arrow--next;
   }
 
-  @include media {
-    height: 707px + 102px;
+  // @include media {
+  //   height: 707px + 102px;
 
-    &__items {
-      height: 707px;
-    }
+  //   &__items {
+  //     height: 707px;
+  //   }
 
-    &__item {
-      left: $containerPaddingExtraSmall;
-      right: $containerPaddingExtraSmall;
-    }
+  //   &__item {
+  //     left: $containerPaddingExtraSmall;
+  //     right: $containerPaddingExtraSmall;
+  //   }
 
-    &__arrows {
-      bottom: 0;
-    }
+  //   &__arrows {
+  //     bottom: 0;
+  //   }
 
-    &__arrows-container {
-      justify-content: center;
-      padding-left: $containerPaddingExtraSmall;
-    }
+  //   &__arrows-container {
+  //     justify-content: center;
+  //     padding-left: $containerPaddingExtraSmall;
+  //   }
 
-    &__prev {
-      margin-left: 0;
-    }
-  }
+  //   &__prev {
+  //     margin-left: 0;
+  //   }
+  // }
 }

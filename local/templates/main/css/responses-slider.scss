@@ -1,5 +1,7 @@
 .responses-slider {
   $block: nth(&, 1);
+  $sliderArrowWidthLarge: $arrowWidth + 60px;
+  $mediaWidth: $containerWidth - $containerPadding * 2 + $sliderArrowWidthLarge * 2;
   position: relative;
 
   &__title {
@@ -7,15 +9,9 @@
     margin-bottom: 66px;
   }
 
-  &__items-wrapper {
-    @extend %container;
-    position: relative;
-  }
-
   &__items {
     position: relative;
     display: block;
-    height: $responsePreviewHeight;
     overflow: hidden;
 
     &:before {
@@ -31,8 +27,12 @@
       visibility: hidden;
     }
 
-    &.next,
-    &.back {
+    &-wrapper {
+      @extend %container;
+      position: relative;
+    }
+
+    &.next, &.back {
 
       &:before {
         visibility: visible;
@@ -47,15 +47,28 @@
       }
     }
 
-    &.next:before {
-      animation: responses-slider-next 1s ease-in-out forwards;
-      transform: translateX(100%);
+    &.next {
       
+      & ~ #{$block}__arrows #{$block}__next {
+        animation: arrow-next 1s ease-in-out;
+      }
+
+      &:before {
+        animation: responses-slider-next 1s ease-in-out forwards;
+        transform: translateX(100%);
+      }
     }
 
-    &.back:before {
-      animation: responses-slider-prev 1s ease-in-out forwards;
-      transform: translateX(-100%);
+    &.back {
+
+      & ~ #{$block}__arrows #{$block}__prev {
+        animation: arrow-prev 1s ease-in-out;
+      }
+
+      &:before {
+        animation: responses-slider-prev 1s ease-in-out forwards;
+        transform: translateX(-100%);
+      }
     }
   }
 
@@ -64,13 +77,15 @@
     position: absolute;
     left: 0;
     top: 0;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
     height: 100%;
     visibility: hidden;
 
-    .response-preview {
-      height: 100%;
+    & > * {
+      flex-shrink: 0;
     }
 
     &.active {
@@ -82,28 +97,49 @@
     }
   }
 
-  &__prev,
-  &__next {
+  &__arrows {
+    position: absolute;
+    bottom: 0;
+    left: $containerPadding;
+    right: $containerPadding;
+
+    @include mediaCustom($mediaWidth) {
+      position: static;
+      display: flex;
+      justify-content: center;
+      height: $sliderArrowHeight;
+    }
+  }
+
+  &__prev, &__next {
     @extend %arrow;
     position: absolute;
     bottom: 0;
     display: block;
     height: $responsePreviewHeight;
-    width: $arrowWidth + 60px;
+    width: $sliderArrowWidthLarge;
+
+    @include mediaCustom($mediaWidth) {
+      background-position: center center !important;
+      position: static;
+      width: $sliderArrowWidth;
+      height: 100%;
+      margin: 0 !important;
+    }
   }
 
   &__prev {
     @extend %arrow--prev;
     background-position: left center;
-    left: $containerPadding;
-    margin-left: -($arrowWidth + 60px);
+    left: 0;
+    margin-left: -$sliderArrowWidthLarge;
   }
 
   &__next {
     @extend %arrow--next;
     background-position: right center;
-    right: $containerPadding;
-    margin-right: -($arrowWidth + 60px);
+    right: 0;
+    margin-right: -$sliderArrowWidthLarge;
   }
 
   @keyframes responses-slider-prev {
@@ -133,28 +169,6 @@
     }
     100% {
       visibility: visible;
-    }
-  }
-
-  @include media {
-
-    &__items-wrapper {
-      text-align: center;
-    }
-
-    &__items {
-      height: 500px;
-    }
-
-    &__prev,
-    &__next {
-      background-position: 50%;
-      position: static;
-      display: inline-block;
-      vertical-align: middle;
-      height: 102px;
-      margin: 0;
-      width: $arrowWidth + 22px;
     }
   }
 }

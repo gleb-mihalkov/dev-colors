@@ -20,7 +20,7 @@
     <figure class="blog__image-group">
         <span
             style="background-image: url(<?= $item->image; ?>)"
-            class="blog__image"
+            class="blog__image  not-viewed"
             ></span>
         <figcaption class="blog__image-caption">
             Фото: <?= $item->imageSource; ?>

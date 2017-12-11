@@ -44,19 +44,6 @@
             </div>
             <div class="home-slider__effect"></div>
         </div>
-        <script type="text/javascript">
-            !(function() {
-                var box = document.querySelector('.home-slider__slides');
-
-                var fn = function() {
-                    var width = box.clientWidth;
-                    box.style.height = width + 'px';
-                };
-
-                window.addEventListener('resize', fn);
-                fn();
-            })();
-        </script>
     </div>
     <div class="home-slider__dots" data-dots="homeSlider" data-effect="next">
         <? for ($i = 0; $i < $itemsCount; $i++) : ?>
@@ -72,4 +59,39 @@
     <div class="home-slider__static">
         <div style="background-image: url(<?= $staticItem->image; ?>)"></div>
     </div>
+    <script type="text/javascript">
+        !(function() {
+            var box = document.querySelector('.home-slider__slides');
+            var staticBox = document.querySelector('.home-slider__static');
+            var staticImage = document.querySelector('.home-slider__static div');
+            var maxCoef = 0.75;
+
+            var update = function() {
+                var width = box.clientWidth;
+                box.style.height = width + 'px';
+
+                var styles = getComputedStyle(staticBox);
+                var isStatic = styles['display'] != 'none';
+
+                if (!isStatic) {
+                    return;
+                }
+
+                var staticHeight = styles['height'].replace('px', '') * 1;
+                var staticWidth = styles['width'].replace('px', '') * 1;
+
+                var coef = staticWidth / staticHeight;
+
+                if (coef > maxCoef) {
+                    staticImage.classList.remove('vertical');
+                    return;    
+                }
+
+                staticImage.classList.add('vertical');
+            };
+
+            window.addEventListener('resize', update);
+            update();
+        })();
+    </script>
 </div>

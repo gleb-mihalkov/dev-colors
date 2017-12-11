@@ -31,7 +31,35 @@
                 </div>
             <? endfor; ?>
         </div>
-        <button type="button" class="responses-slider__prev" data-back="responsesSlider"></button>
-        <button type="button" class="responses-slider__next" data-next="responsesSlider"></button>
+        <div class="responses-slider__arrows">
+            <button type="button" class="responses-slider__prev" data-back="responsesSlider"></button>
+            <button type="button" class="responses-slider__next" data-next="responsesSlider"></button>
+        </div>
+        <script type="text/javascript">
+            !(function() {
+                var slider = document.querySelector('.responses-slider__items');
+                var previews = document.querySelectorAll('.response-preview');
+
+                function update() {
+                    var maxHeight = 0;
+
+                    for (var i = 0; i < previews.length; i++) {
+                        var preview = previews[i];
+                        var height = preview.offsetHeight;
+
+                        if (height < maxHeight) {
+                            continue;
+                        }
+
+                        maxHeight = height;
+                    }
+
+                    slider.style.height = maxHeight + 'px';
+                }
+                
+                window.addEventListener('resize', update);
+                update();
+            })();
+        </script>
     </div>
 </section>

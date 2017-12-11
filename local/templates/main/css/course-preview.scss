@@ -1,9 +1,14 @@
 .course-preview {
   $block: nth(&, 1);
-  $height: $coursePreviewHeight;
+  $height: $coursePreviewImageHeight;
   $mainHeight: 498px;
   $asideWidth: 928px;
   $asideHeight: $height;
+  $asideHeightSmall: $coursePreviewImageHeightSmall;
+  $asideHeightExtraSmall: $coursePreviewImageHeightExtraSmall;
+  $mainHeightSmall: false;
+  $mainHeightExtraSmall: false;
+  $heightSmall: $asideHeightSmall + $mainHeightSmall;
   position: relative;
   display: block;
   width: 100%;
@@ -173,7 +178,7 @@
       margin: 0;
       display: block;
       width: 100%;
-      height: 409px;
+      height: $asideHeightSmall;
       order: 1;
     }
 
@@ -197,6 +202,23 @@
 
     &__text {
       margin-bottom: 28px;
+    }
+
+    &__link {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  @include mediaExtraSmall {
+
+    &__title {
+      font-size: 24px;
+    }
+
+    &__aside {
+      height: $asideHeightExtraSmall;
     }
   }
 }

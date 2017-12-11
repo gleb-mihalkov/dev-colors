@@ -3,28 +3,31 @@
 
   &__about {
     @extend %container, %container--width-small;
-    margin-top: 116px;
+    margin-top: 66px;
   }
 
   &__courses {
     margin-top: 140px;
+
+    @include media() {
+      margin-top: 66px;
+    }
   }
 
   &__responses {
     margin-top: 190px;
+
+    @include media() {
+      margin-top: 66px;
+    }
   }
 
   &__news {
     @extend %container;
     margin-top: 190px;
+
+    @include media() {
+      margin-top: 66px;
+    }
   }
-
-  // @include media() {
-
-  //   &__about {
-  //     max-width: $containerWidthSmall;
-  //     padding-left: $containerPaddingSmall;
-  //     padding-right: $containerPaddingSmall;
-  //   }
-  // }
 }
