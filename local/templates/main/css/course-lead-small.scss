@@ -1,5 +1,6 @@
 .course-lead-small {
   padding-top: 50px;
+  display: none;
 
   &__title {
     @extend %container, %container--width-smaller;
