@@ -1,0 +1,33 @@
+.service-page {
+  background-image: url('img/service-bg.png');
+  background-position: center bottom;
+  background-color: $colorPink;
+  background-size: contain;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: $headerHeight;
+  padding-bottom: $headerHeight;
+
+  &__inner {
+    @extend %container;
+    text-align: center;
+  }
+
+  &__title {
+    font-family: $fontFamilyHeading;
+    font-size: 46px;
+    font-weight: 400;
+    line-height: 31px;
+    margin-bottom: 24px;
+  }
+
+  &__text {
+    font-weight: 500;
+    margin-bottom: 58px;
+  }
+
+  &__link {
+    @extend %button, %button--type-dark, %button--width-medium;
+  }
+}

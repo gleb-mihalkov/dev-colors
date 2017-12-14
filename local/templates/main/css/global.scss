@@ -4,6 +4,11 @@
   flex-direction: column;
   min-height: 100%;
   padding-top: $headerHeight;
+  
+  .service &,
+  .main & {
+    padding-top: 0;
+  }
 
   &__header {
     background-color: $colorWhite;
@@ -12,22 +17,27 @@
     left: 0;
     top: 0;
     width: 100%;
+    
+    .service &,
+    .main & {
+      background-color: transparent;
+      position: static;
+    }
   }
 
   &__content {
     flex: auto;
 
+    .service & {
+      display: flex;
+
+      & > * {
+        width: 100%;
+      }
+    }
+
     @include media {
       overflow-x: hidden;
-    }
-  }
-
-  .main & {
-    padding-top: 0;
-
-    &__header {
-      background-color: transparent;
-      position: static;
     }
   }
 }

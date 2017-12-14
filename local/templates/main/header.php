@@ -13,6 +13,8 @@
 
     $isAdmin = $USER->IsAdmin();
     $is404 = defined('ERROR_404') && ERROR_404 == 'Y';
+    $isBanner = defined('SITE_NOT_WORKING') && SITE_NOT_WORKING == 'Y';
+    $isService = $is404 || $isBanner;
     $isMain = $page === '/';
     
     $siteName = $site['NAME'];
@@ -21,7 +23,7 @@
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/script.js');
 
     $pageClass = new HtmlClass();
-    $pageClass->is($is404, 'not-found');
+    $pageClass->is($isService, 'service');
     $pageClass->is($isMain, 'main');
 
     $footerYear = date('Y');
@@ -31,6 +33,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width; initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.ico?v=2">
     <title><?= $APPLICATION->ShowTitle(); ?></title>
     <?
         $APPLICATION->ShowMeta("description", false, false);

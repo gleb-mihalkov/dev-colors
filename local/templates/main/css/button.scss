@@ -65,6 +65,55 @@
         }
       }
     }
+
+    &-dark {
+      border-color: $colorBlack;
+      background-color: $colorBlack;
+
+      &:after {
+        transition: all .25s ease-in-out;
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        transform-origin: left center;
+        transform: scaleX(0);
+        background-color: $colorWhite;
+        display: block;
+        content: '';
+      }
+
+      span {
+        transition: all .25s ease-in-out;
+        position: relative;
+        z-index: 2;
+        color: $colorWhite;
+      }
+
+      &:hover {
+
+        span {
+          color: $colorBlack;
+        }
+
+        &:after {
+          transform: scaleX(1);
+        }
+      }
+
+      &:active {
+
+        span {
+          color: $colorBlack;
+        }
+
+        &:after {
+          background-color: transparent;
+        }
+      }
+    }
   }
 
   &--width {
@@ -75,6 +124,10 @@
 
     &-normal {
       width: 170px;
+    }
+
+    &-medium {
+      width: 248px;
     }
   }
 }

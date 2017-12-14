@@ -4,6 +4,17 @@
     @define('ERROR_404', 'Y');
     require($_SERVER['DOCUMENT_ROOT'].'/bitrix/header.php');
 
-    $APPLICATION->SetTitle('404 Not Found');
+    $APPLICATION->SetTitle('Страница не найдена');
 ?>
+<div class="service-page">
+    <div class="service-page__inner">
+        <h1 class="service-page__title">Страница не найдена</h1>
+        <div class="service-page__text">Перейдите на главную страницу</div>
+        <div class="service-page__bottom">
+            <a href="/" class="service-page__link">
+                <span>На главную</span>
+            </a>
+        </div>
+    </div>
+</div>
 <? require($_SERVER['DOCUMENT_ROOT'].'/bitrix/footer.php'); ?>
