@@ -2,6 +2,8 @@
   $space: 86px;
   $padding: $space / 2;
   $block: nth(&, 1);
+  width: 100%;
+  overflow: hidden;
 
   &__title {
     @extend %title, %title--large, %title--underline, %title--align-center;
@@ -17,6 +19,8 @@
 
     @include media() {
       flex-direction: column;
+      margin-left: 0;
+      margin-right: 0;
     }
   }
 
@@ -29,9 +33,24 @@
     @include media() {
       width: 100%;
       margin-top: 26px;
+      padding: 0;
+
+      .blog-small-preview__image:after {
+        animation-name: image-viewing-horz;
+      }
     }
 
-    
+    @for $i from 0 through 2 {
+
+      &:nth-child(#{$i + 1}) .blog-small-preview__image:before,
+      &:nth-child(#{$i + 1}) .blog-small-preview__image:after {
+        animation-delay: #{$i * .25}s;
+
+        @include media() {
+          animation-delay: 0s;
+        }
+      }
+    }
   }
 
   &__bottom {

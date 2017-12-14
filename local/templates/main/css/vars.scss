@@ -94,3 +94,9 @@ $transSlow: all 2s cubic-bezier(0.23, 1, 0.38, 1);
     @content;
   }
 }
+
+@mixin mediaRetina() {
+  @media screen and (min-width: 1920px) {
+    @content;
+  }
+}

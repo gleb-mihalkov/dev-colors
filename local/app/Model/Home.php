@@ -1,6 +1,8 @@
 <?php
 namespace App\Model;
 
+use CFile;
+
 /**
  * Модель картинки с главной страницы.
  */
@@ -14,6 +16,13 @@ class Home extends PicturedNews
     public $isStatic;
 
     /**
+     * Изображение для широкого экрана.
+     *
+     * @var string
+     */
+    public $imageRetina;
+
+    /**
      * Создает экземпляр класса.
      *
      * @param array $data Данные от компонента.
@@ -22,5 +31,7 @@ class Home extends PicturedNews
     {
         parent::__construct($data);
         $this->isStatic = self::getProperty($data, 'IS_STATIC');
+        $this->imageRetina = self::getProperty($data, 'RETINA');
+        $this->imageRetina = CFile::GetPath($this->imageRetina);
     }
 }

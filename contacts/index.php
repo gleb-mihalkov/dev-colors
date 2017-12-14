@@ -1,9 +1,9 @@
 <?
     require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-    $APPLICATION->SetTitle("Контакты");
+    $APPLICATION->SetTitle("Контакты Школы макияжа Краски");
 ?>
 <div class="contacts-page">
-    <h1 class="contacts-page__title">Контакты</h1>
+    <h1 class="contacts-page__title">Контакты Школы макияжа Краски</h1>
     <div class="contacts-page__text">
         <? $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH.'/content/contacts-text.txt'); ?>
     </div>

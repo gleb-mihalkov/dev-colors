@@ -1,8 +1,8 @@
 <?
     require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-    $APPLICATION->SetPageProperty("title", "Главная страница");
-    $APPLICATION->SetPageProperty("NOT_SHOW_NAV_CHAIN", "Y");
-    $APPLICATION->SetTitle("Главная страница");
+$APPLICATION->SetPageProperty("title", "ШКОЛА МАКИЯЖА КРАСКИ");
+        $APPLICATION->SetPageProperty("NOT_SHOW_NAV_CHAIN", "Y");
+    $APPLICATION->SetTitle("ШКОЛА МАКИЯЖА КРАСКИ");
 
     use App\Helpers\Template;
 ?>
@@ -102,7 +102,7 @@
     </div>
     <div class="home-page__about">
         <article class="about-preview">
-            <h2 class="about-preview__title">Школа макияжа краски</h2>
+            <h1 class="about-preview__title">Школа макияжа краски</h1>
             <div class="about-preview__text">
                 <? $APPLICATION->IncludeFile(SITE_TEMPLATE_PATH.'/content/about-text.txt'); ?>
             </div>

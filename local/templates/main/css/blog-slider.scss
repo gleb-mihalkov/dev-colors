@@ -1,0 +1,162 @@
+.blog-slider {
+  @extend %container;
+  $block: nth(&, 1);
+  $sliderArrowWidthLarge: $arrowWidth + 60px;
+  $mediaWidth: $containerWidth - $containerPadding * 2 + $sliderArrowWidthLarge * 2;
+  $imageHeight: 500px;
+  $imageHeightSmall: 329px;
+  $imageHeightExtraSmall: 170px;
+  $imageWidth: 892px;
+  $imageWidthSmall: 476px;
+  $imageWidthExtraSmall: 240px;
+  position: relative;
+
+  &__items {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    height: $imageHeight;
+
+    @include media() {
+      height: $imageHeightSmall;
+    }
+
+    @include mediaExtraSmall() {
+      height: $imageHeightExtraSmall;
+    }
+
+    &.back ~ #{$block}__arrows #{$block}__prev {
+      animation: arrow-prev 1s ease-in-out;
+    }
+
+    &.next ~ #{$block}__arrows #{$block}__next {
+      animation: arrow-next 1s ease-in-out;
+    }
+  }
+
+  &__item {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    &.active {
+      z-index: 2;
+    }
+
+    &.leave {
+      z-index: 3;
+    }
+  }
+
+  &__image {
+    @include image-viewing(image-viewing-vert);
+    background-position: 50%;
+    background-size: cover;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: $imageWidth;
+    height: $imageHeight;
+
+    @include media() {
+      width: $imageWidthSmall;
+      height: $imageHeightSmall;
+    }
+
+    @include mediaExtraSmall() {
+      width: $imageWidthExtraSmall;
+      height: $imageHeightExtraSmall;
+    }
+
+    .next & {
+      left: auto;
+      right: 0;
+    }
+
+    .back & {
+      left: 0;
+      right: auto;
+    }
+
+    &-wrapper {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+
+      @keyframes blog-slider-image-wrapper {
+        0% {
+          width: 100%;
+        }
+        100% {
+          width: 0;
+        }
+      }
+
+      .next .leave &,
+      .back .leave & {
+        animation: blog-slider-image-wrapper 1s ease-in-out forwards;
+      }
+
+      .next & {
+        left: auto;
+        right: 0;
+      }
+
+      .back & {
+        left: 0;
+        right: auto;
+      }
+    }
+  }
+
+  &__arrows {
+    position: absolute;
+    bottom: 0;
+    left: $containerPadding;
+    right: $containerPadding;
+
+    @include mediaCustom($mediaWidth) {
+      position: static;
+      display: flex;
+      justify-content: center;
+      height: $sliderArrowHeight;
+    }
+  }
+
+  &__prev, &__next {
+    @extend %arrow;
+    position: absolute;
+    bottom: 0;
+    display: block;
+    height: $responsePreviewHeight;
+    width: $sliderArrowWidthLarge;
+
+    @include mediaCustom($mediaWidth) {
+      background-position: center center !important;
+      position: static;
+      width: $sliderArrowWidth;
+      height: 100%;
+      margin: 0 !important;
+    }
+  }
+
+  &__prev {
+    @extend %arrow--prev;
+    background-position: left center;
+    left: 0;
+    margin-left: -$sliderArrowWidthLarge;
+  }
+
+  &__next {
+    @extend %arrow--next;
+    background-position: right center;
+    right: 0;
+    margin-right: -$sliderArrowWidthLarge;
+  }
+}

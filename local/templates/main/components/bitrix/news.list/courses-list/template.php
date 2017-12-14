@@ -8,7 +8,7 @@
     $itemsCount = count($items);
 ?>
 <div class="courses-list">
-    <h1 class="courses-list__title">Курсы</h1>
+    <h1 class="courses-list__title">Курсы макияжа</h1>
     <div class="courses-list__items">
         <? for ($i = 0; $i < $itemsCount; $i++) : ?>
             <?

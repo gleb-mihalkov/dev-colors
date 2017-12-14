@@ -39,16 +39,12 @@
   }
 
   &__image {
-    @include image-not-viewed();
+    @include image-viewing(image-viewing-vert);
     background-position: center center;
     background-size: cover;
     display: block;
     width: 100%;
     height: $imageHeight;
-
-    &.viewed {
-      @include image-viewed();
-    }
 
     @include media() {
       height: $imageHeightSmall;

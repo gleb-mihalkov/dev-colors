@@ -66,8 +66,9 @@
 			4 => "",
 		),
 		"DETAIL_PROPERTY_CODE" => array(
-			0 => "",
-			1 => "",
+			0 => "PICTURE_CAPTION",
+			1 => "SLIDER",
+			2 => ""
 		),
 		"DETAIL_DISPLAY_TOP_PAGER" => "N",
 		"DETAIL_DISPLAY_BOTTOM_PAGER" => "N",

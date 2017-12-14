@@ -94,14 +94,7 @@
    */
   function onScroll(e) {
     window.scrollTo(0, 0);
-
-    // var time = (new Date()).getTime();
-    // var diff = time - prevScroll;
-    // prevScroll = time;
-    
-    // if (diff <= throttleTime) {
-    //   return;
-    // }
+    e.preventDefault();
     
     if (isTransition) {
       return;
@@ -160,13 +153,15 @@
     }
 
     slider = $('#homeSlider');
+
+    if (slider.hasClass('scrolled')) {
+      return;
+    }
+
     sliderCount = carouselCount(slider);
     duration = slider.attr('data-duration') * 1 + 10;
 
-    var scrollPosition = doc.scrollTop();
-    var isScrollStart = !slider.hasClass('scrolled') && scrollPosition == 0;
-
-    if (isScrollStart) {
+    if (doc.scrollTop() == 0) {
       initScrollStart();
     }
     else {

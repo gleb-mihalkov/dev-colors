@@ -37,7 +37,6 @@
         }
     }
 ?>
-<button type="button" class="modal__close" data-close=""></button>
 <h2 class="modal__title">Записаться на курс</h2>
 <div class="modal__text">
     Напишите на какой курс вы бы хотели записаться и на какое время.
@@ -74,3 +73,4 @@
             ><?= $phone->text; ?></a>
     </strong>
 </div>
+<button type="button" class="modal__close" data-close=""></button>
