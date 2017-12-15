@@ -8,13 +8,6 @@
   var maxWidth = 1450;
 
   /**
-   * Время задержки прокрутки.
-   *
-   * @type {Number}
-   */
-  var throttleTime = 750;
-
-  /**
    * Документ.
    *
    * @type {jQuery}
@@ -57,13 +50,6 @@
   var isViewed = false;
 
   /**
-   * Время предыдущего события прокрутки.
-   *
-   * @type {Number}
-   */
-  var prevScroll = 0;
-
-  /**
    * Время смены слайдов.
    *
    * @type {Number}
@@ -76,6 +62,13 @@
    * @type {Bool}
    */
   var isTransition = false;
+
+  /**
+   * Название события.
+   *
+   * @type {String}
+   */
+  var eventName = 'mousewheel MozMousePixelScroll';
 
   /**
    * Обрабатывает окончание смены слайдов.
@@ -93,19 +86,22 @@
    * @return {void}
    */
   function onScroll(e) {
-    window.scrollTo(0, 0);
     e.preventDefault();
-    
-    if (isTransition) {
-      return;
-    }
+    if (isTransition) return;
+
+    var delta = e.originalEvent.deltaY || e.originalEvent.detail || e.originalEvent.wheelDelta;
+    var value = delta > 0 ? 1 : -1;
 
     isTransition = true;
-    var index = carouselIndex(slider) + 1;
+    var index = carouselIndex(slider) + value;
+
+    if (index < 0) {
+      index = sliderCount - 1;
+    }
 
     if (index >= sliderCount) {
       $.ajax('/home-slider-scrolled.php');
-      doc.off('scroll', onScroll);
+      container.off(eventName, onScroll);
       return;
     }
 
@@ -123,7 +119,7 @@
     carouselToFirst(slider);
     window.scrollTo(0, 0);
 
-    doc.on('scroll', onScroll);
+    container.on(eventName, onScroll);
   }
 
   /**

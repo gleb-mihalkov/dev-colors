@@ -16,14 +16,14 @@ $aMenuLinks = Array(
 	),
 	Array(
 		"Мы Вконтакте", 
-		"https://vk.com/", 
+		"https://vk.com/kraskipro", 
 		Array(), 
 		Array(), 
 		"" 
 	),
 	Array(
 		"Мы в Instagram", 
-		"https://www.instagram.com/", 
+		"https://www.instagram.com/yulia_densa/", 
 		Array(), 
 		Array(), 
 		"" 

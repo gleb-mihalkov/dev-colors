@@ -3,6 +3,10 @@
   $margin: 173px;
   $marginHalf: $margin / 2;
   $arrowsHeight: $sliderArrowHeight;
+  $arrowsHeightSmall: 24px;
+  $arrowsHeightExtraSmall: $arrowsHeightSmall * 3;
+  $arrowsTop: $coursePreviewImageHeightSmall + $arrowsHeightSmall;
+  $arrowsTopSmall: $coursePreviewImageHeightExtraSmall;
   position: relative;
 
   &__items {
@@ -377,7 +381,8 @@
     height: $arrowsHeight;
 
     @include media() {
-      position: static;
+      top: 0;
+      bottom: auto;
     }
   }
 
@@ -388,8 +393,7 @@
     height: 100%;
 
     @include media() {
-      justify-content: center;
-      padding-left: $containerPaddingExtraSmall;
+      position: relative;
     }
   }
 
@@ -399,6 +403,17 @@
     height: 100%;
     padding-left: 11px;
     padding-right: 11px;
+
+    @include media() {
+      position: absolute;
+      top: $arrowsTop;
+      height: $arrowsHeightSmall;
+    }
+
+    @include mediaExtraSmall() {
+      top: $arrowsTopSmall;
+      height: $arrowsHeightExtraSmall;
+    }
   }
 
   &__prev {
@@ -407,36 +422,22 @@
 
     @include media() {
       margin-left: 0;
+      left: $containerPaddingSmall;
     }
   }
 
   &__next {
     @extend %arrow--next;
+
+    @include media() {
+      right: $containerPaddingSmall;
+    }
   }
 
-  // @include media {
-  //   height: 707px + 102px;
+  .course-preview__main {
 
-  //   &__items {
-  //     height: 707px;
-  //   }
-
-  //   &__item {
-  //     left: $containerPaddingExtraSmall;
-  //     right: $containerPaddingExtraSmall;
-  //   }
-
-  //   &__arrows {
-  //     bottom: 0;
-  //   }
-
-  //   &__arrows-container {
-  //     justify-content: center;
-  //     padding-left: $containerPaddingExtraSmall;
-  //   }
-
-  //   &__prev {
-  //     margin-left: 0;
-  //   }
-  // }
+    @include mediaExtraSmall() {
+      margin-top: $arrowsHeightExtraSmall !important;
+    }
+  }
 }
