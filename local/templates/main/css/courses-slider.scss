@@ -20,7 +20,7 @@
     }
 
     @include mediaExtraSmall() {
-      height: $coursePreviewHeightExtraSmall;
+      height: $coursePreviewHeightExtraSmall + $arrowsHeightExtraSmall - 24px;
     }
   }
 
