@@ -54,7 +54,7 @@
     }
 
     &:before, &:after, & > span {
-      transition: $transSlow;
+      transition: all .5s ease-in-out;
       transform-origin: left center;
       display: block;
     }
@@ -74,7 +74,7 @@
 
     &:before {
       background-color: $colorPink;
-      transition-delay: .5s;
+      transition-delay: .125s;
       transform: scaleX(1);
       z-index: 1;
       top: 0;
@@ -84,7 +84,7 @@
 
     &:after {
       @extend %arrow, %arrow--next;
-      transition-delay: 1s;
+      transition-delay: .25s;
       transform: translateX(-50%);
       z-index: 3;
       right: 0;
@@ -96,17 +96,15 @@
     }
   }
 
-  &__image-wrapper {
-    @extend %image-wrapper;
-    transition-delay: 0s;
-    transform: translateX(0);
-    position: relative;
-    z-index: 2;
-  }
-
   &__image {
+    @include image-viewing(image-viewing-vert-inverted);
     background-position: 50%;
     background-size: cover;
+    position: relative;
+    z-index: 2;
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
   &__main {
@@ -194,6 +192,12 @@
       }
     }
 
+    &.viewed {
+      #{$block}__image:after {
+        animation-name: image-viewing-vert;
+      }
+    }
+
     &:hover {
 
       #{$block}__aside > span {
@@ -205,24 +209,6 @@
       order: 1;
       margin-right: 134px;
       margin-left: 83px;
-    }
-  }
-
-  &.not-viewed {
-
-    #{$block}__image-wrapper {
-      @extend %image-wrapper--not-viewed;
-    }
-  }
-
-  &.viewed {
-
-    #{$block}__image-wrapper {
-      @extend %image-wrapper--viewed;
-    }
-
-    &#{$block}--inverted #{$block}__image-wrapper {
-      @extend %image-wrapper--viewed-inverted;
     }
   }
 }

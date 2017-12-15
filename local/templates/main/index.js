@@ -8,5 +8,4 @@
 //=include js/scroll.js
 //=include js/course-lesson.js
 //=include js/home-slider.js
-
-$(document).ready(function() { $(document).trigger('start'); });
+//=include js/loader.js

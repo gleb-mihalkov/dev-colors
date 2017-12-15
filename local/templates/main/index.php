@@ -50,6 +50,11 @@
     ?>
 </head>
 <body class="<?= $pageClass; ?>">
+    <div class="loader  active" id="loader">
+        <div class="loader__inner">
+            <div class="loader__progress"></div>
+        </div>
+    </div>
     <? if ($isPanel && $isAdmin) : ?>
         <div id="panel"><? $APPLICATION->ShowPanel(); ?></div>
     <? endif; ?>

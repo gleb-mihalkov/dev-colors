@@ -1,0 +1,141 @@
+.loader {
+  position: fixed;
+  z-index: 9000;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  text-align: center;
+  font-size: 0;
+  overflow: hidden;
+
+  &:before, &:after {
+    transform: translateX(0);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: block;
+    content: '';
+  }
+
+  &:after {
+    background-color: $colorPink;
+    z-index: 9300;
+  }
+
+  &:before {
+    background-color: $bgLead;
+    z-index: 9200;
+  }
+
+  &.leave {
+
+    &:after {
+      animation: loader-leave 1s .25s ease-in-out forwards;
+    }
+
+    &:before {
+      animation: loader-leave 1.125s .5s ease-in-out forwards;
+    }
+  }
+
+  // &.active ~ *, &.active ~ * * {
+  //   visibility: hidden !important;
+  // }
+
+  @keyframes loader-leave {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  &__inner {
+    transition: all .25s ease-in-out;
+    opacity: 0;
+    position: relative;
+    z-index: 9500;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+
+    .active & {
+      opacity: 1;
+    }
+  }
+
+  &__progress {
+    background-color: $colorGrayLight;
+    position: relative;
+    width: 280px;
+    height: 1px;
+
+    &:before, &:after {
+      transform-origin: left center;
+      opacity: 0;
+      transform: scaleX(0);
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      content: '';
+    }
+
+    &:before {
+      background-color: $colorBlack;
+
+      .active & {
+        animation: loader-progress-line 1s ease-in-out forwards;
+        transform: scaleX(1);
+        opacity: 1;
+      }
+
+      .leave & {
+        transform: scaleX(1);
+      }
+    }
+
+    &:after {
+      background-color: $colorGray;
+
+      .active & {
+        animation: loader-progress-pulse 2s 1.25s ease-in-out infinite;
+      }
+    }
+
+    @keyframes loader-progress-line {
+      0% {
+        transform: scaleX(0);
+        opacity: 0;
+      }
+      25% {
+        opacity: 1;
+      }
+      100% {
+        transform: scaleX(1);
+      }
+    }
+
+    @keyframes loader-progress-pulse {
+      0% {
+        transform: scaleX(0);
+        opacity: 0;
+      }
+      75% {
+        transform: scaleX(1);
+        opacity: 1;
+      }
+      100% {
+        transform: scaleX(1);
+        opacity: 0;
+      }
+    }
+  }
+}

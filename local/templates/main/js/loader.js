@@ -1,49 +1,44 @@
-!(function($) {
+!(function() {
+  var duration = 1625;
+  var minDelay = 1500;
+  var startDelay = 250;
 
-  /**
-   * Элемент, с помощью которого загружается страница.
-   *
-   * @type {HTMLElement}
-   */
-  var iframe = document.createElement('IFRAME');
+  var isTimeout = false;
+  var isLoaded = false;
 
-  /**
-   * Обрабатывает окончание загрузки страницы.
-   *
-   * @param  {Event} e Событие.
-   * @return {void}
-   */
-  function onPageLoad(e) {
-    var doc = iframe.contentDocument || iframe.contentWindow.document;
-    document.head.innerHTML = doc.head.innerHTML;
-    document.body.innerHTML = doc.body.innerHTML;
+  function onTimeout() {
+    isTimeout = true;
+    hide();
   }
 
-  /**
-   * Обрабатывает переход по ссылке.
-   *
-   * @param  {Event} e Событие.
-   * @return {void}
-   */
-  function onLink(e) {
-    if (e.isDefaultPrevented()) return;
-
-    var host = this.host;
-    var pageHost = location.host;
-
-    var isRelative = host === pageHost;
-    if (!isRelative) return;
-
-    e.preventDefault();
-
-    iframe.src = this.href;
-    document.body.appendChild(iframe);
+  function onLoaded() {
+    isLoaded = true;
+    hide();
   }
 
-  // Ининциализируем глобальные переменные.
-  iframe.onload = onPageLoad;
+  function hide() {
+    if (!isTimeout || !isLoaded) {
+      return;
+    }
 
-  // Прикрепляем обработчики.
-  $(document).on('click', 'a', onLink);
+    var loader = document.getElementById('loader');
+    loader.classList.remove('active');
+    loader.classList.add('leave');
 
-})(window.jQuery);
+    var start = function() {
+      $(document).trigger('start');
+    };
+
+    var remove = function() {
+      loader.parentNode.removeChild(loader);
+      setTimeout(start, startDelay);
+    };
+
+    setTimeout(remove, duration);
+  }
+
+  window.addEventListener('load', onLoaded);
+  setTimeout(onTimeout, minDelay);
+
+
+})();

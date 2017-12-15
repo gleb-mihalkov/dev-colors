@@ -23,21 +23,27 @@
     height: $asideHeight;
   }
 
-  &__image-wrapper {
-    @extend %image-wrapper;
-
-    span {
-      background-position: right bottom;
-      background-size: contain;
-    }
-  }
-
   &__image {
+    @include image-viewing(image-viewing-vert);
     background-color: $colorPink;
+    background-position: right bottom;
+    background-size: contain;
     position: absolute;
     right: 0;
     top: 0;
     display: block;
+    width: 100%;
+    height: 100%;
+
+    &-wrapper {
+      position: absolute;
+      right: 0;
+      top: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
   }
 
   &__main {
@@ -125,38 +131,11 @@
       left: auto;
       right: 0;
     }
-  }
 
-  &.not-viewed {
-
-    #{$block}__image-wrapper {
-      @extend %image-wrapper--not-viewed;
-    }
-  }
-
-  &.viewed {
-
-    #{$block}__image-wrapper {
-      @extend %image-wrapper--viewed;
-    }
-
-    &#{$block}--inverted #{$block}__image-wrapper {
-      @extend %image-wrapper--viewed-inverted;
-    }
-  }
-
-  @keyframes course-preview-image-after {
-    0% {
-      transform: translate(calc(100% - 20px), -100%);
-    }
-    25% {
-      transform: translate(calc(100% - 20px), 0);
-    }
-    50% {
-      transform: translate(0, 0);
-    }
-    100% {
-      transform: translate(-100%, 0);
+    &.viewed {
+      #{$block}__image:after {
+        animation-name: image-viewing-vert-inverted;
+      }
     }
   }
 
@@ -192,7 +171,7 @@
       padding: 0;
     }
 
-    &__image-wrapper span {
+    &__image {
       background-position: center bottom !important;
     }
 
