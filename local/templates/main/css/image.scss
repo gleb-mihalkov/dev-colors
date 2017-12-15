@@ -38,7 +38,7 @@
   }
 }
 
-@mixin image-viewing($viewing: image-viewing-simple) {
+@mixin image-viewing($viewing: image-viewing-simple, $duration: 2s) {
   position: relative;
   overflow: hidden;
 
@@ -66,12 +66,12 @@
   .viewed &, &.viewed {
 
     &:before {
-      animation: image-viewing-bg 2s ease-in-out forwards;
+      animation: image-viewing-bg $duration ease-in-out forwards;
     }
 
     &:after {
       animation: $viewing;
-      animation-duration: 2s;
+      animation-duration: $duration;
       animation-timing-function: ease-in-out;
       animation-fill-mode: forwards;
     }
@@ -105,6 +105,21 @@
 @keyframes image-viewing-horz {
   0% {
     transform: translate(-100%, calc(-100% + 20px));
+  }
+  25% {
+    transform: translate(0, calc(-100% + 20px));
+  }
+  50% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0, 100%);
+  }
+}
+
+@keyframes image-viewing-horz-inverted {
+  0% {
+    transform: translate(100%, calc(-100% + 20px));
   }
   25% {
     transform: translate(0, calc(-100% + 20px));

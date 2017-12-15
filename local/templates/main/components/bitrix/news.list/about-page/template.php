@@ -12,43 +12,43 @@
 ?>
 <article class="about-page">
     <h1 class="about-page__title">О школе</h1>
-    <section class="about-page__group-01  not-viewed" id="<?= $itemA->getEditId($this); ?>">
+    <section class="about-page__group-01" id="<?= $itemA->getEditId($this); ?>">
         <div class="about-page__image-group-01">
             <div
                 style="background-image: url(<?= $itemA->image; ?>)"
-                class="about-page__image-01"
+                class="about-page__image-01  not-viewed"
                 ></div>
         </div>
         <div class="about-page__text-01">
             <span><?= $itemA->desc; ?></span>
         </div>
     </section>
-    <section class="about-page__group-02  not-viewed" id="<?= $itemB->getEditId($this); ?>">
+    <section class="about-page__group-02" id="<?= $itemB->getEditId($this); ?>">
         <div class="about-page__text-02"><?= $itemB->desc; ?></div>
     </section>
-    <section class="about-page__group-03  not-viewed" id="<?= $itemC->getEditId($this); ?>">
+    <section class="about-page__group-03" id="<?= $itemC->getEditId($this); ?>">
         <div class="about-page__text-03">
             <span><?= $itemC->desc; ?></span>
         </div>
     </section>
-    <section class="about-page__group-04  not-viewed" id="<?= $itemD->getEditId($this); ?>">
+    <section class="about-page__group-04" id="<?= $itemD->getEditId($this); ?>">
         <div
             style="background-image: url(<?= $itemD->image; ?>)"
-            class="about-page__image-04"
+            class="about-page__image-04  not-viewed"
             ></div>
         <div class="about-page__text-04">
             <span><?= $itemD->desc; ?></span>
         </div>
     </section>
-    <div class="about-page__group-05  not-viewed"></div>
-    <section class="about-page__group-06  not-viewed" id="<?= $itemE->getEditId($this); ?>">
+    <? /* <div class="about-page__group-05"></div> */ ?>
+    <section class="about-page__group-06" id="<?= $itemE->getEditId($this); ?>">
         <div class="about-page__image-group-06">
             <div
                 style="background-image: url(<?= $itemE->image; ?>)"
-                class="about-page__image-06"
+                class="about-page__image-06  not-viewed"
                 ></div>
         </div>
-        <div class="about-page__text-06  not-viewed">
+        <div class="about-page__text-06">
             <span><?= $itemE->desc; ?></span>
         </div>
     </section>
