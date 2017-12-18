@@ -12,6 +12,7 @@
     $itemsClass = new HtmlClass();
     $itemsClass->is($isScrolled, 'scrolled');
 ?>
+<!-- <? var_dump($isScrolled); ?> -->
 <div class="home-slider">
     <div class="home-slider__slides-wrapper">
         <div class="home-slider__slides-container">

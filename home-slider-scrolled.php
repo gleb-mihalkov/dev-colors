@@ -7,5 +7,6 @@
     else {
         $_SESSION['IS_HOME_SLIDER_SCROLLED'] = true;    
     }
-    
+
+    LocalRedirect('/');
     require $_SERVER['DOCUMENT_ROOT'].'/bitrix/modules/main/include/epilog_after.php';
