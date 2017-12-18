@@ -44,7 +44,7 @@ $aMenuLinks = Array(
 	),
 	Array(
 		"Написать нам Вконтакте", 
-		"gmihalkov", 
+		"id610005", 
 		Array(), 
 		Array("MESSAGE"=>"VK"), 
 		"" 

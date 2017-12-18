@@ -34,6 +34,11 @@
       borderRightWidth: offset,
       overflow: 'hidden'
     });
+
+    var event = new $.Event('fix');
+    event.offset = offset;
+
+    $body.trigger(event);
   };
 
   window.unfixBody = function() {
@@ -43,6 +48,8 @@
       borderRightWidth: '',
       overflow: ''
     });
+
+    $body.trigger('unfix');
   };
 
 })(window.jQuery);
