@@ -30,15 +30,11 @@
 	}
 
 	function unfix() {
-		$(document.body).removeClass('fixed').css('padding-right', '');
+		unfixBody();
 	}
 
 	function fix() {
-		var $body = $(document.body).addClass('fixed');
-		if (!isScrollbars()) return;
-
-		var offset = getScrollbars() + 'px';
-		$body.css('padding-right', offset);
+		fixBody();
 	}
 
 	function init($modal) {
@@ -121,4 +117,5 @@
 		.on('click', '[data-modal-box], [data-modal-box] [data-close]', onClose)
 		.on('click', '[data-modal]', onButton)
 		.on('start', onStart);
+	
 })(window.jQuery);

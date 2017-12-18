@@ -30,6 +30,7 @@
     };
 
     var remove = function() {
+      unfixBody();
       loader.parentNode.removeChild(loader);
       setTimeout(start, startDelay);
     };
@@ -37,8 +38,7 @@
     setTimeout(remove, duration);
   }
 
+  window.addEventListener('DOMContentLoaded', fixBody);
   window.addEventListener('load', onLoaded);
   setTimeout(onTimeout, minDelay);
-
-
 })();

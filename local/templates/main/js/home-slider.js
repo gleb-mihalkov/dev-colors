@@ -90,25 +90,27 @@
     if (isTransition) return;
 
     var delta = e.originalEvent.deltaY || e.originalEvent.detail || e.originalEvent.wheelDelta;
-    var value = delta > 0 ? 1 : -1;
-
-    isTransition = true;
-    var index = carouselIndex(slider) + value;
-
-    if (index < 0) {
-      index = sliderCount - 1;
-    }
-
-    if (index >= sliderCount) {
-      $.ajax('/home-slider-scrolled.php');
-      container.off(eventName, onScroll);
+    
+    if (delta <= 0) {
       return;
     }
 
     isTransition = true;
+    var index = carouselIndex(slider) + 1;
+
+    if (index >= sliderCount) {
+      $.ajax('/home-slider-scrolled.php');
+
+      container.off(eventName, onScroll);
+      unfixBody();
+      return;
+    }
+
+    isTransition = true;
+
     carouselTo(slider, index, 'next');
     setTimeout(onTransition, duration);
-  } 
+  }
 
   /**
    * Инициализирует просмотр сверху главной страницы.
@@ -116,9 +118,10 @@
    * @return {void}
    */
   function initScrollStart() {
-    carouselToFirst(slider);
     window.scrollTo(0, 0);
+    fixBody();
 
+    carouselToFirst(slider);
     container.on(eventName, onScroll);
   }
 
@@ -151,18 +154,13 @@
     slider = $('#homeSlider');
 
     if (slider.hasClass('scrolled')) {
-      return;
+      return initScrollOther();
     }
 
     sliderCount = carouselCount(slider);
     duration = slider.attr('data-duration') * 1 + 10;
 
-    if (doc.scrollTop() == 0) {
-      initScrollStart();
-    }
-    else {
-      initScrollOther();
-    }
+    initScrollStart();
   }
 
   // Прикрепляем события.
