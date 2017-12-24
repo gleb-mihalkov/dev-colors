@@ -39,7 +39,7 @@
   }
 
   &__image {
-    @include imag: ;e-viewing(image-viewing-vert-inverted);
+    @include image-viewing(image-viewing-vert-inverted);
     background-position: center center;
     background-size: cover;
     display: block;
