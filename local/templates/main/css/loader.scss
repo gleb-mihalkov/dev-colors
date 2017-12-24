@@ -41,10 +41,6 @@
     }
   }
 
-  // &.active ~ *, &.active ~ * * {
-  //   visibility: hidden !important;
-  // }
-
   @keyframes loader-leave {
     0% {
       transform: translateX(0);

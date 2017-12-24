@@ -47,7 +47,7 @@
     }
   }
   &__image-01 {
-    @include image-viewing(image-viewing-horz, 2.5s);
+    @include image-viewing(image-viewing-vert);
     background-color: $colorGrayLight;
     background-position: center center;
     background-size: cover;
@@ -121,7 +121,7 @@
     height: 1021px;
   }
   &__image-04 {
-    @include image-viewing(image-viewing-horz-inverted, 2.5s);
+    @include image-viewing(image-viewing-vert-inverted);
     background-position: center center;
     background-size: cover;
     position: absolute;
@@ -210,7 +210,7 @@
     }
   }
   &__image-06 {
-    @include image-viewing(image-viewing-horz, 2.5s);
+    @include image-viewing(image-viewing-vert);
     background-position: center center;
     background-size: cover;
     position: absolute;

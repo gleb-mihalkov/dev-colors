@@ -54,7 +54,7 @@
     }
 
     &:before, &:after, & > span {
-      transition: all .5s ease-in-out;
+      transition: all 1s cubic-bezier(.25,.25,0,1);
       transform-origin: left center;
       display: block;
     }
@@ -74,7 +74,6 @@
 
     &:before {
       background-color: $colorPink;
-      transition-delay: .125s;
       transform: scaleX(1);
       z-index: 1;
       top: 0;
@@ -97,7 +96,6 @@
   }
 
   &__image {
-    @include image-viewing(image-viewing-vert-inverted);
     background-position: 50%;
     background-size: cover;
     position: relative;

@@ -1,4 +1,4 @@
-@mixin image-viewing($viewing: image-viewing-simple, $duration: 2s) {
+@mixin image-viewing($viewing: image-viewing-simple, $duration: 1.5s) {
   position: relative;
   overflow: hidden;
 
