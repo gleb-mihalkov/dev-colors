@@ -47,7 +47,7 @@
     }
   }
   &__image-01 {
-    @include image-viewing(image-viewing-vert);
+    @include image-viewing(image-viewing-vert-inverted);
     background-color: $colorGrayLight;
     background-position: center center;
     background-size: cover;
