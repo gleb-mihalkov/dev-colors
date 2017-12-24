@@ -22,8 +22,9 @@ $colorWhite: #fff;
 $colorGrayLight: #dadada;
 $colorGray: #8f8f8f;
 $colorPink: #f8f1f2;
+$colorPinkLight: #fbf1ef;
 
-$bgLead: #fbf1ef;
+$bgLead: $colorPinkLight;
 
 $containerPadding: 80px;
 $containerWidth: 1290px + $containerPadding * 2;
