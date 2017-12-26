@@ -1,6 +1,6 @@
 #panel {
   transition: all .25s ease-in-out;
-  transform: translate(calc(100% - 15px), calc(-100% + 15px));
+  transform: translate(calc(-100% + 15px), calc(-100% + 15px));
   position: fixed;
   width: 100%;
   z-index: 900;
