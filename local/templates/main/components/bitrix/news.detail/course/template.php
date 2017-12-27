@@ -11,7 +11,12 @@
 ?>
 <div class="course">
     <div class="course__header">
-        <div class="course-lead">
+        <div
+            <? if ($item->backgroundColor) : ?>
+                style="background-color: <?= $item->backgroundColor; ?>"
+            <? endif; ?>
+            class="course-lead"
+            >
             <div class="course-lead__container">
                 <div
                     style="background-image: url(<?= $item->image; ?>)"
@@ -172,10 +177,13 @@
         })();
     </script>
     <div class="course__footer">
-        <div class="course-baner">
-            <div
-                class="course-baner__container"
-                >
+        <div
+            <? if ($item->backgroundColor) : ?>
+                style="background-color: <?= $item->backgroundColor; ?>"
+            <? endif; ?>
+            class="course-baner"
+            >
+            <div class="course-baner__container">
                 <div
                     style="background-image: url(<?= $teacher->image; ?>)"
                     class="course-baner__image"

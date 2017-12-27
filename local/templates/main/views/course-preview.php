@@ -29,7 +29,7 @@
     <a href="<?= $item->link; ?>" class="course-preview__aside">
         <span class="course-preview__image-wrapper">
             <span
-                style="background-image: url(<?= $item->image; ?>)"
+                style="<?= $item->imageStyle; ?>"
                 class="course-preview__image"
                 data-fix-height=""
                 ></span>

@@ -134,7 +134,8 @@ $APPLICATION->SetPageProperty("title", "ШКОЛА МАКИЯЖА КРАСКИ")
                 ),
                 "PROPERTY_CODE" => array(
                     0 => "SUBTITLE",
-                    1 => "",
+                    1 => "BACKGROUND_COLOR",
+                    2 => "",
                 ),
                 "CHECK_DATES" => "Y",
                 "DETAIL_URL" => "",

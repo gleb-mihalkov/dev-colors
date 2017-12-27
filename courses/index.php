@@ -48,7 +48,8 @@
 		),
 		"LIST_PROPERTY_CODE" => array(
 			0 => "SUBTITLE",
-			1 => "",
+			1 => "BACKGROUND_COLOR",
+			2 => ""
 		),
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
 		"DISPLAY_NAME" => "Y",
@@ -70,7 +71,8 @@
 			2 => "TEACHER",
 			3 => "PROGRAM",
 			4 => "RESULTS",
-			5 => "",
+			5 => "BACKGROUND_COLOR",
+			6 => ""
 		),
 		"DETAIL_DISPLAY_TOP_PAGER" => "N",
 		"DETAIL_DISPLAY_BOTTOM_PAGER" => "N",

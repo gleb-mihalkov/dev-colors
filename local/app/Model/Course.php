@@ -55,6 +55,20 @@ class Course extends PicturedNews
     protected $lessons;
 
     /**
+     * Цвет фона изображения.
+     *
+     * @var string
+     */
+    public $backgroundColor;
+
+    /**
+     * Inline - стили изображения курса.
+     *
+     * @var string
+     */
+    public $imageStyle;
+
+    /**
      * Создает экземпляр класса.
      *
      * @param array $data Данные от компонента.
@@ -68,9 +82,30 @@ class Course extends PicturedNews
         $this->program = self::getProperty($data, 'PROGRAM', true);
         $this->results = self::getProperty($data, 'RESULTS');
         $this->lessons = self::getProperty($data, 'LESSONS');
+        $this->backgroundColor = self::getProperty($data, 'BACKGROUND_COLOR');
 
         $this->program = $this->program['TEXT'] ?? '';
         $this->sale = $this->sale['TEXT'] ?? '';
+
+        $this->imageStyle = '';
+
+        $styles = [
+            'background-image' => 'url('.$this->image.')'
+        ];
+
+        if ($this->backgroundColor)
+        {
+            $styles['background-color'] = $this->backgroundColor;
+        }
+
+        $this->imageStyle = [];
+
+        foreach ($styles as $prop => $value)
+        {
+            $this->imageStyle[] = $prop.': '.$value;
+        }
+
+        $this->imageStyle = implode('; ', $this->imageStyle);
     }
 
     /**
