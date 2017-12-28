@@ -35,6 +35,10 @@
     width: 100%;
     height: 100%;
 
+    @include media() {
+      background-size: cover;
+    }
+
     &-wrapper {
       position: absolute;
       right: 0;
