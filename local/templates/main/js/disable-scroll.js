@@ -1,8 +1,12 @@
 !(function($) {
 
-  var $body = $(document.body);
   var _scrollbars = null;
+  var _body = null;
   var borderColor = '#fbf1ef';
+
+  function getBody() {
+    return _body ? _body : (_body = $(document.body));
+  }
 
   function getScrollbars() {
     if (_scrollbars != null) return _scrollbars;
@@ -28,7 +32,7 @@
   window.fixBody = function() {
     var offset = getScrollbars() + 'px';
 
-    $body.css({
+    getBody().css({
       borderRightColor: borderColor,
       borderRightStyle: 'solid',
       borderRightWidth: offset,
@@ -38,18 +42,18 @@
     var event = new $.Event('fix');
     event.offset = offset;
 
-    $body.trigger(event);
+    getBody().trigger(event);
   };
 
   window.unfixBody = function() {
-    $body.css({
+    getBody().css({
       borderRightStyle: '',
       borderRightColor: '',
       borderRightWidth: '',
       overflow: ''
     });
 
-    $body.trigger('unfix');
+    getBody().trigger('unfix');
   };
 
 })(window.jQuery);

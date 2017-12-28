@@ -1,7 +1,7 @@
 !(function() {
   var duration = 1625;
   var minDelay = 1500;
-  var startDelay = 1125;
+  var startDelay = 1;
 
   var isTimeout = false;
   var isLoaded = false;
