@@ -1,8 +1,32 @@
 .course-lead {
+  $zindex: 1;
+  $zindexAside: $zindex + 1;
+  $zindexAsideEffect: $zindexAside + 1;
+  $zindexMain: $zindexAsideEffect + 1;
   background-color: $colorPink;
+  position: relative;
+  z-index: $zindex;
   display: block;
   height: 580px;
   color: $colorBlackRich;
+  overflow: hidden;
+
+  &__effect {
+    transition: all 1.5s ease-in-out;
+    background-color: $colorPink;
+    transform: translateX(0);
+    position: absolute;
+    z-index: $zindexAsideEffect;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: block;
+
+    .viewed & {
+      transform: translateX(100%);
+    }
+  }
 
   &__container {
     @extend %container;
@@ -17,6 +41,7 @@
     background-position: right center;
     background-size: contain;
     position: absolute;
+    z-index: $zindexAside;
     left: $containerPadding;
     right: $containerPadding;
     display: block;
@@ -25,6 +50,7 @@
 
   &__main {
     position: relative;
+    z-index: $zindexMain;
   }
 
   &__title {

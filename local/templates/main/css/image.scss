@@ -49,20 +49,6 @@
   }
 }
 
-@mixin image-viewing-color($effectColor, $bgColor: null) {
-  
-  &:after {
-    background-color: $effectColor;
-  }
-
-  @if ($bgColor) {
-    
-    &:before {
-      background-color: $bgColor;
-    }
-  }
-}
-
 @keyframes image-viewing-bg {
   0% {
     visibility: visible;
