@@ -12,8 +12,8 @@
   overflow: hidden;
 
   &__effect {
-    transition: all 1.5s ease-in-out;
-    background-color: $colorPink;
+    transition: all 2s ease-in-out;
+    background-color: $colorPinkLight;
     transform: translateX(0);
     position: absolute;
     z-index: $zindexAsideEffect;

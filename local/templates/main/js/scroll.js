@@ -14,6 +14,7 @@
 	var _scrollerBottom = null;
 	var _scrollerTop = null;
 
+	var _isEntersInited = false;
 	var _isForce = false;
 
 	function getDocument() {
@@ -188,6 +189,10 @@
 	}
 
 	function refreshEnters() {
+		if (!_isEntersInited) {
+			return;
+		}
+
 		var top = getScrollTop();
 		var bottom = top + getViewHeight();
 
@@ -209,6 +214,8 @@
 			var $enter = $enters.eq(i);
 			initEnter($enter, top, bottom);
 		}
+
+		_isEntersInited = true;
 	}
 
 	function onScrollChange(e) {

@@ -17,12 +17,7 @@
             <? endif; ?>
             class="course-lead  not-viewed"
             >
-            <div
-                <? if ($item->backgroundColor) : ?>
-                    style="background-color: <?= $item->backgroundColor; ?>"
-                <? endif; ?>
-                class="course-lead__effect"
-                ></div>
+            <div class="course-lead__effect"></div>
             <div class="course-lead__container">
                 <div
                     style="background-image: url(<?= $item->image; ?>)"

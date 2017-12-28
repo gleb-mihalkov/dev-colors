@@ -1,5 +1,5 @@
 !(function() {
-  var duration = 1625;
+  var duration = 1700;
   var minDelay = 1500;
   var startDelay = 1;
 
@@ -25,14 +25,10 @@
     loader.classList.remove('active');
     loader.classList.add('leave');
 
-    var start = function() {
-      $(document).trigger('start');
-    };
-
     var remove = function() {
       unfixBody();
       loader.parentNode.removeChild(loader);
-      setTimeout(start, startDelay);
+      $(document).trigger('start');
     };
 
     setTimeout(remove, duration);
