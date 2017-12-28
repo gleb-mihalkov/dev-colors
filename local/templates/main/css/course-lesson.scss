@@ -52,6 +52,11 @@
 
   &__price {
     @extend %course-lesson-value;
+
+    &-text {
+      display: inline-block;
+      vertical-align: middle;
+    }
   }
 
   &__item {
@@ -80,6 +85,96 @@
 
   &__button {
     @extend %button, %button--type-default, %button--width-normal;
+  }
+
+  &__popup {
+    $b: nth(&, 1);
+    $boxIndex: 100;
+    $contentIndex: $boxIndex + 1;
+    $caretIndex: $contentIndex + 1;
+    $signSize: 16px;
+    $boxOffset: $signSize;
+    $contentOffset: 13px;
+    $caretSize: 9px;
+    $caretOffset: -($contentOffset + $caretSize / 2);
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: help;
+
+    &:before {
+      background-color: $colorBlack;
+      border-radius: 50%;
+      display: block;
+      width: $signSize;
+      height: $signSize;
+      line-height: $signSize;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: $colorWhite;
+      content: '?';
+    }
+
+    &:after {
+      transition: all .25s ease-in-out;
+      visibility: hidden;
+      opacity: 0;
+      transform: rotate(45deg);
+      background-color: $colorWhite;
+      border: 1px solid #e0e0e0;
+      border-left-color: transparent;
+      border-top-color: transparent;
+      position: absolute;
+      z-index: $caretIndex;
+      top: $caretOffset;
+      left: 50%;
+      top: $caretOffset;
+      display: block;
+      width: $caretSize;
+      height: $caretSize;
+      margin-left: -($caretSize / 2);
+      content: '';
+
+      @at-root #{$b}:hover:after {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    &-box {
+      $width: 300px;
+      transition: all .25s ease-in-out;
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+      z-index: $boxIndex;
+      left: 50%;
+      bottom: $boxOffset;
+      width: $width;
+      margin-left: -($width / 2);
+      padding-bottom: $contentOffset;
+
+      #{$b}:hover & {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+
+    &-content {
+      background-color: $colorWhite;
+      border: 1px solid #e0e0e0;
+      position: relative;
+      z-index: $contentIndex;
+      display: block;
+      padding: 15px 21px;
+      font-weight: 300;
+      font-size: 16px;
+      color: $colorBlack;
+      text-align: left;
+    }
   }
 
   &.active {

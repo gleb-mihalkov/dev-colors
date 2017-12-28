@@ -15,7 +15,7 @@
             <? if ($item->backgroundColor) : ?>
                 style="background-color: <?= $item->backgroundColor; ?>"
             <? endif; ?>
-            class="course-lead  not-viewed"
+            class="course-lead"
             >
             <div class="course-lead__container">
                 <div
@@ -52,7 +52,7 @@
                 ]); ?>
             </div>
             <p class="course-lead-small__text"><?= $item->desc; ?></p>
-            <figure class="course-lead-small__image-group  not-viewed">
+            <figure class="course-lead-small__image-group">
                 <span
                     style="<?= $item->imageStyle; ?>"
                     class="course-lead-small__image"
@@ -93,7 +93,18 @@
                             <div class="course-lesson  active">
                                 <div class="course-lesson__header">
                                     <h3 class="course-lesson__title"><?= $lesson->title; ?></h3>
-                                    <div class="course-lesson__price"><?= $lesson->price; ?> руб.</div>
+                                    <div class="course-lesson__price">
+                                        <span class="course-lesson__price-text"><?= $lesson->price; ?> руб.</span>
+                                        <? if ($lesson->notes) : ?>
+                                            <span class="course-lesson__popup">
+                                                <span class="course-lesson__popup-box">
+                                                    <span class="course-lesson__popup-content">
+                                                        <?= $lesson->notes; ?>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        <? endif; ?>
+                                    </div>
                                 </div>
                                 <div class="course-lesson__content">
                                     <div class="course-lesson__item">
@@ -129,9 +140,32 @@
             <? endif; ?>
         </div>
     </div>
+    <div class="course__footer">
+        <div
+            <? if ($item->backgroundColor) : ?>
+                style="background-color: <?= $item->backgroundColor; ?>"
+            <? endif; ?>
+            class="course-baner"
+            >
+            <div class="course-baner__container">
+                <div
+                    style="background-image: url(<?= $teacher->image; ?>)"
+                    class="course-baner__image"
+                    ></div>
+                <div class="course-baner__main">
+                    <p class="course-baner__subtitle"><?= $teacher->desc; ?></p>
+                    <h2 class="course-baner__title"><?= $teacher->title; ?></h2>
+                    <p class="course-baner__text"><?= $teacher->text; ?></p>
+                    <button type="button" class="course-baner__button" data-modal="feedback">
+                        <span>Записаться на курс</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script type="text/javascript">
         !(function() {
-            var fn = function() {
+            var fixHeight = function() {
                 var container = document.querySelector('.course-grid');
                 var firstHeight = 0;
                 var lastHeight = 0;
@@ -173,30 +207,53 @@
 
                 container.style.height = maxHeight + 'px';
             };
-            setTimeout(fn, 1);
+            setTimeout(fixHeight, 1);
+
+            var popups = document.querySelectorAll('.course-lesson__popup');
+            var offset = 10;
+
+            if (!popups.length) {
+                return;
+            }
+
+            var setOffset = function(box, value) {
+                if (!value) {
+                    box.style.transform = '';
+                    return;
+                }
+
+                var value = 'translateX(-' + value + 'px)';
+                box.style.transform = value;
+            };
+
+            var onResize = function() {
+                var windowWidth = window.innerWidth
+                    || document.body.clientWidth
+                    || document.documentElement.clientWidth;
+
+                var maxRight = windowWidth - offset;
+
+                for (var i = 0; i < popups.length; i++) {
+                    var popup = popups[i];
+                    var box = popup.querySelector('.course-lesson__popup-box');
+
+                    setOffset(box, 0);
+
+                    var boxRect = box.getBoundingClientRect();
+                    var boxRight = Math.ceil(boxRect.right);
+
+                    if (boxRect.right <= maxRight) {
+                        continue;
+                    }
+
+                    var diff = boxRight - maxRight;
+                    console.log(boxRight, maxRight, diff);
+                    setOffset(box, diff);
+                }
+            };
+
+            window.addEventListener('resize', onResize);
+            onResize();
         })();
     </script>
-    <div class="course__footer">
-        <div
-            <? if ($item->backgroundColor) : ?>
-                style="background-color: <?= $item->backgroundColor; ?>"
-            <? endif; ?>
-            class="course-baner"
-            >
-            <div class="course-baner__container">
-                <div
-                    style="background-image: url(<?= $teacher->image; ?>)"
-                    class="course-baner__image"
-                    ></div>
-                <div class="course-baner__main">
-                    <p class="course-baner__subtitle"><?= $teacher->desc; ?></p>
-                    <h2 class="course-baner__title"><?= $teacher->title; ?></h2>
-                    <p class="course-baner__text"><?= $teacher->text; ?></p>
-                    <button type="button" class="course-baner__button" data-modal="feedback">
-                        <span>Записаться на курс</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>

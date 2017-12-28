@@ -12,24 +12,6 @@
   color: $colorBlackRich;
   overflow: hidden;
 
-  &:before {
-    transition: all 1.5s ease-in-out;
-    background-color: $colorPinkLight;
-    transform: translateX(0);
-    position: absolute;
-    z-index: $zindexAsideEffect;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    display: block;
-    content: '';
-
-    @at-root #{$b}.viewed:before {
-      transform: translateX(100%);
-    }
-  }
-
   &__container {
     @extend %container;
     position: relative;

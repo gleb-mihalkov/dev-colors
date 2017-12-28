@@ -56,5 +56,7 @@ class Lesson extends News
         $this->notes = self::getProperty($data, 'NOTES');
 
         $this->schedule = $this->schedule['TEXT'] ?? '';
+
+        $this->notes = preg_replace('/\*(.*)\*/', '<strong>$1</strong>', $this->notes);
     }
 }
