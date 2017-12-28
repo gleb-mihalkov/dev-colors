@@ -52,7 +52,7 @@
   }
 
   &__image {
-    @include image-viewing(image-viewing-vert);
+    @include image-viewing(image-viewing-vert-inverted);
     background-position: 50%;
     background-size: cover;
     position: absolute;
