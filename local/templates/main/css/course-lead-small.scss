@@ -1,4 +1,7 @@
 .course-lead-small {
+  $zindex: 1;
+  $zindexImage: $zindex + 1;
+  $zindexEffect: $zindexImage + 1;
   padding-top: 50px;
   display: none;
 
@@ -18,16 +21,39 @@
   }
 
   &__image-group {
+    $b: nth(&, 1);
+    position: relative;
+    z-index: $zindex;
     background-color: $colorPink;
     margin-top: 0;
     margin-left: 0;
     margin-right: 0;
     margin-bottom: 68px;
+
+    &:before {
+      transition: all 1.5s ease-in-out;
+      background-color: $colorPinkLight;
+      transform: translateX(0);
+      position: absolute;
+      z-index: $zindexEffect;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      display: block;
+      content: '';
+
+      @at-root #{$b}.viewed:before {
+        transform: translateX(100%);
+      }
+    }
   }
 
   &__image {
     background-position: bottom center;
     background-size: contain;
+    position: relative;
+    z-index: $zindexImage;
     display: block;
     width: 100%;
     height: 409px;

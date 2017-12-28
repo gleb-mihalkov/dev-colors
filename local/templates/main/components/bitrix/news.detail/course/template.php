@@ -17,7 +17,6 @@
             <? endif; ?>
             class="course-lead  not-viewed"
             >
-            <div class="course-lead__effect"></div>
             <div class="course-lead__container">
                 <div
                     style="background-image: url(<?= $item->image; ?>)"
@@ -53,9 +52,9 @@
                 ]); ?>
             </div>
             <p class="course-lead-small__text"><?= $item->desc; ?></p>
-            <figure class="course-lead-small__image-group">
+            <figure class="course-lead-small__image-group  not-viewed">
                 <span
-                    style="background-image: url(<?= $item->image; ?>)"
+                    style="<?= $item->imageStyle; ?>"
                     class="course-lead-small__image"
                     ></span>
             </figure>

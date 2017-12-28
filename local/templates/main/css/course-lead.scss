@@ -1,4 +1,5 @@
 .course-lead {
+  $b: nth(&, 1);
   $zindex: 1;
   $zindexAside: $zindex + 1;
   $zindexAsideEffect: $zindexAside + 1;
@@ -11,8 +12,8 @@
   color: $colorBlackRich;
   overflow: hidden;
 
-  &__effect {
-    transition: all 2s ease-in-out;
+  &:before {
+    transition: all 1.5s ease-in-out;
     background-color: $colorPinkLight;
     transform: translateX(0);
     position: absolute;
@@ -22,8 +23,9 @@
     top: 0;
     bottom: 0;
     display: block;
+    content: '';
 
-    .viewed & {
+    @at-root #{$b}.viewed:before {
       transform: translateX(100%);
     }
   }
