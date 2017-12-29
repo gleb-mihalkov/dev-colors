@@ -4,7 +4,7 @@
     use App\Helpers\Template;
     use App\Model\Blog;
 
-    $item = new Blog($arResult);
+    $item = $arResult['MODEL'];
 ?>
 <article class="blog">
     <time datetime="<?= $item->date; ?>" class="blog__date"><?= $item->dateRu; ?></time>

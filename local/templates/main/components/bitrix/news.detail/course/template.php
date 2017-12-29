@@ -5,7 +5,7 @@
     use App\Helpers\Template;
     use App\Model\Course;
 
-    $item = new Course($arResult);
+    $item = $arResult['MODEL'];
     $teachers = $item->getTeachers();
     $teachersCount = count($teachers);
     $lessons = $item->getLessons();

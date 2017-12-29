@@ -6,6 +6,7 @@ use App\Helpers\Template;
 use CFile;
 use CIBlock;
 use CIBlockElement;
+use Bitrix\Main\Page\Asset;
 
 /**
  * Модель новости инфоблока.
@@ -115,6 +116,56 @@ class News
         $template->AddDeleteAction($elementId, $deleteLink, $deleteParams, $deleteOpts);
 
         return $template->GetEditAreaId($elementId);
+    }
+
+
+    /**
+     * Задает метаданные для секции HEAD страницы.
+     */
+    public function setMeta()
+    {
+        $asset = Asset::getInstance();
+
+        $type = self::getOgMetaTag('type', 'website');
+        $url = self::getOgMetaTag('url', self::getAbsoluteUrl($this->link));
+        $title = self::getOgMetaTag('title', $this->title);
+        $desc = self::getOgMetaTag('desc', $this->desc);
+        $image = self::getOgMetaTag('image', self::getAbsoluteUrl($this->image));
+
+        $asset->addString($type);
+        $asset->addString($url);
+        $asset->addString($title);
+        $asset->addString($desc);
+        $asset->addString($image);
+    }
+
+    /**
+     * Получает абсолютный путь для относительной ссылик.
+     *
+     * @param  string $url Относительная ссылка.
+     * @return string      Абсолютный путь.
+     */
+    protected static function getAbsoluteUrl($url)
+    {
+        $schema = isset($_SERVER['HTTPS']) ? 'https' : 'http';
+        $hostname = $schema.'://'.$_SERVER['HTTP_HOST'];
+
+        return $hostname.$url;
+    }
+
+    /**
+     * Получает тег meta og для вставки в секцию HEAD.
+     *
+     * @param  string $name  Название параметра.
+     * @param  string $value Значение параметра.
+     * @return string        Текст тега.
+     */
+    protected static function getOgMetaTag($name, $value)
+    {
+        $value = htmlspecialchars($value);
+        $name = htmlspecialchars($name);
+
+        return "<meta property=\"og:{$name}\" content=\"{$value}\">";
     }
 
 

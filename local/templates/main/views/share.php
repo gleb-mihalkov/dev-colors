@@ -31,20 +31,14 @@
 
     $vkLink = 'https://vk.com/share.php'
         .'?url='.$url
-        .'&title='.$title
-        .'&description='.$text
-        .'&image='.$image
-        .'&noparse=true';
+        .'&title='.$title;
 
-    $fbLink = 'https://www.facebook.com/sharer.php?s=100'
-        .'&p[title]='.$title
-        .'&p[summary]='.$text
-        .'&p[url]='.$url
-        .'&p[images][0]='.$image;
+    $fbLink = 'https://www.facebook.com/sharer.php'
+        .'?u='.$url;
     
     $twLink = 'http://twitter.com/share'
-        .'&url='.$url
-        .'?text='.$title;
+        .'?url='.$url
+        .'&text='.$title;
 ?>
 <div class="share <?= $itemClass; ?>">
     <div class="share__title">Поделиться</div>
