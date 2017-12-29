@@ -41,32 +41,5 @@
         order: 5;
       }
     }
-
-    .course-baner {
-      height: auto;
-      padding-top: 113px;
-      padding-bottom: 120px;
-      text-align: center;
-
-      &__container {
-        flex-direction: column;
-        justify-content: center;
-        max-width: 544px;
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-
-      &__image {
-        background-size: cover;
-        border-radius: 100%;
-        flex: 0 0 auto;
-        width: 230px;
-        height: 230px;
-      }
-
-      &__main {
-        margin-top: 43px;
-      }
-    }
   }
 }

@@ -34,11 +34,11 @@ class Course extends PicturedNews
     public $program;
 
     /**
-     * Идентификатор преподавателя.
+     * Идентификаторы преподавателей.
      *
      * @var string
      */
-    protected $teacherId;
+    protected $teacherIds;
 
     /**
      * Массив ID для блока "Что вы получите от курса".
@@ -84,7 +84,7 @@ class Course extends PicturedNews
     {
         parent::__construct($data);
         $this->subtitle = self::getProperty($data, 'SUBTITLE');
-        $this->teacherId = self::getProperty($data, 'TEACHER');
+        $this->teacherIds = self::getProperty($data, 'TEACHER');
         $this->sale = self::getProperty($data, 'SALE_INFO', true);
         $this->program = self::getProperty($data, 'PROGRAM', true);
         $this->results = self::getProperty($data, 'RESULTS');
@@ -120,10 +120,15 @@ class Course extends PicturedNews
      *
      * @return Teacher Модель преподавателя.
      */
-    public function getTeacher()
+    public function getTeachers()
     {
-        $data = self::getById($this->teacherId);
-        return $data ? new Teacher($data) : null;
+        if (!$this->teacherIds)
+        {
+            return [];
+        }
+
+        $list = self::getByIds(self::TEACHER, $this->teacherIds);
+        return Teacher::getList($list);
     }
 
     /**

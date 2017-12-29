@@ -1,15 +1,111 @@
 .course-baner {
+  $b: nth(&, 1);
+  $sliderArrowWidthLarge: $arrowWidth + 60px;
+  $mediaWidth: $containerWidth - $containerPadding * 2 + $sliderArrowWidthLarge * 2;
+  $courseBanerMinHeight: 395px;
   background-color: $colorPink;
   color: $colorBlackRich;
-  height: 395px;
 
-  &__container {
-    @extend %container;
-    
+  @include mediaCustom($mediaWidth) {
+    height: auto;
+    padding-top: 113px;
+    padding-bottom: 120px;
+    text-align: center;
+  }
+
+  &__items {
+    background-color: inherit;
+    position: relative;
+    display: block;
+    overflow: hidden;
+
+    &:before {
+      background-color: inherit;
+      position: absolute;
+      z-index: 5;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      content: '';
+      visibility: hidden;
+    }
+
+    &-wrapper {
+      @extend %container;
+      background-color: inherit;
+      position: relative;
+    }
+
+    &.next, &.back {
+
+      &:before {
+        visibility: visible;
+      }
+
+      #{$b}__item {
+        animation: course-baner-item 1s ease-in-out forwards;
+
+        &.leave {
+          animation: course-baner-item 1s ease-in-out forwards reverse;
+        }
+      }
+    }
+
+    &.next {
+      
+      & ~ #{$b}__arrows #{$b}__next {
+        animation: arrow-next 1s ease-in-out;
+      }
+
+      &:before {
+        animation: responses-slider-next 1s ease-in-out forwards;
+        transform: translateX(100%);
+      }
+    }
+
+    &.back {
+
+      & ~ #{$b}__arrows #{$b}__prev {
+        animation: arrow-prev 1s ease-in-out;
+      }
+
+      &:before {
+        animation: responses-slider-prev 1s ease-in-out forwards;
+        transform: translateX(-100%);
+      }
+    }
+
+    @keyframes course-baner-item {
+      0% {
+        z-index: 1;
+      }
+      100% {
+        z-index: 2;
+      }
+    }
+  }
+
+  &__item {
+    background-color: inherit;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
     display: flex;
-    justify-content: flex-end;
     align-items: center;
-    height: 100%;
+    width: 100%;
+    min-height: $courseBanerMinHeight;
+
+    @include mediaCustom($mediaWidth) {
+      height: auto;
+      flex-direction: column;
+    }
+
+    &.active {
+      z-index: 2;
+    }
   }
 
   &__image {
@@ -17,13 +113,26 @@
     background-size: contain;
     display: block;
     flex: auto;
-    height: 100%;
+    height: $courseBanerMinHeight;
+
+    @include mediaCustom($mediaWidth) {
+      background-size: cover;
+      border-radius: 100%;
+      flex: 0 0 auto;
+      width: 230px;
+      height: 230px;
+    }
   }
 
   &__main {
     display: block;
     width: 100%;
+    padding-bottom: 1px;
     max-width: 784px;
+
+    @include mediaCustom($mediaWidth) {
+      margin-top: 43px;
+    }
   }
 
   &__subtitle {
@@ -51,5 +160,50 @@
     @extend %button, %button--type-default, %button--width-large;
     background-color: transparent;
     border-color: #4f4f4f;
+  }
+
+  &__arrows {
+    position: absolute;
+    bottom: 0;
+    left: $containerPadding;
+    right: $containerPadding;
+
+    @include mediaCustom($mediaWidth) {
+      position: static;
+      display: flex;
+      justify-content: center;
+      height: $sliderArrowHeight;
+    }
+  }
+
+  &__prev, &__next {
+    @extend %arrow;
+    position: absolute;
+    bottom: 0;
+    display: block;
+    height: $courseBanerMinHeight;
+    width: $sliderArrowWidthLarge;
+
+    @include mediaCustom($mediaWidth) {
+      background-position: center center !important;
+      position: static;
+      width: $sliderArrowWidth;
+      height: 100%;
+      margin: 0 !important;
+    }
+  }
+
+  &__prev {
+    @extend %arrow--prev;
+    background-position: left center;
+    left: 0;
+    margin-left: -$sliderArrowWidthLarge;
+  }
+
+  &__next {
+    @extend %arrow--next;
+    background-position: right center;
+    right: 0;
+    margin-right: -$sliderArrowWidthLarge;
   }
 }

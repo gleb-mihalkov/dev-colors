@@ -1,11 +1,13 @@
 <?
     if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
 
+    use App\Helpers\HtmlClass;
     use App\Helpers\Template;
     use App\Model\Course;
 
     $item = new Course($arResult);
-    $teacher = $item->getTeacher();
+    $teachers = $item->getTeachers();
+    $teachersCount = count($teachers);
     $lessons = $item->getLessons();
     $results = $item->getResults();
 ?>
@@ -152,18 +154,33 @@
             <? endif; ?>
             class="course-baner"
             >
-            <div class="course-baner__container">
-                <div
-                    style="background-image: url(<?= $teacher->image; ?>)"
-                    class="course-baner__image"
-                    ></div>
-                <div class="course-baner__main">
-                    <p class="course-baner__subtitle"><?= $teacher->desc; ?></p>
-                    <h2 class="course-baner__title"><?= $teacher->title; ?></h2>
-                    <p class="course-baner__text"><?= $teacher->text; ?></p>
-                    <button type="button" class="course-baner__button" data-modal="feedback">
-                        <span>Записаться на курс</span>
-                    </button>
+            <div class="course-baner__items-wrapper">
+                <div class="course-baner__items" id="teachersSlider" data-duration="1000">
+                    <? for ($i = 0; $i < $teachersCount; $i++) : ?>
+                        <?
+                            $teacher = $teachers[$i];
+                            $teacherClass = new HtmlClass();
+                            $teacherClass->is($i == 0, 'active');
+                        ?>
+                        <div class="course-baner__item  <?= $teacherClass; ?>">
+                            <div
+                                style="background-image: url(<?= $teacher->image; ?>)"
+                                class="course-baner__image"
+                                ></div>
+                            <div class="course-baner__main">
+                                <p class="course-baner__subtitle"><?= $teacher->desc; ?></p>
+                                <h2 class="course-baner__title"><?= $teacher->title; ?></h2>
+                                <p class="course-baner__text"><?= $teacher->text; ?></p>
+                                <button type="button" class="course-baner__button" data-modal="feedback">
+                                    <span>Записаться на курс</span>
+                                </button>
+                            </div>
+                        </div>
+                    <? endfor; ?>
+                </div>
+                <div class="course-baner__arrows">
+                    <button type="button" class="course-baner__prev" data-back="teachersSlider"></button>
+                    <button type="button" class="course-baner__next" data-next="teachersSlider"></button>
                 </div>
             </div>
         </div>
@@ -214,14 +231,37 @@
             };
             setTimeout(fixHeight, 1);
 
+            var teachersSlider = document.querySelector('.course-baner__items');
+            var teachers = document.querySelectorAll('.course-baner__item');
+
+            var updateTeachers = function() {
+                var maxHeight = 0;
+
+                for (var i = 0; i < teachers.length; i++) {
+                    var teacher = teachers[i];
+                    var height = teacher.offsetHeight;
+
+                    if (height < maxHeight) {
+                        continue;
+                    }
+
+                    maxHeight = height;
+                }
+
+                teachersSlider.style.height = maxHeight + 'px';
+            }
+            
+            window.addEventListener('resize', updateTeachers);
+            updateTeachers();
+
             var popups = document.querySelectorAll('.course-lesson__popup');
-            var offset = 10;
+            var windowOffset = 10;
 
             if (!popups.length) {
                 return;
             }
 
-            var setOffset = function(box, value) {
+            var setPopupBoxOffset = function(box, value) {
                 if (!value) {
                     box.style.transform = '';
                     return;
@@ -231,18 +271,18 @@
                 box.style.transform = value;
             };
 
-            var onResize = function() {
+            var updatePopups = function() {
                 var windowWidth = window.innerWidth
                     || document.body.clientWidth
                     || document.documentElement.clientWidth;
 
-                var maxRight = windowWidth - offset;
+                var maxRight = windowWidth - windowOffset;
 
                 for (var i = 0; i < popups.length; i++) {
                     var popup = popups[i];
                     var box = popup.querySelector('.course-lesson__popup-box');
 
-                    setOffset(box, 0);
+                    setPopupBoxOffset(box, 0);
 
                     var boxRect = box.getBoundingClientRect();
                     var boxRight = Math.ceil(boxRect.right);
@@ -252,13 +292,12 @@
                     }
 
                     var diff = boxRight - maxRight;
-                    console.log(boxRight, maxRight, diff);
-                    setOffset(box, diff);
+                    setPopupBoxOffset(box, diff);
                 }
             };
 
-            window.addEventListener('resize', onResize);
-            onResize();
+            window.addEventListener('resize', updatePopups);
+            updatePopups();
         })();
     </script>
 </div>
