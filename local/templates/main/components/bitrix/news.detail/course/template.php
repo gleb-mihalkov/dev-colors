@@ -145,7 +145,12 @@
                 </div>
             <? endif; ?>
             <? if ($item->sale) : ?>
-                <div class="course-grid__sale">
+                <div
+                    <? if ($item->backgroundColor) : ?>
+                        style="border-color: <?= $item->backgroundColor; ?>"
+                    <? endif; ?>
+                    class="course-grid__sale"
+                    >
                     <div class="course-sale">
                         <h3 class="course-sale__title">Как получить скидку?</h3>
                         <p class="course-sale__text"><?= $item->sale; ?></p>
