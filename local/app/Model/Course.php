@@ -76,6 +76,13 @@ class Course extends PicturedNews
     public $titleFormatted;
 
     /**
+     * Показывает, будет ли заголовок курса на странице детального описания уже, чем обычно.
+     *
+     * @var bool
+     */
+    public $isSmallTitle;
+
+    /**
      * Создает экземпляр класса.
      *
      * @param array $data Данные от компонента.
@@ -90,6 +97,7 @@ class Course extends PicturedNews
         $this->results = self::getProperty($data, 'RESULTS');
         $this->lessons = self::getProperty($data, 'LESSONS');
         $this->backgroundColor = self::getProperty($data, 'BACKGROUND_COLOR');
+        $this->isSmallTitle = !!self::getProperty($data, 'IS_SMALL_TITLE');
 
         $this->program = $this->program['TEXT'] ?? '';
         $this->sale = $this->sale['TEXT'] ?? '';

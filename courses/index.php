@@ -72,7 +72,8 @@
 			3 => "PROGRAM",
 			4 => "RESULTS",
 			5 => "BACKGROUND_COLOR",
-			6 => ""
+			6 => "IS_SMALL_TITLE",
+			7 => ""
 		),
 		"DETAIL_DISPLAY_TOP_PAGER" => "N",
 		"DETAIL_DISPLAY_BOTTOM_PAGER" => "N",

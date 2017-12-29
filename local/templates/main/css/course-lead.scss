@@ -47,6 +47,10 @@
     font-weight: 400;
     line-height: 54px;
     letter-spacing: -.92px;
+
+    &--small {
+      max-width: 600px;
+    }
   }
 
   &__text {

@@ -15,7 +15,7 @@
     margin-bottom: 26px;
 
     &:before {
-      background-color: $colorPink;
+      background-color: $colorPinkLight;
     }
 
     @include media() {

@@ -73,8 +73,10 @@
   }
 
   &__item {
+    transition: all .5s .5s;
     background-color: $colorWhite;
     position: absolute;
+    z-index: 1;
     left: 0;
     top: 0;
     display: flex;
@@ -89,10 +91,12 @@
     }
 
     &.active {
+      z-index: 2;
       visibility: visible;
     }
 
     &.leave {
+      z-index: 2;
       visibility: visible;
     }
   }

@@ -10,6 +10,8 @@
     $teachersCount = count($teachers);
     $lessons = $item->getLessons();
     $results = $item->getResults();
+
+    $titleClass = $item->isSmallTitle ? 'course-lead__title--small' : '';
 ?>
 <div class="course">
     <div class="course__header">
@@ -25,7 +27,7 @@
                     class="course-lead__aside"
                     ></div>
                 <div class="course-lead__main">
-                    <h1 class="course-lead__title"><?= $item->title; ?></h1>
+                    <h1 class="course-lead__title <?= $titleClass; ?>"><?= $item->title; ?></h1>
                     <p class="course-lead__text"><?= $item->desc; ?></p>
                     <div class="course-lead__actions">
                         <button type="button" class="course-lead__button" data-modal="feedback">
