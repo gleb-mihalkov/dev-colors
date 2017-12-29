@@ -24,7 +24,7 @@
   }
 
   &__image {
-    @include image-viewing(image-viewing-vert);
+    // @include image-viewing(image-viewing-vert);
     background-color: $colorPink;
     background-position: right bottom;
     background-size: contain;
