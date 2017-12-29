@@ -52,6 +52,11 @@
                 ]); ?>
             </div>
             <p class="course-lead-small__text"><?= $item->desc; ?></p>
+            <div class="course-lead-small__actions">
+                <button type="button" class="course-lead-small__button" data-modal="feedback">
+                    <span>Записаться</span>
+                </button>
+            </div>
             <figure class="course-lead-small__image-group">
                 <span
                     style="<?= $item->imageStyle; ?>"

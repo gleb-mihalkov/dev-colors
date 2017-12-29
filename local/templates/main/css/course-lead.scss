@@ -40,7 +40,7 @@
   &__title {
     display: block;
     width: 100%;
-    max-width: 784px;
+    max-width: 700px;
     margin: 0 0 24px;
     font-family: $fontFamilyHeading;
     font-size: 46px;
@@ -68,6 +68,7 @@
   &__button {
     @extend %button, %button--type-default, %button--width-normal;
     background-color: transparent;
+    border-color: #4f4f4f;
   }
 
   &__share {

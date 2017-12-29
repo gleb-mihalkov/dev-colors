@@ -69,6 +69,13 @@ class Course extends PicturedNews
     public $imageStyle;
 
     /**
+     * Отформатированный заголовок.
+     *
+     * @var string
+     */
+    public $titleFormatted;
+
+    /**
      * Создает экземпляр класса.
      *
      * @param array $data Данные от компонента.

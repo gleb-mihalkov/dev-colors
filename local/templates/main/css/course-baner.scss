@@ -50,5 +50,6 @@
   &__button {
     @extend %button, %button--type-default, %button--width-large;
     background-color: transparent;
-  }  
+    border-color: #4f4f4f;
+  }
 }
