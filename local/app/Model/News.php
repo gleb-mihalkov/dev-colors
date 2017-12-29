@@ -126,13 +126,15 @@ class News
     {
         $asset = Asset::getInstance();
 
+        $sitename = self::getOgMetaTag('site_name', 'ШКОЛА МАКИЯЖА КРАСКИ');
         $type = self::getOgMetaTag('type', 'website');
         $url = self::getOgMetaTag('url', self::getAbsoluteUrl($this->link));
         $title = self::getOgMetaTag('title', $this->title);
-        $desc = self::getOgMetaTag('desc', $this->desc);
+        $desc = self::getOgMetaTag('description', $this->desc);
         $image = self::getOgMetaTag('image', self::getAbsoluteUrl($this->image));
 
         $asset->addString($type);
+        $asset->addString($sitename);
         $asset->addString($url);
         $asset->addString($title);
         $asset->addString($desc);

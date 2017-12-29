@@ -31,7 +31,8 @@
 
     $vkLink = 'https://vk.com/share.php'
         .'?url='.$url
-        .'&title='.$title;
+        .'&title='.$title
+        .'&image='.$image;
 
     $fbLink = 'https://www.facebook.com/sharer.php'
         .'?u='.$url;
