@@ -14,6 +14,13 @@ class Response extends News
     public $subtitle;
 
     /**
+     * Ссылка на автора.
+     *
+     * @var string
+     */
+    public $link;
+
+    /**
      * Создает экземпляр класса.
      *
      * @param array $data Данные, которые пришли от компонента news.list.
@@ -23,5 +30,6 @@ class Response extends News
         parent::__construct($data);
         $this->text = strip_tags($this->text);
         $this->subtitle = self::getProperty($data, 'SUBTITLE');
+        $this->link = self::getProperty($data, 'LINK');
     }
 }

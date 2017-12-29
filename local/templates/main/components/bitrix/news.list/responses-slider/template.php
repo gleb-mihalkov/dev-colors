@@ -24,7 +24,13 @@
                         </div>
                         <div class="response-preview__main">
                             <p class="response-preview__text"><?= $item->text; ?></p>
-                            <h3 class="response-preview__title"><?= $item->title; ?></h3>
+                            <h3 class="response-preview__title">
+                                <? if ($item->link) : ?>
+                                    <a href="<?= $item->link; ?>" target="_blank" rel="nofollow"><?= $item->title; ?></a>
+                                <? else : ?>
+                                    <?= $item->title; ?>
+                                <? endif; ?>
+                            </h3>
                             <h4 class="response-preview__subtitle"><?= $item->subtitle; ?></h4>
                         </div>
                     </article>
