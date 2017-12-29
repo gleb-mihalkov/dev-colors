@@ -69,6 +69,13 @@ class Course extends PicturedNews
     public $imageStyle;
 
     /**
+     * Большое изображение курса.
+     *
+     * @var string
+     */
+    public $imageLarge;
+
+    /**
      * Отформатированный заголовок.
      *
      * @var string
@@ -98,6 +105,9 @@ class Course extends PicturedNews
         $this->lessons = self::getProperty($data, 'LESSONS');
         $this->backgroundColor = self::getProperty($data, 'BACKGROUND_COLOR');
         $this->isSmallTitle = !!self::getProperty($data, 'IS_SMALL_TITLE');
+
+        $this->imageLarge = $data['PREVIEW_PICTURE'];
+        $this->imageLarge = self::getImageResize($this->imageLarge, 1290);
 
         $this->program = $this->program['TEXT'] ?? '';
         $this->sale = $this->sale['TEXT'] ?? '';

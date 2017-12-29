@@ -23,7 +23,7 @@
             >
             <div class="course-lead__container">
                 <div
-                    style="background-image: url(<?= $item->image; ?>)"
+                    style="background-image: url(<?= $item->imageLarge; ?>)"
                     class="course-lead__aside"
                     ></div>
                 <div class="course-lead__main">
@@ -73,7 +73,12 @@
         <div class="course-grid">
             <div class="course-grid__about"><?= $item->text; ?></div>
             <? if ($results) : ?>
-                <div class="course-grid__results">
+                <div
+                    <? if ($item->backgroundColor) : ?>
+                        style="border-color: <?= $item->backgroundColor; ?>"
+                    <? endif; ?>
+                    class="course-grid__results"
+                    >
                     <div class="course-results">
                         <h3 class="course-results__title">Что вы получите от нашего курса:</h3>
                         <? foreach ($results as $result) : ?>
