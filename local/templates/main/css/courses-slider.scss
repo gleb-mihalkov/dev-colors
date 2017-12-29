@@ -192,7 +192,8 @@
       &__title,
       &__text,
       &__current,
-      &__link {
+      &__link,
+      &__count {
         animation-timing-function: ease-in-out;
         animation-fill-mode: forwards;
         animation-duration: .75s;
@@ -203,6 +204,10 @@
 
       &__link {
         animation-timing-function: cubic-bezier(.57, .63, .30, .72);
+      }
+
+      &__count {
+        transition: all .75s ease-in-out;
       }
 
       &__image-wrapper {
@@ -236,7 +241,8 @@
       &__title,
       &__text,
       &__current,
-      &__link {
+      &__link,
+      &__count {
         visibility: visible;
         opacity: 1;
       }
@@ -262,7 +268,8 @@
         animation-delay: .25s;
       }
 
-      &__link {
+      &__link,
+      &__count {
         animation-delay: .5s;
       }
     }

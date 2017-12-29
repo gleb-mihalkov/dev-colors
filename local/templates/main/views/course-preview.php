@@ -15,6 +15,9 @@
     
     $itemClass = new HtmlClass();
     $itemClass->is($isInverted, 'course-preview--inverted');
+
+    $numbersColor = $item->backgroundColor;
+    $numberStyle = $item->backgroundColor ? 'color: '.$item->backgroundColor : '';
 ?>
 <article
     <? if ($itemEditId) : ?> id="<?= $itemEditId; ?>" <? endif; ?>
@@ -22,8 +25,8 @@
     >
     <? if ($isSlide) : ?>
         <div class="course-preview__numbers">
-            <div class="course-preview__current"><?= $itemNumber; ?></div>
-            <div class="course-preview__count"><?= $itemsCount; ?></div>
+            <div class="course-preview__current" style="<?= $numberStyle; ?>"><?= $itemNumber; ?></div>
+            <div class="course-preview__count"  style="<?= $numberStyle; ?>"><?= $itemsCount; ?></div>
         </div>
     <? endif; ?>
     <a href="<?= $item->link; ?>" class="course-preview__aside">
