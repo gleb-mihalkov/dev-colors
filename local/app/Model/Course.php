@@ -106,7 +106,7 @@ class Course extends PicturedNews
         $this->backgroundColor = self::getProperty($data, 'BACKGROUND_COLOR');
         $this->isSmallTitle = !!self::getProperty($data, 'IS_SMALL_TITLE');
 
-        $this->imageLarge = $data['PREVIEW_PICTURE'];
+        $this->imageLarge = $data['DETAIL_PICTURE'];
         $this->imageLarge = self::getImageResize($this->imageLarge, 1290);
 
         $this->program = $this->program['TEXT'] ?? '';
