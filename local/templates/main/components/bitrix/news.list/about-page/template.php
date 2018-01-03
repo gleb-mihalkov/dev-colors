@@ -12,7 +12,7 @@
 ?>
 <article class="about-page">
     <h1 class="about-page__title">О школе</h1>
-    <section class="about-page__group-01" id="<?= $itemA->getEditId($this); ?>">
+    <section class="about-page__group-01" id="<?= $itemA->getEditId($this); ?>" data-paralax="">
         <div class="about-page__image-group-01">
             <div
                 style="background-image: url(<?= $itemA->image; ?>)"
@@ -23,15 +23,15 @@
             <span><?= $itemA->desc; ?></span>
         </div>
     </section>
-    <section class="about-page__group-02" id="<?= $itemB->getEditId($this); ?>">
+    <section class="about-page__group-02" id="<?= $itemB->getEditId($this); ?>" data-paralax="">
         <div class="about-page__text-02"><?= $itemB->desc; ?></div>
     </section>
-    <section class="about-page__group-03" id="<?= $itemC->getEditId($this); ?>">
+    <section class="about-page__group-03" id="<?= $itemC->getEditId($this); ?>" data-paralax="">
         <div class="about-page__text-03">
             <span><?= $itemC->desc; ?></span>
         </div>
     </section>
-    <section class="about-page__group-04" id="<?= $itemD->getEditId($this); ?>">
+    <section class="about-page__group-04" id="<?= $itemD->getEditId($this); ?>" data-paralax="">
         <div
             style="background-image: url(<?= $itemD->image; ?>)"
             class="about-page__image-04  not-viewed"
@@ -40,8 +40,8 @@
             <span><?= $itemD->desc; ?></span>
         </div>
     </section>
-    <? /* <div class="about-page__group-05"></div> */ ?>
-    <section class="about-page__group-06" id="<?= $itemE->getEditId($this); ?>">
+    <div class="about-page__group-05" data-paralax=""></div>
+    <section class="about-page__group-06" id="<?= $itemE->getEditId($this); ?>" data-paralax="">
         <div class="about-page__image-group-06">
             <div
                 style="background-image: url(<?= $itemE->image; ?>)"

@@ -9,6 +9,7 @@
 	var $_page = null;
 	var $_scroller = null;
 	var $_enters = null;
+	var $_paralaxes = null;
 
 	var _viewHeight = null;
 	var _scrollerBottom = null;
@@ -36,6 +37,10 @@
 
 	function getEnters() {
 		return $_enters ? $_enters : ($_enters = $('.not-viewed'));
+	}
+
+	function getParalaxes() {
+		return $_paralaxes ? $_paralaxes : ($_paralaxes = $('[data-paralax]'));
 	}
 
 	function wrap(node) {
@@ -218,9 +223,91 @@
 		_isEntersInited = true;
 	}
 
+	function parseOffset(value) {
+		var text = value + '';
+
+		if (text.charAt(text.length - 1) == '%') {
+			var percent = text.substr(0, text.length - 1) * 1;
+
+			if (isNaN(percent)) {
+				return 0;
+			}
+
+			var height = getViewHeight();
+			return Math.round(percent * 100 / height);
+		}
+
+		value *= 1;
+		return isNaN(value) ? 0 : value;
+	} 
+
+	function getParalaxOffset($paralax) {
+		var bottom = $paralax.attr('data-paralax-bottom');
+		var both = $paralax.attr('data-paralax-offset');
+		var top = $paralax.attr('data-paralax-top');
+
+		bottom = bottom != null ? bottom : (both != null ? both : 0);
+		top = top != null ? top : (both != null ? both : 0);
+
+		return {
+			top: parseOffset(top),
+			bottom: parseOffset(bottom)
+		};
+	}
+
+	function refreshParalax($paralax, viewTop, viewBottom) {
+		var elementTop = getElementTop($paralax);
+		var elementBottom = getElementBottom($paralax);
+
+		var offset = getParalaxOffset($paralax);
+		viewTop += offset.top;
+		viewBottom += offset.bottom;
+		var viewHeight = viewBottom - viewTop;
+
+		var maxTop = elementBottom;
+		var minTop = elementTop - viewHeight;
+		
+		if (minTop < 0) {
+			var shift = Math.abs(minTop);
+			maxTop += shift;
+			viewTop += shift;
+			viewBottom += shift;
+			minTop = 0;
+		}
+
+		var maxSize = maxTop - minTop;
+		var size = maxTop - viewTop;
+
+		var percent = size / maxSize;
+
+		if (percent < 0) {
+			percent = 0;
+		}
+
+		if (percent > 1) {
+			percent = 1;
+		}
+
+		percent = Math.round((1 - percent) * 100);
+		$paralax.attr('data-paralax', percent);
+	}
+
+	function refreshParalaxes() {
+		var top = getScrollTop();
+		var bottom = top + getViewHeight();
+
+		var $paralaxes = getParalaxes();
+
+		for (var i = 0; i < $paralaxes.length; i++) {
+			var $paralax = $paralaxes.eq(i);
+			refreshParalax($paralax, top, bottom);
+		}
+	}
+
 	function onScrollChange(e) {
 		refreshScroller();
 		refreshEnters();
+		refreshParalaxes();
 	}
 
 	function onScroll(e, node, func) {
@@ -241,6 +328,7 @@
 	function onReady() {
 		initEnters();
 		refreshScroller();
+		refreshParalaxes();
 	}
 
 	getDocument()
