@@ -1,3 +1,4 @@
+//=include ../../bower_components/smoothscroll-for-websites/SmoothScroll.js
 //=include ../../bower_components/jquery/dist/jquery.min.js
 //
 //=include js/disable-scroll.js
@@ -9,3 +10,7 @@
 //=include js/course-lesson.js
 //=include js/home-slider.js
 //=include js/loader.js
+
+SmoothScroll({
+  stepSize: 50
+});

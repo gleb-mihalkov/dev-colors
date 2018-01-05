@@ -101,3 +101,16 @@ $transSlow: all 2s cubic-bezier(0.23, 1, 0.38, 1);
     @content;
   }
 }
+
+@mixin viewed($b: null) {
+  @if ($b) {
+    #{$b}.viewed & {
+      @content;
+    }
+  }
+  @else {
+    &.viewed {
+      @content;
+    }
+  }
+}

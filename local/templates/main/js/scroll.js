@@ -174,11 +174,25 @@
 		return isVisible;
 	}
 
+	function setEnter($enter) {
+		$enter.removeClass('not-viewed');
+		$enter.addClass('viewed');
+
+		var duration = $enter.attr('data-viewing');
+		if (!duration) return;
+
+		$enter.addClass('viewing');
+		
+		setTimeout(function() {
+			$enter.removeClass('viewing');
+		}, duration * 1);
+	}
+
 	function refreshEnter($enter, viewTop, viewBottom) {
 		var isExit = !$enter.hasClass('not-viewed') || !isEnter($enter, viewTop, viewBottom);
 		if (isExit) return;
-		$enter.removeClass('not-viewed');
-		$enter.addClass('viewed');
+
+		setEnter($enter);
 	}
 
 	function initEnter($enter, viewTop, viewBottom) {
@@ -189,8 +203,7 @@
 		var isShow = elementBottom < viewTop || isEnter($enter, viewTop, viewBottom);
 		if (!isShow) return;
 
-		$enter.removeClass('not-viewed');
-		$enter.addClass('viewed');
+		setEnter($enter);
 	}
 
 	function refreshEnters() {
@@ -255,7 +268,20 @@
 		};
 	}
 
-	function refreshParalax($paralax, viewTop, viewBottom) {
+	function getParalaxRanges($paralax) {
+		var min = $paralax.attr('data-paralax-min');
+		var max = $paralax.attr('data-paralax-max');
+
+		min = min != null ? min : 0;
+		max = max != null ? max : 100;
+
+		return {
+			min: min,
+			max: max
+		};
+	}
+
+	function getParalaxPercent($paralax, viewTop, viewBottom) {
 		var elementTop = getElementTop($paralax);
 		var elementBottom = getElementBottom($paralax);
 
@@ -288,8 +314,17 @@
 			percent = 1;
 		}
 
-		percent = Math.round((1 - percent) * 100);
-		$paralax.attr('data-paralax', percent);
+		return 1 - percent; 
+	}
+
+	function refreshParalax($paralax, viewTop, viewBottom) {
+		var percent = getParalaxPercent($paralax, viewTop, viewBottom);
+		var ranges = getParalaxRanges($paralax);
+
+		var maxValue = ranges.max - ranges.min;
+		var value = Math.round(percent * maxValue + ranges.min);
+
+		$paralax.attr('data-paralax', value);
 	}
 
 	function refreshParalaxes() {
@@ -327,7 +362,6 @@
 
 	function onReady() {
 		initEnters();
-		refreshScroller();
 		refreshParalaxes();
 	}
 
@@ -335,7 +369,8 @@
 		.on('click', '[data-scroll-down]', onScrollDown)
 		.on('click', '[data-scroll]', onScrollTop)
 		.on('scroll', onScrollChange)
-		.on('start', onReady);
+		.on('start', onReady)
+		.ready(refreshParalaxes);
 
 	$(window).on('resize', clearCache);
 })(window.jQuery);

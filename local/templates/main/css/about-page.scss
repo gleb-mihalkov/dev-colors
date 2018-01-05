@@ -3,163 +3,396 @@
   padding-top: 97px;
   padding-bottom: 160px;
 
+  $paralaxMin: 0;
+  $paralaxMax: 20;
+
   &__title {
     @extend %title, %title--large, %title--underline, %title--align-center;
     margin-bottom: 109px;
   }
 
-  &__group-01 {
-    position: relative;
-    display: block;
-    height: 1277px;
+  // Helpers.
 
-    &:after {
-      background-image: url('img/about-asset-01.png');
-      background-position: center center;
-      background-size: cover;
+    @function str-replace($string, $search, $replace: '') {
+      $index: str-index($string, $search);
+
+      @if $index {
+        @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+      }
+
+      @return $string;
+    }
+
+    @mixin paralax($prop, $pattern, $min, $max, $from: $paralaxMin, $to: $paralaxMax, $selector: '[data-paralax="_"] &') {
+      transition: all .5s ease-in-out;
+  
+      @include media() {
+        transform: none !important;
+      }
+
+      $minValue: $min;
+    
+      @if ($minValue < 0) {
+        $minValue: $minValue * -1;
+      }
+
+      $maxValue: $max + $minValue;
+
+      @for $i from $paralaxMin through $paralaxMax {
+        $value: null;
+        
+        @if ($i < $from) {
+          $value: $min;
+        }
+        @else {
+          @if ($i > $to) {
+            $value: $max;
+          }
+          @else {
+            $value: $i * $maxValue / $to - $minValue;
+          }
+        }
+
+        $text: str-replace($pattern, '_', $value);
+        $sel: str-replace($selector, '_', $i);
+
+        #{$sel} {
+          #{$prop}: #{$text};
+        }
+      }
+    }
+
+  // Group 01.
+
+    &__group-01 {
+      position: relative;
+      display: block;
+      height: 1277px;
+    }
+
+    &__asset-01 {
+      @include paralax('transform', 'translateY(_px)', 0, 48, 8, 20);
       position: absolute;
       right: 0;
       bottom: 0;
       display: block;
       width: 382px;
       height: 508px;
-      content: '';
-    }
-  }
-  &__image-group-01 {
-    position: absolute;
-    left: 0;
-    top: 0;
-    display: block;
-    width: 733px;
-    height: 1103px;
 
-    &:before {
-      background-color: $colorPink;
+      span {
+        transition: all 1.5s .5s ease-in-out;
+        opacity: 0;
+        transform: translateY(-48px);
+        background-image: url('img/about-asset-01.png');
+        background-position: center center;
+        background-size: cover;
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      &.viewed span {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    &__image-group-01 {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: block;
+      width: 733px;
+      height: 1103px;
+
+      &:before {
+        @include paralax('transform', 'translateX(_px)', -80, 0, 1, 10);
+        background-color: $colorPink;
+        position: absolute;
+        z-index: 1;
+        right: 0;
+        bottom: 0;
+        display: block;
+        width: 465px;
+        height: 730px;
+        content: '';
+      }
+    }
+
+    &__image-01 {
+      @include image-viewing(image-viewing-vert-inverted);
+      @include paralax('transform', 'translateY(_px)', 0, 100, 1, 10);
+      background-color: $colorGrayLight;
+      background-position: center center;
+      background-size: cover;
+      position: absolute;
+      z-index: 2;
+      left: 0;
+      top: 0;
+      display: block;
+      width: 650px;
+      height: 960px;
+    }
+
+    &__text-01 {
+      position: absolute;
+      right: 0;
+      top: 100px;
+      display: block;
+      width: 567px;
+      height: 203px;
+      padding-left: 52px;
+      padding-top: 49px;
+      font-family: $fontFamilyHeading;
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 31px;
+
+      &:before {
+        transform: translateY(48px);
+        opacity: 0;
+        transition: all 1.5s .5s ease-in-out;
+        background-image: url('img/about-01.png');
+        background-position: left center;
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: block;
+        width: 403px;
+        height: 203px;
+        content: '';
+      }
+
+      & > span {
+        @include paralax('transform', 'translateY(_px)', 0, 48, 3, 8);
+        display: inline-block;
+
+        & > span {
+          display: inline-block;
+          transition: all 1.5s 1s ease-in-out;
+          transform: translateX(-48px);
+          opacity: 0;
+        }
+      }
+
+      &.viewed {
+
+        &:before {
+          transform: translateY(0);
+          opacity: 1;
+        }
+
+        & > span > span {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+    }
+
+  // Group 02.
+
+    &__group-02 {
+      position: relative;
+      height: 227px;
+    }
+
+    &__text-02 {
+      position: absolute;
+      left: 52px;
+      top: 0;
+      display: block;
+      width: 790px;
+      height: 227px;
+      padding-left: 82px;
+      padding-top: 77px;
+      font-style: italic;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 26px;
+
+      &:before {
+        transition: all 1.5s ease-in-out;
+        transform: translateX(-48px);
+        opacity: 0;
+        background-image: url('img/about-02.png');
+        background-position: left center;
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        content: '';
+      }
+
+      & > span {
+        transition: all 1.5s .5s ease-in-out;
+        transform: translateY(48px);
+        opacity: 0;
+        position: relative;
+        display: inline-block;
+
+        & > span {
+          @include paralax('transform', 'translateY(_px)', 0, 24, 5, 15);
+          position: relative;
+          display: inline-block;
+        }
+      }
+
+      &.viewed {
+
+        &:before {
+          transform: translateX(0);
+          opacity: 1;
+        }
+
+        & > span {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+    }
+
+  // Group 03.
+
+    &__group-03 {
+      position: relative;
+      height: 644px;
+    }
+
+    &__text-03 {
+      transition: all 1.5s ease-in-out;
+      transform: translateY(48px);
+      opacity: 0;
+      border: 10px solid $colorPink;
+      position: absolute;
+      left: 0;
+      top: 166px;
+      display: block;
+      width: 100%;
+      padding: 75px 248px;
+      text-align: center;
+      font-family: $fontFamilyHeading;
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 40px;
+
+      & > span {
+        transition: all 1.5s 1.5s ease-in-out;
+        transform: translateY(48px);
+        opacity: 0;
+        position: relative;
+        display: inline-block;
+
+        & > span {
+          @include paralax('transform', 'translateY(_px)', 0, 24, 5, 15);
+          position: relative;
+          display: inline-block;
+        }
+      }
+
+      &.viewed {
+        transform: translateY(0);
+        opacity: 1;
+
+        & > span {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+    }
+
+  // Group 04.
+
+    &__group-04 {
+      position: relative;
+      height: 1021px;
+    }
+
+    &__image-04 {
+      @include image-viewing(image-viewing-vert-inverted);
+      background-position: center center;
+      background-size: cover;
       position: absolute;
       z-index: 1;
-      right: 0;
-      bottom: 0;
+      left: 0;
+      top: 0;
       display: block;
-      width: 465px;
-      height: 730px;
-      content: '';
+      width: 784px;
+      height: 1021px;
     }
-  }
-  &__image-01 {
-    @include image-viewing(image-viewing-vert-inverted);
-    background-color: $colorGrayLight;
-    background-position: center center;
-    background-size: cover;
-    position: absolute;
-    z-index: 2;
-    left: 0;
-    top: 0;
-    display: block;
-    width: 650px;
-    height: 960px;
-  }
-  &__text-01 {
-    background-image: url('img/about-01.png');
-    background-position: left center;
-    position: absolute;
-    right: 0;
-    top: 100px;
-    display: block;
-    width: 567px;
-    height: 203px;
-    padding-left: 52px;
-    padding-top: 49px;
-    font-family: $fontFamilyHeading;
-    font-size: 28px;
-    font-weight: 400;
-    line-height: 31px;
-  }
 
-  &__group-02 {
-    position: relative;
-    height: 227px;
-  }
-  &__text-02 {
-    background-image: url('img/about-02.png');
-    background-position: left center;
-    position: absolute;
-    left: 52px;
-    top: 0;
-    display: block;
-    width: 790px;
-    height: 227px;
-    padding-left: 82px;
-    padding-top: 77px;
-    font-style: italic;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 26px;
-  }
+    &__text-04 {
+      @include paralax('transform', 'translateY(_px)', 0, 100);
+      background-color: $colorWhite;
+      position: absolute;
+      z-index: 2;
+      right: 0;
+      top: 197px;
+      display: block;
+      width: 784px;
+      height: 653px;
+      padding-left: 132px;
+      padding-top: 247px;
+      font-family: $fontFamilyHeading;
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 40px;
 
-  &__group-03 {
-    position: relative;
-    height: 644px;
-  }
-  &__text-03 {
-    border: 10px solid $colorPink;
-    position: absolute;
-    left: 0;
-    top: 166px;
-    display: block;
-    width: 100%;
-    padding: 75px 248px;
-    text-align: center;
-    font-family: $fontFamilyHeading;
-    font-size: 28px;
-    font-weight: 400;
-    line-height: 40px;
-  }
+      &:before {
+        transition: all 1.5s ease-in-out;
+        opacity: 0;
+        transform: translateY(48px);
+        background-image: url('img/about-04.png');
+        background-position: 63px 160px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        content: '';
+      }
 
-  &__group-04 {
-    position: relative;
-    height: 1021px;
-  }
-  &__image-04 {
-    @include image-viewing(image-viewing-vert-inverted);
-    background-position: center center;
-    background-size: cover;
-    position: absolute;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    display: block;
-    width: 784px;
-    height: 1021px;
-  }
-  &__text-04 {
-    background-image: url('img/about-04.png');
-    background-color: $colorWhite;
-    background-position: 63px 160px;
-    position: absolute;
-    z-index: 2;
-    right: 0;
-    top: 197px;
-    display: block;
-    width: 784px;
-    height: 653px;
-    padding-left: 132px;
-    padding-top: 247px;
-    font-family: $fontFamilyHeading;
-    font-size: 28px;
-    font-weight: 400;
-    line-height: 40px;
-  }
+      & > span {
+        transition: all 1.5s .5s ease-in-out;
+        opacity: 0;
+        transform: translateX(-48px);
+        display: inline-block;
+        position: relative;
 
-  &__group-05 {
-    transition: all 1s ease-in-out;
-    transition-delay: 1s;
-    opacity: 0;
-    visibility: hidden;
-    position: relative;
-    height: 986px;
+        & > span {
+          @include paralax('transform', 'translateY(_px)', 0, 48, 5, 15);
+          display: inline-block;
+          position: relative;
+        }
+      }
 
-    &:before {
+      &.viewed {
+
+        &:before {
+          transform: translateY(0);
+          opacity: 1;
+        }
+
+        & > span {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+    }
+
+  // Group 05.
+
+    &__group-05 {
+      position: relative;
+      height: 986px;
+    }
+
+    &__asset-line-05 {
+      transition: all 1.5s ease-in-out;
+      transform: scaleY(0);
+      transform-origin: top center;
       background-color: $colorPink;
       position: absolute;
       right: 0;
@@ -167,79 +400,139 @@
       display: block;
       width: 27px;
       height: 713px;
-      content: '';
+
+      &.viewed {
+        transform: scaleY(1);
+      }
     }
 
-    &:after {
-      background-image: url('img/about-asset-05.png');
-      background-position: center center;
-      background-size: contain;
+    &__asset-05 {
+      transition: all 1.5s ease-in-out;
+      opacity: 0;
+      transform: translateY(48px);
       position: absolute;
       left: 59px;
       bottom: 0;
       display: block;
       width: 661px;
       height: 537px;
-      content: '';
+
+      & > span {
+        @include paralax('transform', 'translateY(-_px)', 0, 207, 5, 15);
+        background-image: url('img/about-asset-05.png');
+        background-position: center center;
+        background-size: contain;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      &.viewed {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
-  }
 
-  &__group-06 {
-    position: relative;
-    height: 1143px;
-  }
-  &__image-group-06 {
-    position: absolute;
-    z-index: 1;
-    top: 219px;
-    left: 0;
-    display: block;
-    width: 1052px;
-    height: 778px;
+  // Group 06.
 
-    &:before {
-      background-color: $colorPink;
+    &__group-06 {
+      position: relative;
+      height: 1143px;
+    }
+
+    &__image-group-06 {
       position: absolute;
-      z-index: 0;
-      right: 134px;
-      bottom: 87px;
+      z-index: 1;
+      top: 219px;
+      left: 0;
       display: block;
-      width: 918px;
-      height: 578px;
-      content: '';
+      width: 1052px;
+      height: 778px;
+
+      &:before {
+        background-color: $colorPink;
+        position: absolute;
+        z-index: 0;
+        right: 134px;
+        bottom: 87px;
+        display: block;
+        width: 918px;
+        height: 578px;
+        content: '';
+      }
     }
-  }
-  &__image-06 {
-    @include image-viewing(image-viewing-vert);
-    background-position: center center;
-    background-size: cover;
-    position: absolute;
-    z-index: 1;
-    right: 0;
-    top: 0;
-    display: block;
-    width: 516px;
-    height: 778px;
-  }
-  &__text-06 {
-    background-image: url('img/about-06.png');
-    background-color: $colorWhite;
-    background-position: 53px 95px;
-    position: absolute;
-    z-index: 2;
-    left: 315px;
-    bottom: 0;
-    display: block;
-    width: 543px;
-    height: 470px;
-    padding-left: 152px;
-    padding-right: 74px;
-    padding-top: 133px;
-    font-style: italic;
-    font-size: 18px;
-    font-weight: 300;
-    line-height: 31px;
-  }
+
+    &__image-06 {
+      @include paralax('transform', 'translateY(_px)', 0, 90, 10, 20);
+      @include image-viewing(image-viewing-vert);
+      background-position: center center;
+      background-size: cover;
+      position: absolute;
+      z-index: 1;
+      right: 0;
+      top: 0;
+      display: block;
+      width: 516px;
+      height: 778px;
+    }
+
+    &__text-06 {
+      @include paralax('transform', 'translateY(-_px)', 0, 48, 10, 20);
+      background-color: $colorWhite;
+      position: absolute;
+      z-index: 2;
+      left: 315px;
+      bottom: 0;
+      display: block;
+      width: 543px;
+      height: 470px;
+      padding-left: 152px;
+      padding-right: 74px;
+      padding-top: 133px;
+      font-style: italic;
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 31px;
+
+      &:before {
+        transition: all 1.5s ease-in-out;
+        transform: translateY(48px);
+        opacity: 0;
+        background-image: url('img/about-06.png');
+        background-position: 53px 95px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        content: '';
+      }
+
+      & > span {
+        transform: translateX(-48px);
+        opacity: 0;
+        transition: all 1.5s .5s ease-in-out;
+        display: inline-block;
+        position: relative;
+      }
+
+      &.viewed {
+
+        &:before {
+          transform: translateY(0);
+          opacity: 1;
+        }
+
+        & > span {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+    }
 
   @include media {
 
@@ -255,16 +548,40 @@
       margin-left: auto;
       margin-right: auto;
       margin-top: 33px;
-      
-      &:after {
-        display: none;
-      }
+    }
+
+    &__asset-01 {
+      display: none;
     }
 
     &__text-01,
     &__text-03,
     &__text-04 {
       font-size: 18px;
+    }
+
+    &__text-01,
+    &__text-02,
+    &__text-03,
+    &__text-04,
+    &__text-05,
+    &__text-06 {
+
+      &:before {
+        display: none;
+      }
+    }
+
+    &__image-group-01,
+    &__image-group-02,
+    &__image-group-03,
+    &__image-group-04,
+    &__image-group-05,
+    &__image-group-06 {
+
+      &:before {
+        display: none;
+      }
     }
 
     &__image-group-01 {
@@ -275,22 +592,16 @@
       top: 0;
       bottom: 0;
       width: 100%;
-
-      &:before {
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: block;
-        width: 100%;
-        height: 100vh;
-      }
+      height: 762px;
     }
+
     &__image-01 {
       position: relative;
       display: block;
       width: 100%;
       height: 100%;
     }
+
     &__text-01 {
       background-image: none;
       position: relative;
@@ -330,8 +641,9 @@
     &__image-04 {
       position: relative;
       width: 100%;
-      height: 100vh;
+      height: 672px;
     }
+
     &__text-04 {
       position: relative;
       top: 0;
@@ -351,16 +663,7 @@
       position: relative;
       top: 0;
       width: 100%;
-      height: 100vh;
-
-      &:before {
-        top: 0;
-        left: 0;
-        right: auto;
-        bottom: auto;
-        width: 100%;
-        height: 100%;
-      }
+      height: 778px;
     }
     &__image-06 {
       position: relative;
@@ -377,6 +680,21 @@
       padding: 0;
       margin-top: 33px;
       text-align: center;
+    }
+  }
+
+  @include mediaExtraSmall() {
+
+    &__image-group-01 {
+      height: 413px;
+    }
+
+    &__image-04 {
+      height: 365px;
+    }
+
+    &__image-group-06 {
+      height: 422px;
     }
   }
 }
