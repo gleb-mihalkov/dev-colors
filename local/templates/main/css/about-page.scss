@@ -650,8 +650,11 @@
       display: block;
       width: 100%;
       height: auto;
-      padding: 33px;
       text-align: center;
+
+      & > span {
+        padding: 33px;
+      }
     }
 
     &__image-04 {
