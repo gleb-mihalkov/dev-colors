@@ -181,10 +181,12 @@
       }
 
       &__main {
+        -webkit-backface-visibility: hidden;
         z-index: 5;
       }
 
       &__aside {
+        -webkit-backface-visibility: hidden;
         z-index: 2;
       }
 
@@ -194,13 +196,13 @@
       &__current,
       &__link,
       &__count {
+        -webkit-backface-visibility: hidden;
         animation-timing-function: ease-in-out;
         animation-fill-mode: forwards;
         animation-duration: .75s;
         visibility: hidden;
         opacity: 0;
         z-index: 2;
-        -webkit-backface-visibility: hidden;
       }
 
       &__link {
@@ -212,6 +214,7 @@
       }
 
       &__image-wrapper {
+        -webkit-backface-visibility: hidden;
         animation-timing-function: ease-in-out;
         animation-fill-mode: forwards;
         animation-duration: .75s;
