@@ -173,10 +173,11 @@
                             $teacher = $teachers[$i];
                             $teacherClass = new HtmlClass();
                             $teacherClass->is($i == 0, 'active');
+                            $teacherImage = $teacher->getImageForColor($item->backgroundColor);
                         ?>
                         <div class="course-baner__item  <?= $teacherClass; ?>">
                             <div
-                                style="background-image: url(<?= $teacher->image; ?>)"
+                                style="background-image: url(<?= $teacherImage; ?>)"
                                 class="course-baner__image"
                                 ></div>
                             <div class="course-baner__main">
