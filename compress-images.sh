@@ -6,4 +6,4 @@ find $TEMPLATE_DIR $UPLOAD_DIR -type f \( -name "*.jpg" -o -name "*.JPG" -o -nam
   -exec jpegoptim -o -t -m89 --all-progressive --strip-all '{}' \;
 
 find $TEMPATE_DIR $UPLOAD_DIR -type f \( -name "*.png" -o -name "*.PNG" \) \
-  -exec optipng '{}' \;
+  -exec optipng -o5 '{}' \;
