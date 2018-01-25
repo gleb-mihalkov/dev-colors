@@ -107,7 +107,7 @@ class Course extends PicturedNews
         $this->isSmallTitle = !!self::getProperty($data, 'IS_SMALL_TITLE');
 
         $this->imageLarge = $data['DETAIL_PICTURE'];
-        $this->imageLarge = self::getImageResize($this->imageLarge, 1290);
+        $this->imageLarge = self::getImageResize($this->imageLarge, 2560);
 
         $this->program = $this->program['TEXT'] ?? '';
         $this->sale = $this->sale['TEXT'] ?? '';

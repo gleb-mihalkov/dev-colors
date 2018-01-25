@@ -23,6 +23,6 @@ class PicturedNews extends News
         parent::__construct($data);
 
         $this->image = $data['PREVIEW_PICTURE'];
-        $this->image = self::getImageResize($this->image, 1290);
+        $this->image = self::getImageResize($this->image, 2560);
     }
 }

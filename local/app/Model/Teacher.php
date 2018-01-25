@@ -37,7 +37,7 @@ class Teacher extends PicturedNews
                 continue;
             }
 
-            $value = self::getImageResize($value, 1290);
+            $value = self::getImageResize($value, 2560);
 
             $this->photos[$color] = $value;
         }

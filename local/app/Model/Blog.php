@@ -65,7 +65,7 @@ class Blog extends PicturedNews
 
         foreach ($this->slides as $i => $id)
         {
-            $this->slides[$i] = self::getImageResize($id, 1200);
+            $this->slides[$i] = self::getImageResize($id, 2560);
         }
 
         $slider = $this->renderSlider();
