@@ -1,6 +1,11 @@
 .contacts-grid {
   display: flex;
+  flex-wrap: wrap;
   color: $colorBlackRich;
+
+  @include media() {
+    margin-top: -33px !important;
+  }
 
   a {
     color: inherit;
@@ -10,6 +15,15 @@
     display: block;
     width: 1/4 * 100%;
     text-align: center;
+
+    @include media() {
+      padding-top: 33px;
+      width: 1/2 * 100%;
+    }
+
+    @include mediaMedium() {
+      width: 100%;
+    }
   }
 
   &__title {
