@@ -16,7 +16,7 @@
 <div class="home-slider">
     <div class="home-slider__slides-wrapper">
         <div class="home-slider__slides-container">
-            <div class="home-slider__slides <?= $itemsClass; ?>" id="homeSlider" data-effect="change" data-duration="1500">
+            <div class="home-slider__slides <?= $itemsClass; ?>" id="homeSlider" data-effect="change" data-duration="1250">
                 <? for ($i = 0; $i < $itemsCount; $i++) : ?>
                     <?
                         $item = $items[$i];

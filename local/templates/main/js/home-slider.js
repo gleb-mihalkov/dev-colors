@@ -71,6 +71,26 @@
   var eventName = 'mousewheel MozMousePixelScroll';
 
   /**
+   * Добавляет обработчик событию прокрутки.
+   *
+   * @return {void}
+   */
+  function bindScroll() {
+    fixBody();
+    container.on(eventName, onScroll);
+  }
+
+  /**
+   * Удаляет обработчик событию прокрутки.
+   *
+   * @return {void}
+   */
+  function unbindScroll() {
+    container.off(eventName, onScroll);
+    unfixBody();
+  }
+
+  /**
    * Обрабатывает окончание смены слайдов.
    *
    * @return {void}
@@ -87,11 +107,16 @@
    */
   function onScroll(e) {
     e.preventDefault();
-    if (isTransition) return;
+
+    var isBlocked = isTransition || slider.hasClass('next') || slider.hasClass('back');
+
+    if (isBlocked) {
+      return;
+    }
 
     var delta = e.originalEvent.deltaY || e.originalEvent.detail || e.originalEvent.wheelDelta;
     
-    if (delta <= 0) {
+    if (delta < 0) {
       return;
     }
 
@@ -101,8 +126,7 @@
     if (index >= sliderCount) {
       $.ajax('/home-slider-scrolled.php');
 
-      container.off(eventName, onScroll);
-      unfixBody();
+      unbindScroll();
       return;
     }
 
@@ -119,10 +143,8 @@
    */
   function initScrollStart() {
     window.scrollTo(0, 0);
-    fixBody();
-
+    bindScroll();
     carouselToFirst(slider);
-    container.on(eventName, onScroll);
   }
 
   /**
@@ -158,7 +180,7 @@
     }
 
     sliderCount = carouselCount(slider);
-    duration = slider.attr('data-duration') * 1 + 10;
+    duration = slider.attr('data-duration') * 1;
 
     initScrollStart();
   }

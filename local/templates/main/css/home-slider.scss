@@ -38,7 +38,7 @@
       height: 100%;
       overflow: hidden;
 
-      @include media() {
+      @include mediaMedium() {
         display: none;
       }
     }
@@ -47,6 +47,10 @@
       @extend %container;
       position: relative;
       height: 100%;
+
+      @include media() {
+        max-width: 1450px;
+      }
 
       @include mediaRetina {
         max-width: calc(125vh + #{$containerPadding * 2});
@@ -122,7 +126,7 @@
     justify-content: space-between;
     height: 138px;
 
-    @include media() {
+    @include mediaMedium() {
       display: none;
     }
   }
@@ -175,7 +179,7 @@
     max-height: 100%;
     overflow: hidden;
 
-    @include media() {
+    @include mediaMedium() {
       display: block;
     }
 

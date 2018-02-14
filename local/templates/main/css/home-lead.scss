@@ -17,7 +17,7 @@
     left: $padding;
     bottom: $padding;
 
-    @include media() {
+    @include mediaMedium() {
       left: 25px;
       bottom: 25px;
     }
