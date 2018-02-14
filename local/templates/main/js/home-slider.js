@@ -5,7 +5,7 @@
    *
    * @type {Number}
    */
-  var maxWidth = 1450;
+  var maxWidth = 1092;
 
   /**
    * Документ.
