@@ -185,17 +185,7 @@
     initScrollStart();
   }
 
-  /**
-   * Вызывается при закрытии вкладки.
-   *
-   * @return {void}
-   */
-  function onUnload() {
-    $.ajax('/home-slider-scrolled.php?drop');
-  }
-
   // Прикрепляем события.
   doc.on('start', onReady);
-  window.onbeforeunload = onUnload;
-  
+
 })(window.jQuery);
