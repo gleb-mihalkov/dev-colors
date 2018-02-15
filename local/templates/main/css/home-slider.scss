@@ -39,6 +39,10 @@
       @include mediaMedium() {
         display: none;
       }
+
+      .blocked & {
+        display: none;
+      }
     }
 
     &-container {
@@ -126,6 +130,10 @@
     @include mediaMedium() {
       display: none;
     }
+
+    .blocked & {
+      display: none;
+    }
   }
 
   &__dot {
@@ -177,6 +185,10 @@
     overflow: hidden;
 
     @include mediaMedium() {
+      display: block;
+    }
+
+    .blocked & {
       display: block;
     }
 

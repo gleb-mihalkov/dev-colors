@@ -11,9 +11,13 @@
     $isScrolled = isset($_SESSION['IS_HOME_SLIDER_SCROLLED']);
     $itemsClass = new HtmlClass();
     $itemsClass->is($isScrolled, 'scrolled');
+
+    $userAgent = strtolower($_SERVER['HTTP_USER_AGENT']);
+    $isBlocked = strpos($userAgent, 'edge') !== false;
+    $blockClass = new HtmlClass();
+    $blockClass->is($isBlocked, 'blocked');
 ?>
-<!-- <? var_dump($isScrolled); ?> -->
-<div class="home-slider">
+<div class="home-slider <?= $blockClass; ?>">
     <div class="home-slider__slides-wrapper">
         <div class="home-slider__slides-container">
             <div class="home-slider__slides <?= $itemsClass; ?>" id="homeSlider" data-effect="change" data-duration="1250">
@@ -21,7 +25,7 @@
                     <?
                         $item = $items[$i];
                         $itemId = 'homeSliderSlide'.$item->id;
-                        
+
                         $itemIsFirst = $i === 0;
                         $itemIsLast = $i === $itemsCount - 1;
                         $itemIsActive = $isScrolled && $itemIsLast || !$isScrolled && $itemIsFirst;

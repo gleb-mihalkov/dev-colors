@@ -115,7 +115,7 @@
     }
 
     var delta = e.originalEvent.deltaY || e.originalEvent.detail || e.originalEvent.wheelDelta;
-    
+
     if (delta < 0) {
       return;
     }
@@ -169,7 +169,7 @@
 
     container = $('.home-slider');
 
-    if (!container.length) {
+    if (!container.length || container.hasClass('blocked')) {
       return;
     }
 
